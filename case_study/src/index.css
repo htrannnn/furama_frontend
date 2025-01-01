@@ -1,0 +1,31 @@
+/* reset CSS */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* ------------ */
+#container {
+	height: 80px;
+	background-color: #046056;
+	/* background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center; */
+}
+
+.imgLogo {
+	width: 65%;
+}
+
+#titleImg {
+	background-image: url("../src/hp2.jpeg");
+	background-size: cover;
+	height: 430px;
+}
+
+#titleText {
+	padding-top: 170px !important;
+	color: white;
+	font-weight: bold;
+}

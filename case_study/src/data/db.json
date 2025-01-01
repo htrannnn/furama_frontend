@@ -1,0 +1,72 @@
+{
+	"facilities": [
+		{
+			"id": 1,
+			"name": "PRIVATE CHARM 1",
+			"information": "5 bedrooms · 6 beds · 3 bathrooms",
+			"typeId": 1
+		},
+		{
+			"id": 2,
+			"name": "PRIVATE CHARM 2",
+			"information": "2 bedrooms · 3 beds · 2 bathrooms",
+			"typeId": 2
+		},
+		{
+			"id": 3,
+			"name": "PRIVATE CHARM 3",
+			"information": "4 bedrooms · 2 beds · 2 bathrooms",
+			"typeId": 3
+		},
+		{
+			"id": 4,
+			"name": "PRIVATE CHARM 4",
+			"information": "5 bedrooms · 6 beds · 3 bathrooms",
+			"typeId": 1
+		},
+		{
+			"id": 5,
+			"name": "PRIVATE CHARM 5",
+			"information": "4 bedrooms · 6 beds · 4 bathrooms",
+			"typeId": 1
+		},
+		{
+			"id": 6,
+			"name": "PRIVATE CHARM 6",
+			"information": "5 bedrooms · 6 beds · 3 bathrooms",
+			"typeId": 1
+		},
+		{
+			"id": 7,
+			"name": "PRIVATE CHARM 7",
+			"information": "4 bedrooms · 2 beds · 2 bathrooms",
+			"typeId": 1
+		},
+		{
+			"id": 8,
+			"name": "PRIVATE CHARM 8",
+			"information": "2 bedrooms · 3 beds · 2 bathrooms",
+			"typeId": 1
+		},
+		{
+			"id": 9,
+			"name": "PRIVATE CHARM 9",
+			"information": "5 bedrooms · 6 beds · 3 bathrooms",
+			"typeId": 1
+		}
+	],
+	"types": [
+		{
+			"id": 1,
+			"name": "villa"
+		},
+		{
+			"id": 2,
+			"name": "house"
+		},
+		{
+			"id": 3,
+			"name": "room"
+		}
+	]
+}
