@@ -7,3 +7,10 @@ export async function getAllTypes() {
 		return response.data;
 	} catch (error) {}
 }
+
+export async function gerTypeById(id) {
+	try {
+		const response = await axios.get(`${BASE_URL}/types/${id}`);
+		return response.data;
+	} catch (error) {}
+}

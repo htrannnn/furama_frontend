@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import ImgVilla from "../villa.jpg";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 import { getAllFacilities, searchFacilitiesByName } from "../services/facilitiesServices";
 import { getAllTypes } from "../services/typesService";
 
@@ -38,7 +38,7 @@ function FacilitiesListComponent() {
 			<div className="container">
 				<div className="d-flex align-items-center mb-4">
 					<div className="flex-grow-1 text-center">
-						<h3>FACILITIES</h3>
+						<h2>FACILITIES</h2>
 					</div>
 					<div className="flex-shrink-0">
 						<div className="input-group mb-3">
@@ -63,13 +63,17 @@ function FacilitiesListComponent() {
 					{villas &&
 						villas.map((villa) => (
 							<Col key={villa.id}>
-								<Card>
-									<Card.Img variant="top" src={ImgVilla} style={{ height: 250 }} />
-									<Card.Body>
-										<Card.Title>{villa.name}</Card.Title>
-										<Card.Text>{villa.information}</Card.Text>
-									</Card.Body>
-								</Card>
+								<Link to={"/facilitiesList/detail/" + villa.id} className="cardDetail">
+									<Card>
+										<Card.Img variant="top" src={villa.imgSrc} alt={villa.imgAlt} style={{ height: 250 }} />
+										<Card.Body>
+											<Card.Title>{villa.name}</Card.Title>
+											<Card.Text>
+												<span>{villa.information.bedroom}</span> · <span>{villa.information.bed}</span> · <span>{villa.information.bathroom}</span>
+											</Card.Text>
+										</Card.Body>
+									</Card>
+								</Link>
 							</Col>
 						))}
 				</Row>

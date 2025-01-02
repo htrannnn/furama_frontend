@@ -24,3 +24,10 @@ export async function searchFacilitiesByName(name, typeId) {
 		return response.data;
 	} catch (error) {}
 }
+
+export async function getFacilitiesById(id) {
+	try {
+		const response = await axios.get(`${BASE_URL}/facilities/${id}`);
+		return response.data;
+	} catch (error) {}
+}
