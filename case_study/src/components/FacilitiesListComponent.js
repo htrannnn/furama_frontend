@@ -1,37 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ImgVilla from "../villa.jpg";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { getAllFacilities } from "../services/facilitiesServices";
+import { getAllFacilities, searchFacilitiesByName } from "../services/facilitiesServices";
+import { getAllTypes } from "../services/typesService";
 
 function FacilitiesListComponent() {
 	const [villas, setVillas] = useState([]);
-	const [formSearch, setFormSearch] = useState({
-		query: "",
-		type: null,
-	});
+	const [type, setType] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setVillas(await getAllFacilities(formSearch));
+			setVillas(await getAllFacilities());
+			setType(await getAllTypes());
 		};
 		fetchData();
 	}, []);
 
-	const handleChange = (e) => {
-		setFormSearch({
-			[e.target.name]: e.target.value,
-		});
-	};
+	const searchNameRef = useRef();
+	const searchTypeRef = useRef();
 
-	const handleSearch = (e) => {
-		e.preventDefault();
+	const handleSearch = async () => {
+		let name = searchNameRef.current.value.trim();
+		let typeId = searchTypeRef.current.value;
 
-		const fetchData = async () => {
-			setVillas(await getAllFacilities(formSearch));
-		};
-		fetchData();
+		setVillas(await searchFacilitiesByName(name, typeId));
 	};
 
 	return (
@@ -42,18 +36,20 @@ function FacilitiesListComponent() {
 				</h1>
 			</div>
 			<div className="container">
-				<div class="d-flex align-items-center mb-4">
-					<div class="flex-grow-1 text-center">
-						<h4>FACILITIES</h4>
+				<div className="d-flex align-items-center mb-4">
+					<div className="flex-grow-1 text-center">
+						<h3>FACILITIES</h3>
 					</div>
-					<div class="flex-shrink-0">
+					<div className="flex-shrink-0">
 						<div className="input-group mb-3">
-							<input name="query" type="text" className="form-control" placeholder="Search" onChange={handleChange} />
-							<select className="form-select" name="type" id="type" onChange={handleChange}>
-								<option value="1">All</option>
-								<option value="1">Villa</option>
-								<option value="2">House</option>
-								<option value="3">Room</option>
+							<input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} />
+							<select className="form-select" name="searchType" id="type" ref={searchTypeRef}>
+								<option value="">All</option>
+								{type.map((event) => (
+									<option key={event.id} value={event.id}>
+										{event.name}
+									</option>
+								))}
 							</select>
 							<button className="btn btn-outline-secondary" type="button" onClick={handleSearch}>
 								Search
@@ -64,17 +60,18 @@ function FacilitiesListComponent() {
 			</div>
 			<div className="container">
 				<Row xs={1} md={3} className="g-4">
-					{villas.map((villa) => (
-						<Col key={villa.id}>
-							<Card>
-								<Card.Img variant="top" src={ImgVilla} style={{ height: 250 }} />
-								<Card.Body>
-									<Card.Title>{villa.name}</Card.Title>
-									<Card.Text>{villa.information}</Card.Text>
-								</Card.Body>
-							</Card>
-						</Col>
-					))}
+					{villas &&
+						villas.map((villa) => (
+							<Col key={villa.id}>
+								<Card>
+									<Card.Img variant="top" src={ImgVilla} style={{ height: 250 }} />
+									<Card.Body>
+										<Card.Title>{villa.name}</Card.Title>
+										<Card.Text>{villa.information}</Card.Text>
+									</Card.Body>
+								</Card>
+							</Col>
+						))}
 				</Row>
 			</div>
 		</div>

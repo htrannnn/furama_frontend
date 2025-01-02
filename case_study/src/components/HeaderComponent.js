@@ -18,10 +18,14 @@ function HeaderComponent() {
 
 				<ul className="nav nav-pills mt-3">
 					<li className="nav-item">
-						<Link className="nav-link">Support</Link>
+						<Link className="nav-link" id="headerSupport">
+							Support
+						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="btn btn-primary">Sign in</Link>
+						<Link className="btn btn" id="headerButton">
+							Sign in
+						</Link>
 					</li>
 				</ul>
 			</header>

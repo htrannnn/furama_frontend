@@ -2,71 +2,71 @@
 	"facilities": [
 		{
 			"id": 1,
-			"name": "PRIVATE CHARM 1",
+			"name": "CHARM VILLA 1",
 			"information": "5 bedrooms · 6 beds · 3 bathrooms",
 			"typeId": 1
 		},
 		{
 			"id": 2,
-			"name": "PRIVATE CHARM 2",
+			"name": "TROPICAL HOUSE 1",
 			"information": "2 bedrooms · 3 beds · 2 bathrooms",
 			"typeId": 2
 		},
 		{
 			"id": 3,
-			"name": "PRIVATE CHARM 3",
+			"name": "SUITE ROOM 1",
 			"information": "4 bedrooms · 2 beds · 2 bathrooms",
 			"typeId": 3
 		},
 		{
 			"id": 4,
-			"name": "PRIVATE CHARM 4",
+			"name": "CHARM VILLA 2",
 			"information": "5 bedrooms · 6 beds · 3 bathrooms",
 			"typeId": 1
 		},
 		{
 			"id": 5,
-			"name": "PRIVATE CHARM 5",
+			"name": "CHARM VILLA 3",
 			"information": "4 bedrooms · 6 beds · 4 bathrooms",
 			"typeId": 1
 		},
 		{
 			"id": 6,
-			"name": "PRIVATE CHARM 6",
+			"name": "CHARM VILLA 4",
 			"information": "5 bedrooms · 6 beds · 3 bathrooms",
 			"typeId": 1
 		},
 		{
 			"id": 7,
-			"name": "PRIVATE CHARM 7",
+			"name": "CHARM VILLA 5",
 			"information": "4 bedrooms · 2 beds · 2 bathrooms",
 			"typeId": 1
 		},
 		{
 			"id": 8,
-			"name": "PRIVATE CHARM 8",
+			"name": "TROPICAL HOUSE 2",
 			"information": "2 bedrooms · 3 beds · 2 bathrooms",
-			"typeId": 1
+			"typeId": 2
 		},
 		{
 			"id": 9,
-			"name": "PRIVATE CHARM 9",
+			"name": "SUITE ROOM 2",
 			"information": "5 bedrooms · 6 beds · 3 bathrooms",
-			"typeId": 1
+			"typeId": 3
 		}
 	],
 	"types": [
 		{
 			"id": 1,
-			"name": "villa"
+			"name": "Villa"
 		},
 		{
 			"id": 2,
-			"name": "house"
+			"name": "House"
 		},
 		{
 			"id": 3,
-			"name": "room"
+			"name": "Room"
 		}
 	]
 }
