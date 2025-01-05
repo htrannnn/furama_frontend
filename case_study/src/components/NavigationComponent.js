@@ -7,7 +7,7 @@ function NavigationComponent() {
 			<nav className="d-flex justify-content-center py-3" style={{ height: 543 }}>
 				<ul className="nav">
 					<li className="nav-item">
-						<Link className="nav-link text-white" aria-current="page" to="/homepage_facilitiesList">
+						<Link className="nav-link text-white" aria-current="page" to="/homepage/facilitiesList">
 							The Furama
 						</Link>
 					</li>

@@ -20,13 +20,17 @@
 }
 
 #headerButton,
-#buttonEdit {
+#buttonEdit,
+#buttonSubmit,
+#buttonBack {
 	color: #046056 !important;
 	border: 1px solid #046056 !important;
 }
 
 #headerButton:hover,
-#buttonEdit:hover {
+#buttonEdit:hover,
+#buttonSubmit:hover,
+#buttonBack:hover {
 	color: white !important;
 	background-color: #046056;
 }

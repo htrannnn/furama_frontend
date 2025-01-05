@@ -8,7 +8,7 @@ export async function getAllTypes() {
 	} catch (error) {}
 }
 
-export async function gerTypeById(id) {
+export async function getTypeById(id) {
 	try {
 		const response = await axios.get(`${BASE_URL}/types/${id}`);
 		return response.data;

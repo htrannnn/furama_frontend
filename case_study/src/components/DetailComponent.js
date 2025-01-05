@@ -9,11 +9,11 @@ import ImgFirst2 from "../carousel2.jpg";
 import ImgFirst3 from "../carousel3.jpg";
 import { getFacilitiesById } from "../services/facilitiesServices";
 import { Link, useParams } from "react-router-dom";
-import { gerTypeById } from "../services/typesService";
+import { getTypeById } from "../services/typesService";
 
 function DetailComponent() {
 	const [facilitiesDetail, setFacilitiesDetail] = useState({
-		id: "",
+		id: null,
 		information: {
 			name: "",
 			bedroom: "",
@@ -33,8 +33,13 @@ function DetailComponent() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setFacilitiesDetail(await getFacilitiesById(id));
-			setTypeDetail(await gerTypeById(id));
+			const facilityData = await getFacilitiesById(id);
+			setFacilitiesDetail(facilityData);
+
+			if (facilityData.typeId) {
+				const typeData = await getTypeById(facilityData.typeId);
+				setTypeDetail(typeData);
+			}
 		};
 		fetchData();
 	}, [id]);
@@ -42,7 +47,7 @@ function DetailComponent() {
 	return (
 		<>
 			<div className="text-center mt-4 mb-4">
-				<h2>DETAIL</h2>
+				<h2>DETAIL {facilitiesDetail?.name}</h2>
 			</div>
 
 			<Carousel>
@@ -70,20 +75,30 @@ function DetailComponent() {
 				<Row>
 					<Col>
 						<div className="detailInformation">
-							<p>{typeDetail.name}</p>
-							<p>{facilitiesDetail.information.bedroom}</p>
-							<p>{facilitiesDetail.information.bed}</p>
-							<p>Price: {facilitiesDetail.information.price}</p>
-							<Link type="button" className="btn btn" id="buttonEdit">
-								Edit
-							</Link>
+							<p>{typeDetail?.name}</p>
+							<p>{facilitiesDetail?.information.bedroom} bedroom(s)</p>
+							<p>{facilitiesDetail?.information.bed} bed(s)</p>
+							<p>Price: {facilitiesDetail?.information.price} VNĐ</p>
+							<ul className="nav nav-pills mt-3">
+								<li className="nav-item">
+									<Link type="button" className="btn btn me-2" id="buttonBack" to="/homepage/facilitiesList">
+										Back
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link type="button" className="btn btn" id="buttonEdit" to={"/facilitiesList/detail/edit/" + id}>
+										Edit
+									</Link>
+								</li>
+							</ul>
 						</div>
 					</Col>
 					<Col>
 						<div className="detailInformation">
-							<p>{facilitiesDetail.information.bathroom}</p>
-							<p>{facilitiesDetail.information.kitchen}</p>
-							<p>{facilitiesDetail.information.customer}</p>
+							<p>{facilitiesDetail?.information.bathroom} bathroom(s)</p>
+							<p>{facilitiesDetail?.information.kitchen} kitchen</p>
+							<p>{facilitiesDetail?.information.customer} customer(s)</p>
+							{/* ?. là optional chaining operator. Sử dụng để truy cập thuộc tính của một đối tượng mà không gây ra lỗi nếu đối tượng hoặc thuộc tính trước đó là undefined hoặc null. Đây là một cách an toàn để kiểm tra và truy cập dữ liệu sâu bên trong một cấu trúc dữ liệu phức tạp. */}
 						</div>
 					</Col>
 				</Row>

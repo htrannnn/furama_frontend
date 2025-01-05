@@ -4,14 +4,14 @@
 			"id": 1,
 			"imgSrc": "/images/villa.jpg",
 			"imgAlt": "villa",
-			"name": "CHARM VILLA 1",
+			"name": "PALM VILLA 1",
 			"information": {
-				"bedroom": "5 bedrooms",
-				"bed": "6 beds",
-				"bathroom": "3 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "12 customer",
-				"price": "6.000.000 VNĐ"
+				"bedroom": "5",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "12",
+				"price": "6.000.000"
 			},
 			"typeId": 1
 		},
@@ -21,12 +21,12 @@
 			"imgAlt": "house",
 			"name": "TROPICAL HOUSE 1",
 			"information": {
-				"bedroom": "2 bedrooms",
-				"bed": "4 beds",
-				"bathroom": "2 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "6 customer",
-				"price": "2.500.000 VNĐ"
+				"bedroom": "2",
+				"bed": "4",
+				"bathroom": "2",
+				"kitchen": "1",
+				"customer": "6",
+				"price": "2.500.000"
 			},
 			"typeId": 2
 		},
@@ -36,12 +36,12 @@
 			"imgAlt": "room",
 			"name": "SUITE ROOM 1",
 			"information": {
-				"bedroom": "1 bedroom",
-				"bed": "1 bed",
-				"bathroom": "1 bathroom",
+				"bedroom": "1",
+				"bed": "1",
+				"bathroom": "1",
 				"kitchen": "",
-				"customer": "2 customer",
-				"price": "2.000.000 VNĐ"
+				"customer": "2",
+				"price": "2.000.000"
 			},
 			"typeId": 3
 		},
@@ -49,14 +49,14 @@
 			"id": 4,
 			"imgSrc": "/images/villa2.jpeg",
 			"imgAlt": "villa",
-			"name": "CHARM VILLA 2",
+			"name": "PALM VILLA 2",
 			"information": {
-				"bedroom": "5 bedrooms",
-				"bed": "6 beds",
-				"bathroom": "3 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "12 customer",
-				"price": "7.500.000 VNĐ"
+				"bedroom": "5",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "12",
+				"price": "7.000.000"
 			},
 			"typeId": 1
 		},
@@ -66,12 +66,12 @@
 			"imgAlt": "villa",
 			"name": "CHARM VILLA 3",
 			"information": {
-				"bedroom": "4 bedrooms",
-				"bed": "6 beds",
-				"bathroom": "4 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "10 customer",
-				"price": "4.500.000 VNĐ"
+				"bedroom": "4",
+				"bed": "6",
+				"bathroom": "4",
+				"kitchen": "1",
+				"customer": "10",
+				"price": "4.500.000"
 			},
 			"typeId": 1
 		},
@@ -81,12 +81,12 @@
 			"imgAlt": "villa",
 			"name": "CHARM VILLA 4",
 			"information": {
-				"bedroom": "5 bedrooms",
-				"bed": "6 beds",
-				"bathroom": "3 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "12 customer",
-				"price": "6.500.000 VNĐ"
+				"bedroom": "5",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "12",
+				"price": "6.500.000"
 			},
 			"typeId": 1
 		},
@@ -96,12 +96,12 @@
 			"imgAlt": "villa",
 			"name": "CHARM VILLA 5",
 			"information": {
-				"bedroom": "4 bedrooms",
-				"bed": "6 beds",
-				"bathroom": "3 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "10 customer",
-				"price": "4.500.000 VNĐ"
+				"bedroom": "4",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "10",
+				"price": "4.500.000"
 			},
 			"typeId": 1
 		},
@@ -111,12 +111,12 @@
 			"imgAlt": "house",
 			"name": "TROPICAL HOUSE 2",
 			"information": {
-				"bedroom": "2 bedrooms",
-				"bed": "3 beds",
-				"bathroom": "2 bathrooms",
-				"kitchen": "1 kitchen",
-				"customer": "6 customer",
-				"price": "2.500.000 VNĐ"
+				"bedroom": "2",
+				"bed": "3",
+				"bathroom": "2",
+				"kitchen": "1",
+				"customer": "6",
+				"price": "2.500.000"
 			},
 			"typeId": 2
 		},
@@ -126,12 +126,12 @@
 			"imgAlt": "room",
 			"name": "SUITE ROOM 2",
 			"information": {
-				"bedroom": "1 bedroom",
-				"bed": "2 beds",
-				"bathroom": "1 bathroom",
+				"bedroom": "1",
+				"bed": "2",
+				"bathroom": "1",
 				"kitchen": "",
-				"customer": "4 customer",
-				"price": "1.500.000 VNĐ"
+				"customer": "4",
+				"price": "1.500.000"
 			},
 			"typeId": 3
 		}

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import FooterComponent from "./components/FooterComponent";
 import FacilitiesListComponent from "./components/FacilitiesListComponent";
 import DetailComponent from "./components/DetailComponent";
+import EditComponent from "./components/EditComponent";
 
 function App() {
 	return (
@@ -12,8 +13,9 @@ function App() {
 			<HeaderComponent />
 			<NavigationComponent />
 			<Routes>
-				<Route path={"/homepage_facilitiesList"} element={<FacilitiesListComponent />} />
+				<Route path={"/homepage/facilitiesList"} element={<FacilitiesListComponent />} />
 				<Route path={"/facilitiesList/detail/:id"} element={<DetailComponent />} />
+				<Route path={"/facilitiesList/detail/edit/:id"} element={<EditComponent />} />
 			</Routes>
 			<FooterComponent />
 		</>

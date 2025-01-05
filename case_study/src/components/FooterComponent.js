@@ -81,7 +81,7 @@ function FooterComponent() {
 					</div>
 				</div>
 				<div className="d-flex justify-content-between py-4 my-4 border-top">
-					<p>© 2024 The Furama, Inc. All rights reserved.</p>
+					<p>© 28/01/2024 The Furama, Inc. All rights reserved.</p>
 					<ul className="list-unstyled d-flex">
 						<li className="ms-3">
 							<a className="link-dark" href="#">
