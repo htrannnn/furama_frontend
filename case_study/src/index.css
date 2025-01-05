@@ -54,3 +54,13 @@
 .detailInformation {
 	font-size: 18px;
 }
+
+.page-item .page-link {
+	color: #046056;
+}
+
+.page-item.active .page-link {
+	background-color: #046056;
+	border-color: #046056;
+	color: white !important;
+}

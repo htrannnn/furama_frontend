@@ -4,10 +4,11 @@ import { BASE_URL } from "./api";
 export async function getAllFacilities(page, limit) {
 	try {
 		const response = await axios.get(`${BASE_URL}/facilities?_page=${page}&_limit=${limit}&_expand=type`);
-		// x-total-count mình lấy được ở trong header do API trả về, cái này xem tài liệu hoặc bài anh Chánh làm mới biết
 		return [response.data, response.headers["x-total-count"]];
 	} catch (error) {}
 }
+//Header này chứa tổng số bản ghi trong database, bất kể giới hạn trang.
+//Ví dụ: Nếu có 50 bản ghi trong database, x-total-count = 50.
 
 export async function searchFacilitiesByName(name, typeId) {
 	try {

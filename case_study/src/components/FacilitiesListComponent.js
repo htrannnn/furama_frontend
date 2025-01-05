@@ -6,26 +6,28 @@ import { Link } from "react-router-dom";
 import { getAllFacilities, searchFacilitiesByName } from "../services/facilitiesServices";
 import { getAllTypes } from "../services/typesService";
 import Pagination from "react-bootstrap/Pagination";
-import { PAGE_SIZE } from "../constants";
+import { PAGE_SIZE } from "../services/constants";
 
 function FacilitiesListComponent() {
 	const [allFacilities, setAllFacilities] = useState([]);
 	const [type, setType] = useState([]);
-	const [totalSize, setTotalSize] = useState(PAGE_SIZE); // PAGE_SIZE anh đang để là 3: tổng số bản ghi muốn lấy
-	const [page, setPage] = useState(1); // trang (1) là trang đầu tiên
-	const [totalPage, setTotalPage] = useState(0); // Biến này sẽ phải tính toán từ tổng số bản ghi đang có trong db chia cho tổng số bản ghi muốn lấy (Nhưng phải làm tròn lên thành số nguyên (Nếu không kết quả của biểu thức chia sẽ là số thực))
+	const [totalSize, setTotalSize] = useState(PAGE_SIZE); //tổng bản ghi muốn lấy. Hiện tại constant cho PAGE_SIZE = 3
+	const [page, setPage] = useState(1); //(1) là trang đầu tiên
+	const [totalPage, setTotalPage] = useState(0); //tổng bản ghi trong db chia tổng bản ghi muốn lấy (làm tròn đến số nguyên, nếu không kết quả chia sẽ là số thực)
 
 	useEffect(() => {
 		const fetchData = async () => {
-			// getAllFacilities trả về một mảng có 2 phần tử là mảng bản ghi và tổng số bản ghi có trong db
-			// ở dưới sử dụng kỹ thuật destructuring array để tách thành 2 biến
-			const [data, total] = await getAllFacilities(page, totalSize);
+			const [data, total] = await getAllFacilities(page, totalSize); //có thể hiểu là (1,3)
+			//data: dữ liệu từng mảng trong facilities
+			//total:s tổng số bản ghi trong facilities
+
 			setAllFacilities(data);
 			setTotalPage(Math.ceil(total / totalSize));
 			setType(await getAllTypes());
 		};
 		fetchData();
-	}, [page]); // lưu ý phải có dependency là page để khi mà page cập nhật thì nó gọi lại cái hàm trong này
+	}, [page]);
+	//truyền page vào để fetch lại dữ liệu mỗi khi page thay đổi
 
 	const searchNameRef = useRef();
 	const searchTypeRef = useRef();
@@ -38,19 +40,16 @@ function FacilitiesListComponent() {
 	};
 
 	const handleFirst = () => {
-		setPage(1); // cập nhật lại page về 1 là trang đầu tiên
+		setPage(1); //page đầu tiên luôn là 1
 	};
-
-	const handleLast = () => {
-		setPage(totalPage); // cập nhật lại page về cuối
-	};
-
 	const handlePrev = () => {
-		setPage(page - 1); // giảm page hiện tại
+		setPage(page - 1); //page hiện tại -1, trở về trước
 	};
-
 	const handleNext = () => {
-		setPage(page + 1); // tăng page hiện tại
+		setPage(page + 1); //page hiện tại +1, tiến 1
+	};
+	const handleLast = () => {
+		setPage(totalPage); //không thể biết trước được trang cuối nên Last sẽ bằng totalPage
 	};
 
 	return (
@@ -104,20 +103,20 @@ function FacilitiesListComponent() {
 						))}
 				</Row>
 			</div>
-			{/* Chỗ này có thể tách riêng component cũng được để tái sử dụng, thì phải truyền 4 cái hàm xử lý sự kiện vào props của component con, xem lại code anh Chánh */}
-			<div className="container my-4 d-flex justify-content-center">
-				<Pagination>
-					<Pagination.First onClick={handleFirst} disabled={page === 1} />
-					<Pagination.Prev onClick={handlePrev} disabled={page === 1} />
-					{[...new Array(totalPage)].map((e, index) => (
-						<Pagination.Item active={page === index + 1} onClick={() => setPage(index + 1)}>
-							{index + 1}
-						</Pagination.Item>
-					))}
-					<Pagination.Next onClick={handleNext} disabled={page === totalPage} />
-					<Pagination.Last onClick={handleLast} disabled={page === totalPage} />
-				</Pagination>
-			</div>
+			<Pagination className="container my-4 d-flex justify-content-center" id="pagination">
+				<Pagination.First onClick={handleFirst} disabled={page === 1} />
+				<Pagination.Prev onClick={handlePrev} disabled={page === 1} />
+
+				{/* tạo một mảng có totalPage phần tử. Duyệt qua từng phần tử của mảng, mỗi index đại diện cho số thứ tự của trang. */}
+				{[...new Array(totalPage)].map((e, index) => (
+					<Pagination.Item active={page === index + 1} onClick={() => setPage(index + 1)}>
+						{index + 1}
+					</Pagination.Item>
+				))}
+
+				<Pagination.Next onClick={handleNext} disabled={page === totalPage} />
+				<Pagination.Last onClick={handleLast} disabled={page === totalPage} />
+			</Pagination>
 		</div>
 	);
 }
