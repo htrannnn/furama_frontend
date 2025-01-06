@@ -22,7 +22,10 @@
 #headerButton,
 #buttonEdit,
 #buttonSubmit,
-#buttonBack {
+#buttonBack,
+#buttonSearch,
+#buttonAdd,
+#buttonDelete {
 	color: #046056 !important;
 	border: 1px solid #046056 !important;
 }
@@ -30,7 +33,10 @@
 #headerButton:hover,
 #buttonEdit:hover,
 #buttonSubmit:hover,
-#buttonBack:hover {
+#buttonBack:hover,
+#buttonSearch:hover,
+#buttonAdd:hover,
+#buttonDelete:hover {
 	color: white !important;
 	background-color: #046056;
 }

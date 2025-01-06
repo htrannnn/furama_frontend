@@ -40,3 +40,17 @@ export async function updateFacilities(id, facilities) {
 		return response.data;
 	} catch (error) {}
 }
+
+export async function addNewFacilities(facilities) {
+	try {
+		const response = await axios.post(`${BASE_URL}/facilities`, facilities);
+		return response.data;
+	} catch (error) {}
+}
+
+export async function deleteById(id) {
+	try {
+		const response = await axios.delete(`${BASE_URL}/facilities/${id}`);
+		return response.data;
+	} catch (error) {}
+}

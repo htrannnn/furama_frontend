@@ -3,10 +3,11 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
-import { getAllFacilities, searchFacilitiesByName } from "../services/facilitiesServices";
+import { deleteById, getAllFacilities, searchFacilitiesByName } from "../services/facilitiesServices";
 import { getAllTypes } from "../services/typesService";
 import Pagination from "react-bootstrap/Pagination";
 import { PAGE_SIZE } from "../services/constants";
+import DeleteComponent from "./DeleteComponent";
 
 function FacilitiesListComponent() {
 	const [allFacilities, setAllFacilities] = useState([]);
@@ -14,6 +15,8 @@ function FacilitiesListComponent() {
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE); //tổng bản ghi muốn lấy. Hiện tại constant cho PAGE_SIZE = 3
 	const [page, setPage] = useState(1); //(1) là trang đầu tiên
 	const [totalPage, setTotalPage] = useState(0); //tổng bản ghi trong db chia tổng bản ghi muốn lấy (làm tròn đến số nguyên, nếu không kết quả chia sẽ là số thực)
+	const [show, setShow] = useState(false);
+	const [deleteFacilities, setDeleteFacilities] = useState();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -26,7 +29,7 @@ function FacilitiesListComponent() {
 			setType(await getAllTypes());
 		};
 		fetchData();
-	}, [page]);
+	}, [page, show]);
 	//truyền page vào để fetch lại dữ liệu mỗi khi page thay đổi
 
 	const searchNameRef = useRef();
@@ -52,6 +55,23 @@ function FacilitiesListComponent() {
 		setPage(totalPage); //không thể biết trước được trang cuối nên Last sẽ bằng totalPage
 	};
 
+	const handleShow = (facilities) => {
+		setShow(true);
+		setDeleteFacilities(facilities);
+	};
+
+	const handleClose = (facilities) => {
+		setShow(false);
+		setDeleteFacilities({});
+	};
+
+	const handleDelete = async () => {
+		try {
+			await deleteById(deleteFacilities.id);
+			handleClose();
+		} catch (error) {}
+	};
+
 	return (
 		<div>
 			<div className="mb-4" id="titleImg">
@@ -60,45 +80,51 @@ function FacilitiesListComponent() {
 				</h1>
 			</div>
 			<div className="container">
-				<div className="d-flex align-items-center mb-4">
-					<div className="flex-grow-1 text-center">
-						<h2>FACILITIES</h2>
+				<div className="d-flex flex-row-reverse">
+					<div className="input-group mb-4 w-50">
+						<input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} />
+						<select className="form-select" name="searchType" id="type" ref={searchTypeRef}>
+							<option value="">All</option>
+							{type.map((event) => (
+								<option key={event.id} value={event.id}>
+									{event.name}
+								</option>
+							))}
+						</select>
+						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
+							Search
+						</button>
+						<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/facilitiesList/addFacilities">
+							Add New Facilities
+						</Link>
 					</div>
-					<div className="flex-shrink-0">
-						<div className="input-group mb-3">
-							<input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} />
-							<select className="form-select" name="searchType" id="type" ref={searchTypeRef}>
-								<option value="">All</option>
-								{type.map((event) => (
-									<option key={event.id} value={event.id}>
-										{event.name}
-									</option>
-								))}
-							</select>
-							<button className="btn btn-outline-secondary" type="button" onClick={handleSearch}>
-								Search
-							</button>
-						</div>
+				</div>
+				<div className="d-flex align-items-center mb-4">
+					<div className="flex-grow-1 text-center" style={{ backgroundColor: `#046056`, color: `white` }}>
+						<h2>FACILITIES</h2>
 					</div>
 				</div>
 			</div>
 			<div className="container">
 				<Row xs={1} md={3} className="g-4">
 					{allFacilities &&
-						allFacilities.map((villa) => (
-							<Col key={villa.id}>
-								<Link to={"/facilitiesList/detail/" + villa.id} className="cardDetail">
+						allFacilities.map((facilities) => (
+							<Col key={facilities.id} handleShow={handleShow} facilities={facilities}>
+								<Link to={"/facilitiesList/detail/" + facilities.id} className="cardDetail">
 									<Card>
-										<Card.Img variant="top" src={villa.imgSrc} alt={villa.imgAlt} style={{ height: 250 }} />
+										<Card.Img variant="top" src={facilities.imgSrc} alt={facilities.imgAlt} style={{ height: 250 }} />
 										<Card.Body>
-											<Card.Title>{villa.name}</Card.Title>
+											<Card.Title>{facilities.name}</Card.Title>
 											<Card.Text>
-												<span>{villa.information.bedroom} bedroom(s)</span> · <span>{villa.information.bed} bed(s)</span> ·{" "}
-												<span>{villa.information.bathroom} bathroom(s)</span>
+												<span>{facilities.information.bedroom} bedroom(s)</span> · <span>{facilities.information.bed} bed(s)</span> ·{" "}
+												<span>{facilities.information.bathroom} bathroom(s)</span>
 											</Card.Text>
 										</Card.Body>
 									</Card>
 								</Link>
+								<button type="button" className="btn btn rounded-1 mt-2" id="buttonDelete" onClick={() => handleShow(facilities)}>
+									Delete
+								</button>
 							</Col>
 						))}
 				</Row>
@@ -117,6 +143,8 @@ function FacilitiesListComponent() {
 				<Pagination.Next onClick={handleNext} disabled={page === totalPage} />
 				<Pagination.Last onClick={handleLast} disabled={page === totalPage} />
 			</Pagination>
+
+			<DeleteComponent show={show} facilities={deleteFacilities} handleClose={handleClose} handleDelete={handleDelete} />
 		</div>
 	);
 }

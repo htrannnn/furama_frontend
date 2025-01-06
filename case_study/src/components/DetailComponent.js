@@ -86,7 +86,7 @@ function DetailComponent() {
 									</Link>
 								</li>
 								<li className="nav-item">
-									<Link type="button" className="btn btn" id="buttonEdit" to={"/facilitiesList/detail/edit/" + id}>
+									<Link type="button" className="btn btn" id="buttonEdit" to={"/facilitiesList/edit/" + id}>
 										Edit
 									</Link>
 								</li>
