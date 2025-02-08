@@ -22,7 +22,7 @@ function FacilitiesListComponent() {
 		const fetchData = async () => {
 			const [data, total] = await getAllFacilities(page, totalSize); //có thể hiểu là (1,3)
 			//data: dữ liệu từng mảng trong facilities
-			//total:s tổng số bản ghi trong facilities
+			//total: tổng số bản ghi trong facilities
 
 			setAllFacilities(data);
 			setTotalPage(Math.ceil(total / totalSize));
