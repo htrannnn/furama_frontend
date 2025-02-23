@@ -50,9 +50,9 @@ function DetailComponent() {
 	}, [id]);
 
 	return (
-		<>
-			<div className="text-center mt-4 mb-4">
-				<h2>DETAIL {facilitiesDetail?.name}</h2>
+		<div style={{ marginTop: "100px" }}>
+			<div className="text-center mb-4 ">
+				<h2 style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>DETAIL {facilitiesDetail?.name}</h2>
 			</div>
 
 			{images.length > 0 && (
@@ -99,7 +99,7 @@ function DetailComponent() {
 					</Col>
 				</Row>
 			</Container>
-		</>
+		</div>
 	);
 }
 
