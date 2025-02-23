@@ -7,6 +7,7 @@ import { getFacilitiesById } from "../services/facilitiesServices";
 import { Link, useParams } from "react-router-dom";
 import { getTypeById } from "../services/typesService";
 import Carousel from "react-bootstrap/Carousel";
+import { IoPricetags } from "react-icons/io5";
 
 function DetailComponent() {
 	const [facilitiesDetail, setFacilitiesDetail] = useState({
@@ -68,10 +69,10 @@ function DetailComponent() {
 				</Carousel>
 			)}
 
-			<Container className="container mt-4 mb-4">
+			{/* <Container className="container mt-4 mb-4">
 				<Row>
 					<Col>
-						<div className="detailInformation">
+						<div>
 							<p>{typeDetail?.name}</p>
 							<p>{facilitiesDetail?.information.bedroom} bedroom(s)</p>
 							<p>{facilitiesDetail?.information.bed} bed(s)</p>
@@ -97,6 +98,56 @@ function DetailComponent() {
 							<p>{facilitiesDetail?.information.customer} customer(s)</p>
 						</div>
 					</Col>
+				</Row>
+			</Container> */}
+			<Container className="border-top pt-3 mt-4 mb-4">
+				<Row className="text-center">
+					<Col className="border-end">
+						<h6 className="text-teal">Type</h6>
+						<h5>{typeDetail?.name}</h5>
+					</Col>
+					<Col className="border-end">
+						<h6 className="text-teal">Bedrooms</h6>
+						<h5>{facilitiesDetail?.information.bedroom} bedroom(s)</h5>
+					</Col>
+					<Col className="border-end">
+						<h6 className="text-teal">Sleeps</h6>
+						<h5>{facilitiesDetail?.information.bed} bed(s)</h5>
+					</Col>
+					<Col className="border-end">
+						<h6 className="text-teal">Bathrooms</h6>
+						<h5>{facilitiesDetail?.information.bathroom} bathroom(s)</h5>
+					</Col>
+					<Col className="border-end">
+						<h6 className="text-teal">Kitchen</h6>
+						<h5>{facilitiesDetail?.information.kitchen} kitchen</h5>
+					</Col>
+					<Col className="border-end">
+						<h6 className="text-teal">Guests</h6>
+						<h5>{facilitiesDetail?.information.customer} guests</h5>
+					</Col>
+				</Row>
+				<Row className="mt-3">
+					<div className="w-25 shadow" id="priceDetail">
+						<h5>
+							<IoPricetags className="me-2" />
+							{facilitiesDetail?.information.price} VNĐ
+						</h5>
+					</div>
+				</Row>
+				<Row>
+					<ul className="nav nav-pills mt-3">
+						<li className="nav-item">
+							<Link type="button" className="btn btn me-2" id="buttonBack" to="/rooms">
+								Back
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link type="button" className="btn btn" id="buttonEdit" to={"/facilities/edit/" + id}>
+								Edit
+							</Link>
+						</li>
+					</ul>
 				</Row>
 			</Container>
 		</div>

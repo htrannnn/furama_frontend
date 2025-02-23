@@ -72,8 +72,6 @@ function AddComponent() {
 	});
 
 	const handleValidate = Yup.object({
-		id: Yup.string().required("Empty").min(1, "Enter valid id!"),
-
 		name: Yup.string()
 			.required("Empty")
 			.matches(/^([A-Z]+(?:\s[A-Z]+)*)\s?(\d{1,2})?$/, "Name is not valid"),
@@ -85,14 +83,6 @@ function AddComponent() {
 			<h2 className="text-center mt-4 mb-4">ADD NEW FACILITIES</h2>
 			<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={handleValidate}>
 				<Form className="mt-3">
-					<div className="row mb-3 ms-4 align-items-center">
-						<label className="col-sm-1">ID:</label>
-						<div className="col-sm-3">
-							<Field type="text" name="id" className="form-control" placeholder="Enter facilities id" />
-							<ErrorMessage name="id" style={{ color: "red" }} component="div" />
-						</div>
-					</div>
-
 					<h3 className="mt-4 mb-4">Facilities Information</h3>
 
 					<Container className="container mt-4">
