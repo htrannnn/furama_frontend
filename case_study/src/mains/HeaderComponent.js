@@ -1,7 +1,6 @@
 //đã import react-router, bootstrap, axios
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../Logo.png";
 
 function HeaderComponent() {
 	return (
@@ -12,7 +11,7 @@ function HeaderComponent() {
 						<use xlinkHref="#bootstrap" />
 					</svg>
 					<span className="fs-4">
-						<img src={Logo} alt="logo" className="imgLogo" />
+						<img src="/images/Logo.png" alt="logo" className="imgLogo" />
 					</span>
 				</a>
 

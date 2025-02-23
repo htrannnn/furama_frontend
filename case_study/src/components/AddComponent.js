@@ -170,6 +170,14 @@ function AddComponent() {
 								</div>
 							</Col>
 						</Row>
+						<Row>
+							<div className="ms-3 align-items-center">
+								<label className="col-sm-2 mb-2 me-2">Upload photo:</label>
+								<div className="col">
+									<input type="file" className="form-control" />
+								</div>
+							</div>
+						</Row>
 					</Container>
 					<ul className="nav nav-pills mt-3">
 						<li className="nav-item">

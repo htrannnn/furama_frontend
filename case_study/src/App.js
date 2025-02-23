@@ -1,12 +1,14 @@
 import "./App.css";
-import HeaderComponent from "./components/HeaderComponent";
-import NavigationComponent from "./components/NavigationComponent";
 import { Routes, Route } from "react-router-dom";
-import FooterComponent from "./components/FooterComponent";
 import FacilitiesListComponent from "./components/FacilitiesListComponent";
 import DetailComponent from "./components/DetailComponent";
 import EditComponent from "./components/EditComponent";
 import AddComponent from "./components/AddComponent";
+import HeaderComponent from "./mains/HeaderComponent";
+import FooterComponent from "./mains/FooterComponent";
+import NavigationComponent from "./mains/NavigationComponent";
+import Homepage from "./components/Homepage";
+import Introduce from "./components/Introduce";
 
 function App() {
 	return (
@@ -14,10 +16,12 @@ function App() {
 			<HeaderComponent />
 			<NavigationComponent />
 			<Routes>
-				<Route path={"/homepage/facilitiesList"} element={<FacilitiesListComponent />} />
-				<Route path={"/facilitiesList/detail/:id"} element={<DetailComponent />} />
-				<Route path={"/facilitiesList/edit/:id"} element={<EditComponent />} />
-				<Route path={"/facilitiesList/addFacilities"} element={<AddComponent />} />
+				<Route path={"/"} element={<Introduce />} />
+				<Route path={"/homepage"} element={<Homepage />} />
+				<Route path={"/rooms"} element={<FacilitiesListComponent />} />
+				<Route path={"/facilities/detail/:id"} element={<DetailComponent />} />
+				<Route path={"/facilities/edit/:id"} element={<EditComponent />} />
+				<Route path={"/facilities/addFacilities"} element={<AddComponent />} />
 			</Routes>
 			<FooterComponent />
 		</>

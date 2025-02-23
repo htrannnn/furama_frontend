@@ -73,13 +73,13 @@ function FacilitiesListComponent() {
 	};
 
 	return (
-		<div>
-			<div className="mb-4" id="titleImg">
-				<h1 className="text-center shadow p-3 mb-5" id="titleText">
-					WELCOME TO FURAMA RESORT
+		<>
+			<div className="mb-4" id="roomsPageImg">
+				<h1 className="text-center shadow p-3 mt-5 mb-5" id="roomsPageText" style={{ fontFamily: "serif" }}>
+					ROOMS & SUITES
 				</h1>
 			</div>
-			<div className="container">
+			<div className="container mt-4">
 				<div className="d-flex flex-row-reverse">
 					<div className="input-group mb-4 w-50">
 						<input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} />
@@ -94,14 +94,9 @@ function FacilitiesListComponent() {
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
 							Search
 						</button>
-						<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/facilitiesList/addFacilities">
+						<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/facilities/addFacilities">
 							Add New Facilities
 						</Link>
-					</div>
-				</div>
-				<div className="d-flex align-items-center mb-4">
-					<div className="flex-grow-1 text-center" style={{ backgroundColor: `#046056`, color: `white` }}>
-						<h2>FACILITIES</h2>
 					</div>
 				</div>
 			</div>
@@ -110,21 +105,24 @@ function FacilitiesListComponent() {
 					{allFacilities &&
 						allFacilities.map((facilities) => (
 							<Col key={facilities.id} handleShow={handleShow} facilities={facilities}>
-								<Link to={"/facilitiesList/detail/" + facilities.id} className="cardDetail">
-									<Card>
-										<Card.Img variant="top" src={facilities.imgSrc} alt={facilities.imgAlt} style={{ height: 250 }} />
-										<Card.Body>
-											<Card.Title>{facilities.name}</Card.Title>
-											<Card.Text>
-												<span>{facilities.information.bedroom} bedroom(s)</span> · <span>{facilities.information.bed} bed(s)</span> ·{" "}
-												<span>{facilities.information.bathroom} bathroom(s)</span>
-											</Card.Text>
-										</Card.Body>
-									</Card>
-								</Link>
-								<button type="button" className="btn btn rounded-1 mt-2" id="buttonDelete" onClick={() => handleShow(facilities)}>
-									Delete
-								</button>
+								<Card>
+									<Card.Img variant="top" src={facilities.imgSrc} alt={facilities.imgAlt} style={{ height: 250 }} />
+									<Card.Body>
+										<Card.Title>
+											<Link to={"/facilities/detail/" + facilities.id} className="cardDetail">
+												{facilities.name}
+											</Link>
+										</Card.Title>
+
+										<Card.Text>
+											<span>{facilities.information.bedroom} bedroom(s)</span> · <span>{facilities.information.bed} bed(s)</span> ·{" "}
+											<span>{facilities.information.bathroom} bathroom(s)</span>
+										</Card.Text>
+										<button type="button" className="btn btn rounded-1 mt-2" id="buttonDelete" onClick={() => handleShow(facilities)}>
+											Delete
+										</button>
+									</Card.Body>
+								</Card>
 							</Col>
 						))}
 				</Row>
@@ -145,7 +143,7 @@ function FacilitiesListComponent() {
 			</Pagination>
 
 			<DeleteComponent show={show} facilities={deleteFacilities} handleClose={handleClose} handleDelete={handleDelete} />
-		</div>
+		</>
 	);
 }
 

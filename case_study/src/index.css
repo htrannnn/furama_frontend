@@ -6,11 +6,6 @@
 }
 
 /* ------------ */
-#container {
-	height: 80px;
-	background-color: #046056;
-}
-
 .imgLogo {
 	width: 65%;
 }
@@ -19,13 +14,33 @@
 	color: #046056 !important;
 }
 
+.navbar-normal {
+	position: absolute;
+	width: 100%;
+	background-color: #046056;
+	transition: all 0.3s ease-in-out;
+}
+
+.navbar-sticky {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	background-color: #046056;
+	z-index: 1000;
+	padding: 10px 0;
+	transition: all 0.3s ease-in-out;
+}
+
 #headerButton,
 #buttonEdit,
 #buttonSubmit,
 #buttonBack,
 #buttonSearch,
 #buttonAdd,
-#buttonDelete {
+#buttonDelete,
+#btnMap {
 	color: #046056 !important;
 	border: 1px solid #046056 !important;
 }
@@ -36,25 +51,52 @@
 #buttonBack:hover,
 #buttonSearch:hover,
 #buttonAdd:hover,
-#buttonDelete:hover {
+#buttonDelete:hover,
+#btnMap:hover {
+	color: white !important;
+	background-color: #046056;
+}
+
+#btnCulinary,
+#btnRoom {
+	color: #046056 !important;
+	border: 2px solid #046056 !important;
+}
+
+#btnCulinary:hover,
+#btnRoom:hover {
 	color: white !important;
 	background-color: #046056;
 }
 
 #titleImg {
-	background-image: url("../src/hp2.jpeg");
+	background-image: url("/public/images/hp2.jpeg");
 	background-size: cover;
-	height: 430px;
+	height: 350px;
 }
 
-#titleText {
-	padding-top: 170px !important;
+#titleText,
+#roomsPageText {
+	padding-top: 140px !important;
 	color: white;
 	font-weight: bold;
 }
 
+#roomsPageImg {
+	background-image: url("/public/images/rooms&suites.jpg");
+	background-size: contain;
+	width: 100%;
+	height: 350px;
+}
+
 .cardDetail {
 	text-decoration: none;
+	color: black;
+	transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+.cardDetail:hover {
+	color: #046056;
 }
 
 .detailInformation {
@@ -69,4 +111,84 @@
 	background-color: #046056;
 	border-color: #046056;
 	color: white !important;
+}
+
+/* auto slider */
+.slider-container {
+	position: relative;
+	margin-top: 70px;
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+}
+
+.slider-wrapper {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 1.5s ease-in-out;
+}
+
+.activeSlide {
+	opacity: 1;
+	z-index: 1;
+}
+
+.inactiveSlide {
+	opacity: 0;
+	z-index: 0;
+}
+
+.text-overlay {
+	color: white;
+	font-family: serif;
+	font-size: 35px;
+	line-height: 40px;
+}
+/* end auto slider */
+
+.hover-wrapper {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.hover-image {
+	width: 100%;
+	display: block;
+}
+
+.play-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: transparent;
+	border: 7px solid white;
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 40px;
+	opacity: 1;
+	transition: transform 0.3s ease-in-out;
+}
+
+.hover-wrapper:hover .play-button {
+	transform: translate(-50%, -50%) scale(1.2);
 }
