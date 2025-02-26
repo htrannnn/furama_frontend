@@ -1,180 +1,216 @@
 {
-  "facilities": [
-    {
-      "id": 1,
-      "imgSrc": "/images/villa.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "villa",
-      "name": "PALM VILLA 1",
-      "information": {
-        "bedroom": "5",
-        "bed": "6",
-        "bathroom": "3",
-        "kitchen": "1",
-        "customer": "12",
-        "price": "6.000.000"
-      },
-      "typeId": 1
-    },
-    {
-      "id": 2,
-      "imgSrc": "/images/house1.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "house",
-      "name": "TROPICAL HOUSE 1",
-      "information": {
-        "bedroom": "2",
-        "bed": "4",
-        "bathroom": "2",
-        "kitchen": "1",
-        "customer": "6",
-        "price": "2.500.000"
-      },
-      "typeId": 2
-    },
-    {
-      "id": 3,
-      "imgSrc": "/images/room1.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "room",
-      "name": "SUITE ROOM 1",
-      "information": {
-        "bedroom": "1",
-        "bed": "1",
-        "bathroom": "1",
-        "kitchen": "",
-        "customer": "2",
-        "price": "2.000.000"
-      },
-      "typeId": 3
-    },
-    {
-      "id": 4,
-      "imgSrc": "/images/villa2.jpeg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "villa",
-      "name": "PALM VILLA 2",
-      "information": {
-        "bedroom": "5",
-        "bed": "6",
-        "bathroom": "3",
-        "kitchen": "1",
-        "customer": "10",
-        "price": "7.000.000"
-      },
-      "typeId": 1
-    },
-    {
-      "id": 5,
-      "imgSrc": "/images/villa3.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "villa",
-      "name": "CHARM VILLA 3",
-      "information": {
-        "bedroom": "4",
-        "bed": "6",
-        "bathroom": "4",
-        "kitchen": "1",
-        "customer": "10",
-        "price": "4.500.000"
-      },
-      "typeId": 1
-    },
-    {
-      "id": 6,
-      "imgSrc": "/images/villa4.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "villa",
-      "name": "CHARM VILLA 4",
-      "information": {
-        "bedroom": "5",
-        "bed": "6",
-        "bathroom": "3",
-        "kitchen": "1",
-        "customer": "12",
-        "price": "6.500.000"
-      },
-      "typeId": 1
-    },
-    {
-      "id": 7,
-      "imgSrc": "/images/villa5.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "villa",
-      "name": "CHARM VILLA 5",
-      "information": {
-        "bedroom": "4",
-        "bed": "6",
-        "bathroom": "3",
-        "kitchen": "1",
-        "customer": "8",
-        "price": "4.500.000"
-      },
-      "typeId": 1
-    },
-    {
-      "id": 8,
-      "imgSrc": "/images/house2.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "house",
-      "name": "TROPICAL HOUSE 2",
-      "information": {
-        "bedroom": "2",
-        "bed": "3",
-        "bathroom": "2",
-        "kitchen": "1",
-        "customer": "6",
-        "price": "2.500.000"
-      },
-      "typeId": 2
-    },
-    {
-      "id": 9,
-      "imgSrc": "/images/room2.jpg",
-      "imgCarousel1": "/images/carousel1.jpg",
-      "imgCarousel2": "/images/carousel2.jpg",
-      "imgCarousel3": "/images/carousel3.jpg",
-      "imgAlt": "room",
-      "name": "SUITE ROOM 2",
-      "information": {
-        "bedroom": "1",
-        "bed": "2",
-        "bathroom": "1",
-        "kitchen": "",
-        "customer": "4",
-        "price": "1.500.000"
-      },
-      "typeId": 3
-    }
-  ],
-  "types": [
-    {
-      "id": 1,
-      "name": "Villa"
-    },
-    {
-      "id": 2,
-      "name": "House"
-    },
-    {
-      "id": 3,
-      "name": "Room"
-    }
-  ]
+	"facilities": [
+		{
+			"id": 1,
+			"imgSrc": "/images/villa.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "villa",
+			"name": "CHARM VILLA 1",
+			"information": {
+				"bedroom": "5",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "12",
+				"price": "6.000.000"
+			},
+			"view": "Mountain",
+			"describe": "Charm villas are the most luxurious of the Furama Villas. Modern interiors completed with traditional elements, the coastal sunlight is the main feature. A natural flowing water feature creates a continuous serene ambiance which is furthermore accentuated by grand mirrors, adding opulence and luxury. The harmony of space, color, and light sparkles like a diamond!",
+			"detail": "The villa has 5 bedrooms, all own a broad view of the mountain. Large private swimming pool by the grass garden on the beach where you can gather with friends and family members for a cocktail reception or a BBQ.",
+			"area": "Land area: 900 sqm, Floor area: 687 sqm",
+			"typeId": 1
+		},
+		{
+			"id": 2,
+			"imgSrc": "/images/house1.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "house",
+			"name": "TROPICAL HOUSE 1",
+			"information": {
+				"bedroom": "2",
+				"bed": "4",
+				"bathroom": "2",
+				"kitchen": "1",
+				"customer": "6",
+				"price": "2.500.000"
+			},
+			"view": "Mountain",
+			"describe": "Asian-inspired décor, polished wood floors, walk-in closet, marble bathroom. Separate sitting area with loveseat, coffee table, armchair.",
+			"detail": "Complimentary cable/satellite TV with premium channels. Three direct-dial phones (including bathroom). Minibar, coffee/tea maker. Bathrobes, slippers, bathroom scale. Ceiling fan..",
+			"area": "Area: 43.7 sqm. plus 11.3 sqm. balcony",
+			"typeId": 2
+		},
+		{
+			"id": 3,
+			"imgSrc": "/images/room1.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "room",
+			"name": "SUITE ROOM 1",
+			"information": {
+				"bedroom": "1",
+				"bed": "1",
+				"bathroom": "1",
+				"kitchen": "",
+				"customer": "2",
+				"price": "2.000.000"
+			},
+			"view": "Beach",
+			"describe": "The new Suite Room decorated in royal style with sea view offers its own unique features with oversized living room, large screen TV, bedroom with king bed, marble bathroom housing with bathtub and electric bidet.",
+			"detail": "",
+			"area": "Area: 130 sqm. plus 36 sqm. balcony",
+			"typeId": 3
+		},
+		{
+			"id": 4,
+			"imgSrc": "/images/villa2.jpeg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "villa",
+			"name": "PALM VILLA 2",
+			"information": {
+				"bedroom": "5",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "10",
+				"price": "7.000.000"
+			},
+			"view": "Private area surrounded by waterfalls and palm trees",
+			"describe": "Charm villas are the most luxurious of the Furama Villas. A natural flowing water and surrounded by palm trees. The harmony of space, color, and light sparkles like a diamond!",
+			"detail": "The villa has 5 bedrooms. Medium private swimming pool by the grass garden on the beach where you can gather with friends and family members for a cocktail reception or a BBQ.",
+			"area": "Land area: 900 sqm, Floor area: 687 sqm",
+			"typeId": 1
+		},
+		{
+			"id": 5,
+			"imgSrc": "/images/villa3.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "villa",
+			"name": "PALM VILLA 3",
+			"information": {
+				"bedroom": "3",
+				"bed": "4",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "8",
+				"price": "4.500.000"
+			},
+			"view": "Mountain",
+			"describe": "This is a living with natural sunlight and the sophistication of traditional and contemporary design. The ground floor is completely flanked by floor-to-ceiling windows covered with beautiful mahogany wooden shutters. The kitchen, modern and beautiful, is open to the deck and cobalt tiled pool, with sleek and modern appliances and a marble counter surface, and a rich mahogany dining area.",
+			"detail": "The two main bedrooms are on the second floor while another bedroom on the third floor which can be an ideal place for children. All the rooms are designed with simplistic luxury in mind, open to the sun and the lush garden.",
+			"area": "Land area: 900 sqm, Floor area: 687 sqm",
+			"typeId": 1
+		},
+		{
+			"id": 6,
+			"imgSrc": "/images/villa4.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "villa",
+			"name": "CHARM VILLA 4",
+			"information": {
+				"bedroom": "5",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "12",
+				"price": "6.500.000"
+			},
+			"view": "Beach",
+			"describe": "Charm villas are the most luxurious of the Furama Villas. Right on the beach, with modern interiors completed with traditional elements, the coastal sunlight is the main feature. A natural flowing water feature creates a continuous serene ambiance which is furthermore accentuated by grand mirrors, adding opulence and luxury. The harmony of space, color, and light sparkles like a diamond!",
+			"detail": "The villa has 5 bedrooms, all own a broad view of the ocean. Large private swimming pool by the grass garden on the beach where you can gather with friends and family members for a cocktail reception or a BBQ.",
+			"area": "Land area: 900 sqm, Floor area: 687 sqm",
+			"typeId": 1
+		},
+		{
+			"id": 7,
+			"imgSrc": "/images/villa5.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "villa",
+			"name": "CHARM VILLA 5",
+			"information": {
+				"bedroom": "4",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "8",
+				"price": "4.500.000"
+			},
+			"view": "Mountain",
+			"describe": "Charm villas are the most luxurious of the Furama Villas. Right on the beach, with modern interiors completed with traditional elements, the coastal sunlight is the main feature. A natural flowing water feature creates a continuous serene ambiance which is furthermore accentuated by grand mirrors, adding opulence and luxury. The harmony of space, color, and light sparkles like a diamond!",
+			"detail": "The villa has 4 bedrooms, all own around by the grass garden on the beach where you can gather with friends and family members for a cocktail reception or a BBQ.",
+			"area": "Land area: 900 sqm, Floor area: 687 sqm",
+			"typeId": 1
+		},
+		{
+			"id": 8,
+			"imgSrc": "/images/house2.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "house",
+			"name": "TROPICAL HOUSE 2",
+			"information": {
+				"bedroom": "2",
+				"bed": "3",
+				"bathroom": "2",
+				"kitchen": "1",
+				"customer": "6",
+				"price": "2.500.000"
+			},
+			"view": "Mountain",
+			"describe": "The sitting area with an elegant sofa, coffee table, and comfortable armchair will help you relax. The large bathroom decorated with honey-colored marble offers a separate shower and bathtub.",
+			"detail": "The house has 2 bedrooms, all own a broad view of the mountain.",
+			"area": "Area: 40.1 sqm. plus 11 sqm. balcony.",
+			"typeId": 2
+		},
+		{
+			"id": 9,
+			"imgSrc": "/images/room2.jpg",
+			"imgCarousel1": "/images/carousel1.jpg",
+			"imgCarousel2": "/images/carousel2.jpg",
+			"imgCarousel3": "/images/carousel3.jpg",
+			"imgAlt": "room",
+			"name": "SUITE ROOM 2",
+			"information": {
+				"bedroom": "1",
+				"bed": "2",
+				"bathroom": "1",
+				"kitchen": "",
+				"customer": "4",
+				"price": "1.500.000"
+			},
+			"view": "Beach",
+			"describe": "This charming room overlooks our beautiful tropical garden and the landscaped lagoon pool. Enjoy the view over palm trees, plants, and flowers in all kinds of shapes and colors. At night, the pool and garden are romantically illuminated.",
+			"detail": "",
+			"area": "Area: 40.1 sqm. plus 11.3 sqm. balcony.",
+			"typeId": 3
+		}
+	],
+	"types": [
+		{
+			"id": 1,
+			"name": "Villa"
+		},
+		{
+			"id": 2,
+			"name": "House"
+		},
+		{
+			"id": 3,
+			"name": "Room"
+		}
+	]
 }

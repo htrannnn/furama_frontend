@@ -23,6 +23,10 @@ function DetailComponent() {
 			customer: "",
 			price: "",
 		},
+		view: "",
+		describe: "",
+		detail: "",
+		area: "",
 	});
 
 	const [typeDetail, setTypeDetail] = useState({
@@ -109,15 +113,60 @@ function DetailComponent() {
 						<h5>{facilitiesDetail?.information.customer} guests</h5>
 					</Col>
 				</Row>
-				<Row className="mt-4">
-					<Col>
+				<div className="row mt-5">
+					<div className="col-8">
 						<div>
 							<h3 style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>Room Details</h3>
+							<div className="fw-semibold" style={{ fontSize: "14px", textAlign: "justify", lineHeight: "22px" }}>
+								<p>{facilitiesDetail?.describe}</p>
+								<p>{facilitiesDetail?.detail}</p>
+								<p>{facilitiesDetail?.area}</p>
+							</div>
 						</div>
-					</Col>
+						<div className="mt-5">
+							<h3 style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>Room Features</h3>
+							<ul className="list-unstyled fw-semibold" style={{ fontSize: "16px", lineHeight: "40px" }}>
+								<li>
+									<TfiArrowCircleRight className="mb-1 me-3" style={{ color: "#046056" }} />
+									Breakfast:
+									<span className="ms-2" style={{ color: "#046056" }}>
+										Available
+									</span>
+								</li>
+								<li>
+									<TfiArrowCircleRight className="mb-1 me-3" style={{ color: "#046056" }} />
+									Safe:
+									<span className="ms-2" style={{ color: "#046056" }}>
+										YES
+									</span>
+								</li>
+								<li>
+									<TfiArrowCircleRight className="mb-1 me-3" style={{ color: "#046056" }} />
+									Lift:
+									<span className="ms-2" style={{ color: "#046056" }}>
+										YES
+									</span>
+								</li>
+								<li>
+									<TfiArrowCircleRight className="mb-1 me-3" style={{ color: "#046056" }} />
+									TV:
+									<span className="ms-2" style={{ color: "#046056" }}>
+										YES
+									</span>
+								</li>
+								<li>
+									<TfiArrowCircleRight className="mb-1 me-3" style={{ color: "#046056" }} />
+									View:
+									<span className="ms-2" style={{ color: "#046056" }}>
+										{facilitiesDetail?.view}
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
 
-					<Col className="d-flex justify-content-end">
-						<div style={{ width: "60%", backgroundColor: "#046056 ", padding: "20px 20px 40px" }}>
+					<div className="col-4">
+						<div style={{ backgroundColor: "#046056 ", padding: "20px 20px 40px" }}>
 							<ul className="list-unstyled fw-semibold" style={{ fontSize: "16px", lineHeight: "40px", color: "white" }}>
 								<li>
 									<TfiArrowCircleRight className="mb-1 me-3" />
@@ -141,8 +190,8 @@ function DetailComponent() {
 								</li>
 							</ul>
 						</div>
-					</Col>
-				</Row>
+					</div>
+				</div>
 				<Row className="mt-3">
 					<div className="w-25 shadow" id="priceDetail">
 						<h5>

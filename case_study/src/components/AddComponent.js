@@ -12,6 +12,7 @@ function AddComponent() {
 	const [facilities, setFacilities] = useState({
 		id: "",
 		typeId: "",
+		imgSrc: "",
 		name: "",
 		information: {
 			bedroom: "",
@@ -21,6 +22,10 @@ function AddComponent() {
 			customer: "",
 			price: "",
 		},
+		view: "",
+		describe: "",
+		detail: "",
+		area: "",
 	});
 
 	const [types, setTypes] = useState([]);
@@ -36,7 +41,7 @@ function AddComponent() {
 
 	const handleSubmit = async (value) => {
 		await addNewFacilities(value);
-		navigate("/homepage/facilitiesList");
+		navigate("/rooms");
 	};
 
 	const notificationSchema = Yup.object().shape({
@@ -79,17 +84,20 @@ function AddComponent() {
 	});
 
 	return (
-		<div className="container">
-			<h2 className="text-center mt-4 mb-4">ADD NEW FACILITIES</h2>
+		<div style={{ marginTop: "100px" }}>
+			<div className="text-center mb-4 ">
+				<h2 style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>ADD NEW FACILITIES</h2>
+			</div>
 			<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={handleValidate}>
-				<Form className="mt-3">
-					<h3 className="mt-4 mb-4">Facilities Information</h3>
-
+				<Form className="mx-5 my-3">
 					<Container className="container mt-4">
+						<h3 className="ms-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>
+							Facilities Information
+						</h3>
 						<Row>
 							<Col>
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Type:</label>
+									<label className="col-sm-2 me-2 fw-semibold">Type:</label>
 									<div className="col-sm-5">
 										<Field as="select" name="typeId" className="form-select">
 											<option value="">-- Select type --</option>
@@ -103,24 +111,24 @@ function AddComponent() {
 								</div>
 
 								<div className="row  mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Name:</label>
+									<label className="col-sm-2 me-2 fw-semibold">Name:</label>
 									<div className="col-sm-5">
 										<Field type="text" name="name" className="form-control" placeholder="Enter facilities name" />
 										<ErrorMessage name="name" style={{ color: "red" }} component="div" />
 									</div>
 								</div>
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Bedroom(s):</label>
+									<label className="col-sm-2 me-2 fw-semibold">Bedroom(s):</label>
 									<div className="col-sm-5">
-										<Field type="text" name="information.bedroom" className="form-control" placeholder="Enter number" />
+										<Field type="number" name="information.bedroom" className="form-control" placeholder="Enter number" />
 										<ErrorMessage name="information.bedroom" style={{ color: "red" }} component="div" />
 									</div>
 								</div>
 
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Bed(s):</label>
+									<label className="col-sm-2 me-2 fw-semibold">Bed(s):</label>
 									<div className="col-sm-5">
-										<Field type="text" name="information.bed" className="form-control" placeholder="Enter number" />
+										<Field type="number" name="information.bed" className="form-control" placeholder="Enter number" />
 										<ErrorMessage name="information.bed" style={{ color: "red" }} component="div" />
 									</div>
 								</div>
@@ -128,31 +136,31 @@ function AddComponent() {
 
 							<Col>
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Bathroom(s):</label>
+									<label className="col-sm-2 me-2 fw-semibold">Bathroom(s):</label>
 									<div className="col-sm-5">
-										<Field type="text" name="information.bathroom" className="form-control" placeholder="Enter number" />
+										<Field type="number" name="information.bathroom" className="form-control" placeholder="Enter number" />
 										<ErrorMessage name="information.bathroom" style={{ color: "red" }} component="div" />
 									</div>
 								</div>
 
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Kitchen(s):</label>
+									<label className="col-sm-2 me-2 fw-semibold">Kitchen(s):</label>
 									<div className="col-sm-5">
-										<Field type="text" name="information.kitchen" className="form-control" placeholder="Enter number" />
+										<Field type="number" name="information.kitchen" className="form-control" placeholder="Enter number" />
 										<ErrorMessage name="information.kitchen" style={{ color: "red" }} component="div" />
 									</div>
 								</div>
 
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Customer(s):</label>
+									<label className="col-sm-2 me-2 fw-semibold">Guest(s):</label>
 									<div className="col-sm-5">
-										<Field type="text" name="information.customer" className="form-control" placeholder="Enter max customer" />
+										<Field type="number" name="information.customer" className="form-control" placeholder="Enter max guests" />
 										<ErrorMessage name="information.customer" style={{ color: "red" }} component="div" />
 									</div>
 								</div>
 
 								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Price:</label>
+									<label className="col-sm-2 me-2 fw-semibold">Price:</label>
 									<div className="col-sm-5">
 										<Field type="text" name="information.price" className="form-control" placeholder="Enter price" />
 										<ErrorMessage name="information.price" style={{ color: "red" }} component="div" />
@@ -160,18 +168,41 @@ function AddComponent() {
 								</div>
 							</Col>
 						</Row>
-						<Row>
+
+						<h3 className="ms-3 mt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>
+							Facilities Describe
+						</h3>
+						<Row className="ms-2">
+							<label className="col-sm-1 me-2 fw-semibold">Describe:</label>
+							<div className="col-sm-9">
+								<Field as="textarea" rows="3" name="describe" className="form-control" placeholder="Enter description" />
+							</div>
+						</Row>
+						<Row className="ms-1 mt-3">
+							<label className="col-sm-1 me-2 fw-semibold">Detail:</label>
+							<div className="col-sm-9">
+								<Field as="textarea" rows="3" name="detail" className="form-control" placeholder="Enter detail" />
+							</div>
+						</Row>
+						<Row className="ms-1 mt-3">
+							<label className="col-sm-1 me-2 fw-semibold">View:</label>
+							<div className="col-sm-9">
+								<Field as="textarea" rows="3" name="view" className="form-control" placeholder="Enter view description" />
+							</div>
+						</Row>
+
+						<Row className="mt-3">
 							<div className="ms-3 align-items-center">
-								<label className="col-sm-2 mb-2 me-2">Upload photo:</label>
-								<div className="col">
-									<input type="file" className="form-control" />
+								<label className="col-sm-2 mb-2 me-2 fw-semibold">Upload photo:</label>
+								<div className="col-sm-4">
+									<Field type="file" name="imgSrc" className="form-control" />
 								</div>
 							</div>
 						</Row>
 					</Container>
 					<ul className="nav nav-pills mt-3">
 						<li className="nav-item">
-							<Link type="button" className="btn btn me-2" id="buttonBack" to="/homepage/facilitiesList">
+							<Link type="button" className="btn btn me-2" id="buttonBack" to="/rooms">
 								Back
 							</Link>
 						</li>

@@ -91,6 +91,9 @@ function EditComponent(props) {
 					<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={handleValidate}>
 						<Form>
 							<Container className="container mt-3">
+								<h3 className="ms-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>
+									Facilities Information
+								</h3>
 								<Row>
 									<Col>
 										<div className="row mb-3 ms-1 align-items-center">
@@ -164,6 +167,34 @@ function EditComponent(props) {
 											</div>
 										</div>
 									</Col>
+								</Row>
+
+								<h3 className="ms-3 mt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>
+									Facilities Describe
+								</h3>
+								<Row className="ms-1">
+									<label className="col-sm-1 fw-semibold" style={{ marginRight: "38px" }}>
+										Describe:
+									</label>
+									<div className="col-sm-9">
+										<Field as="textarea" rows="3" name="describe" className="form-control" placeholder="Enter description" />
+									</div>
+								</Row>
+								<Row className="ms-1 mt-3">
+									<label className="col-sm-1 fw-semibold" style={{ marginRight: "38px" }}>
+										Detail:
+									</label>
+									<div className="col-sm-9">
+										<Field as="textarea" rows="3" name="detail" className="form-control" placeholder="Enter detail" />
+									</div>
+								</Row>
+								<Row className="ms-1 mt-3">
+									<label className="col-sm-1 fw-semibold" style={{ marginRight: "38px" }}>
+										View:
+									</label>
+									<div className="col-sm-9">
+										<Field as="textarea" rows="3" name="view" className="form-control" placeholder="Enter view describe" />
+									</div>
 								</Row>
 							</Container>
 
