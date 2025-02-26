@@ -9,7 +9,7 @@ function FooterComponent() {
 	return (
 		<>
 			<div className="d-flex" style={{ width: "100%", backgroundColor: " #addccf" }}>
-				<div className="pb-3" style={{ width: "35%", backgroundColor: "white", marginLeft: "40px", paddingTop: "60px", paddingLeft: "40px" }}>
+				<div className="pb-3" style={{ width: "35%", backgroundColor: "#f3f3f3", marginLeft: "40px", paddingTop: "60px", paddingLeft: "40px" }}>
 					<h2 className=" fw-bold" style={{ color: "#cbbe73", fontFamily: "serif" }}>
 						How to Get to Us
 					</h2>
@@ -38,7 +38,7 @@ function FooterComponent() {
 						<h5 className="fw-semibold" style={{ lineHeight: "25px", fontFamily: "serif", color: "#cbbe73" }}>
 							Local Places
 						</h5>
-						<table className="table" style={{ width: "90%" }}>
+						<table className="localTableFooter">
 							<tbody className="fw-semibold" style={{ fontSize: "15px", lineHeight: "22px" }}>
 								<tr>
 									<td>1. The former imperial city of HUE</td>

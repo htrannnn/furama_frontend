@@ -7,8 +7,9 @@ import Col from "react-bootstrap/Col";
 import { getAllTypes } from "../services/typesService";
 import { getFacilitiesById, updateFacilities } from "../services/facilitiesServices";
 import { useNavigate, useParams } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
-function EditComponent() {
+function EditComponent(props) {
 	const [facilities, setFacilities] = useState(null);
 	//null để lấy lại dữ liệu
 
@@ -29,7 +30,9 @@ function EditComponent() {
 
 	const handleSubmit = async (values) => {
 		await updateFacilities(values.id, values);
-		navigate(`/facilitiesList/detail/${values.id}`);
+		props.handleClose();
+		props.handleUpdate();
+		navigate(`/facilities/detail/${values.id}`);
 	};
 
 	const notificationSchema = Yup.object().shape({
@@ -76,93 +79,101 @@ function EditComponent() {
 	}
 	return (
 		<div className="container">
-			<h2 className="text-center mt-4 mb-4">EDIT {facilities?.name}</h2>
-			<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={handleValidate}>
-				<Form className="mt-3">
-					<h3 className="mt-4 mb-4">Facilities Information</h3>
+			<Modal show={props.showEdit} onHide={props.handleClose} size="lg" aria-labelledby="example-modal-sizes-title-lg">
+				<Modal.Header closeButton>
+					<Modal.Title className="w-100 text-center">
+						<h2 className="mt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>
+							EDIT {facilities?.name}
+						</h2>
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={handleValidate}>
+						<Form>
+							<Container className="container mt-3">
+								<Row>
+									<Col>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Type:</label>
+											<div className="col-sm-6">
+												<Field as="select" name="typeId" className="form-select">
+													<option value="">-- Select type --</option>
+													{types.map((e) => (
+														<option key={e.id} value={e.id}>
+															{e.name}
+														</option>
+													))}
+												</Field>
+											</div>
+										</div>
 
-					<Container className="container mt-4">
-						<Row>
-							<Col>
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Type:</label>
-									<div className="col-sm-5">
-										<Field as="select" name="typeId" className="form-select">
-											<option value="">-- Select type --</option>
-											{types.map((e) => (
-												<option key={e.id} value={e.id}>
-													{e.name}
-												</option>
-											))}
-										</Field>
-									</div>
-								</div>
+										<div className="row  mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Name:</label>
+											<div className="col-sm-6">
+												<Field type="text" name="name" className="form-control" placeholder="Enter facilities name" />
+												<ErrorMessage name="name" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Bedroom(s):</label>
+											<div className="col-sm-6">
+												<Field type="text" name="information.bedroom" className="form-control" placeholder="Enter number" />
+												<ErrorMessage name="information.bedroom" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
 
-								<div className="row  mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Name:</label>
-									<div className="col-sm-5">
-										<Field type="text" name="name" className="form-control" placeholder="Enter facilities name" />
-										<ErrorMessage name="name" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Bedroom(s):</label>
-									<div className="col-sm-5">
-										<Field type="text" name="information.bedroom" className="form-control" placeholder="Enter number" />
-										<ErrorMessage name="information.bedroom" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Bed(s):</label>
+											<div className="col-sm-6">
+												<Field type="text" name="information.bed" className="form-control" placeholder="Enter number" />
+												<ErrorMessage name="information.bed" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
+									</Col>
 
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Bed(s):</label>
-									<div className="col-sm-5">
-										<Field type="text" name="information.bed" className="form-control" placeholder="Enter number" />
-										<ErrorMessage name="information.bed" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
-							</Col>
+									<Col>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Bathroom(s):</label>
+											<div className="col-sm-6">
+												<Field type="text" name="information.bathroom" className="form-control" placeholder="Enter number" />
+												<ErrorMessage name="information.bathroom" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
 
-							<Col>
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Bathroom(s):</label>
-									<div className="col-sm-5">
-										<Field type="text" name="information.bathroom" className="form-control" placeholder="Enter number" />
-										<ErrorMessage name="information.bathroom" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Kitchen(s):</label>
+											<div className="col-sm-6">
+												<Field type="text" name="information.kitchen" className="form-control" placeholder="Enter number" />
+												<ErrorMessage name="information.kitchen" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
 
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Kitchen(s):</label>
-									<div className="col-sm-5">
-										<Field type="text" name="information.kitchen" className="form-control" placeholder="Enter number" />
-										<ErrorMessage name="information.kitchen" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Guests:</label>
+											<div className="col-sm-6">
+												<Field type="text" name="information.customer" className="form-control" placeholder="Enter max customer" />
+												<ErrorMessage name="information.customer" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
 
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Customer(s):</label>
-									<div className="col-sm-5">
-										<Field type="text" name="information.customer" className="form-control" placeholder="Enter max customer" />
-										<ErrorMessage name="information.customer" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
+										<div className="row mb-3 ms-1 align-items-center">
+											<label className="col-sm-3 me-2 fw-semibold">Price:</label>
+											<div className="col-sm-6">
+												<Field type="text" name="information.price" className="form-control" placeholder="Enter price" />
+												<ErrorMessage name="information.price" style={{ color: "red" }} component="div" />
+											</div>
+										</div>
+									</Col>
+								</Row>
+							</Container>
 
-								<div className="row mb-3 ms-1 align-items-center">
-									<label className="col-sm-2 me-2">Price:</label>
-									<div className="col-sm-5">
-										<Field type="text" name="information.price" className="form-control" placeholder="Enter price" />
-										<ErrorMessage name="information.price" style={{ color: "red" }} component="div" />
-									</div>
-								</div>
-							</Col>
-						</Row>
-					</Container>
-
-					<button type="submit" className="btn btn mb-3 ms-2" id="buttonSubmit">
-						Submit
-					</button>
-				</Form>
-			</Formik>
+							<button type="submit" className="btn btn mt-3 mb-3 ms-4" id="buttonSubmit">
+								Submit
+							</button>
+						</Form>
+					</Formik>
+				</Modal.Body>
+			</Modal>
 		</div>
 	);
 }

@@ -14,6 +14,7 @@
 	color: #046056 !important;
 }
 
+/* navbar */
 .navbar-normal {
 	position: absolute;
 	width: 100%;
@@ -32,6 +33,7 @@
 	padding: 10px 0;
 	transition: all 0.3s ease-in-out;
 }
+/* end navbar */
 
 #headerButton,
 #buttonEdit,
@@ -89,16 +91,6 @@
 	height: 350px;
 }
 
-.cardDetail {
-	text-decoration: none;
-	color: black;
-	transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
-}
-
-.cardDetail:hover {
-	color: #046056;
-}
-
 .page-item .page-link {
 	color: #046056;
 }
@@ -109,51 +101,16 @@
 	color: white !important;
 }
 
-/* auto slider */
-.slider-container {
-	position: relative;
-	margin-top: 70px;
-	width: 100%;
-	height: 600px;
-	overflow: hidden;
+/* detail */
+.cardDetail {
+	text-decoration: none;
+	color: black;
+	transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
 }
 
-.slider-wrapper {
-	display: flex;
-	position: relative;
-	width: 100%;
-	height: 100%;
+.cardDetail:hover {
+	color: #046056;
 }
-
-.slide {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	align-items: center;
-	opacity: 0;
-	transition: opacity 1.5s ease-in-out;
-}
-
-.activeSlide {
-	opacity: 1;
-	z-index: 1;
-}
-
-.inactiveSlide {
-	opacity: 0;
-	z-index: 0;
-}
-
-.text-overlay {
-	color: white;
-	font-family: serif;
-	font-size: 35px;
-	line-height: 40px;
-}
-/* end auto slider */
 
 .hover-wrapper {
 	position: relative;
@@ -165,6 +122,19 @@
 	width: 100%;
 	display: block;
 }
+
+#priceDetail {
+	border: 1px solid #046056;
+	background-color: #046056;
+	color: white;
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 3px;
+	margin-top: 10px;
+}
+/* end detail */
 
 .play-button {
 	position: absolute;
@@ -189,14 +159,27 @@
 	transform: translate(-50%, -50%) scale(1.2);
 }
 
-#priceDetail {
-	border: 1px solid #046056;
-	background-color: #046056;
-	color: white;
-	height: 45px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 3px;
-	margin-top: 10px;
+/* footer Local Places */
+.localTableFooter {
+	margin-left: -6px;
 }
+
+.localTableFooter tr {
+	width: 90%;
+	background-color: #f3f3f3;
+	border-bottom: 0.5px solid #949494;
+}
+
+.localTableFooter tr:last-child {
+	border-bottom: none;
+}
+
+.localTableFooter td {
+	padding: 8px;
+}
+
+.localTableFooter span {
+	padding-left: 25px;
+}
+
+/* end footer Local Places */

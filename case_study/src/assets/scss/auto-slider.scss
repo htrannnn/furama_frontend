@@ -1,0 +1,45 @@
+/* auto slider */
+.slider-container {
+	position: relative;
+	margin-top: 70px;
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+
+	.slider-wrapper {
+		display: flex;
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	.slide {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		align-items: center;
+		opacity: 0;
+		transition: opacity 1.5s ease-in-out;
+	}
+
+	.activeSlide {
+		opacity: 1;
+		z-index: 1;
+	}
+
+	.inactiveSlide {
+		opacity: 0;
+		z-index: 0;
+	}
+
+	.text-overlay {
+		color: white;
+		font-family: serif;
+		font-size: 35px;
+		line-height: 40px;
+	}
+}
+/* end auto slider */

@@ -7,6 +7,8 @@ import Ratio from "react-bootstrap/Ratio";
 import { FaPlayCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import { FaKey } from "react-icons/fa";
+import { FaCocktail } from "react-icons/fa";
 
 function Introduce() {
 	const [lgShow, setLgShow] = useState(false);
@@ -72,7 +74,7 @@ function Introduce() {
 								style={{ width: "100%", height: "50px" }}
 								to="/rooms"
 							>
-								Resort Room Promotion
+								<FaKey className="me-2 mt-1" /> Resort Room Promotion
 							</Link>
 						</Card.Body>
 					</Card>
@@ -85,6 +87,7 @@ function Introduce() {
 								your taste buds with our sumptuous cuisine experience!
 							</Card.Text>
 							<Link className="btn d-flex align-items-center justify-content-center" id="btnCulinary" style={{ width: "100%", height: "50px" }}>
+								<FaCocktail className="me-2" />
 								Food & Beverage Promotion
 							</Link>
 						</Card.Body>

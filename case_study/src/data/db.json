@@ -1,181 +1,180 @@
 {
-	"facilities": [
-		{
-			"id": 1,
-			"imgSrc": "/images/villa.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "villa",
-			"name": "PALM VILLA 1",
-			"information": {
-				"bedroom": "5",
-				"bed": "6",
-				"bathroom": "3",
-				"kitchen": "1",
-				"customer": "12",
-				"price": "6.000.000"
-			},
-			"typeId": 1
-		},
-		{
-			"id": 2,
-			"imgSrc": "/images/house1.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "house",
-			"name": "TROPICAL HOUSE 1",
-			"information": {
-				"bedroom": "2",
-				"bed": "4",
-				"bathroom": "2",
-				"kitchen": "1",
-				"customer": "6",
-				"price": "2.500.000"
-			},
-			"typeId": 2
-		},
-		{
-			"id": 3,
-			"imgSrc": "/images/room1.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "room",
-			"name": "SUITE ROOM 1",
-			"information": {
-				"bedroom": "1",
-				"bed": "1",
-				"bathroom": "1",
-				"kitchen": "",
-				"customer": "2",
-				"price": "2.000.000"
-			},
-			"typeId": 3
-		},
-		{
-			"id": 4,
-			"imgSrc": "/images/villa2.jpeg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "villa",
-			"name": "PALM VILLA 2",
-			"information": {
-				"bedroom": "5",
-				"bed": "6",
-				"bathroom": "3",
-				"kitchen": "1",
-				"customer": "12",
-				"price": "7.000.000"
-			},
-			"typeId": 1
-		},
-		{
-			"id": 5,
-			"imgSrc": "/images/villa3.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "villa",
-			"name": "CHARM VILLA 3",
-			"information": {
-				"bedroom": "4",
-				"bed": "6",
-				"bathroom": "4",
-				"kitchen": "1",
-				"customer": "10",
-				"price": "4.500.000"
-			},
-			"typeId": 1
-		},
-		{
-			"id": 6,
-			"imgSrc": "/images/villa4.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "villa",
-			"name": "CHARM VILLA 4",
-			"information": {
-				"bedroom": "5",
-				"bed": "6",
-				"bathroom": "3",
-				"kitchen": "1",
-				"customer": "12",
-				"price": "6.500.000"
-			},
-			"typeId": 1
-		},
-		{
-			"id": 7,
-			"imgSrc": "/images/villa5.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "villa",
-			"name": "CHARM VILLA 5",
-			"information": {
-				"bedroom": "4",
-				"bed": "6",
-				"bathroom": "3",
-				"kitchen": "1",
-				"customer": "10",
-				"price": "4.500.000"
-			},
-			"typeId": 1
-		},
-		{
-			"id": 8,
-			"imgSrc": "/images/house2.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "house",
-			"name": "TROPICAL HOUSE 2",
-			"information": {
-				"bedroom": "2",
-				"bed": "3",
-				"bathroom": "2",
-				"kitchen": "1",
-				"customer": "6",
-				"price": "2.500.000"
-			},
-			"typeId": 2
-		},
-		{
-			"id": 9,
-			"imgSrc": "/images/room2.jpg",
-			"imgCarousel1": "/images/carousel1.jpg",
-			"imgCarousel2": "/images/carousel2.jpg",
-			"imgCarousel3": "/images/carousel3.jpg",
-			"imgAlt": "room",
-			"name": "SUITE ROOM 2",
-			"information": {
-				"bedroom": "1",
-				"bed": "2",
-				"bathroom": "1",
-				"kitchen": "",
-				"customer": "4",
-				"price": "1.500.000"
-			},
-			"typeId": 3
-		}
-	],
-
-	"types": [
-		{
-			"id": 1,
-			"name": "Villa"
-		},
-		{
-			"id": 2,
-			"name": "House"
-		},
-		{
-			"id": 3,
-			"name": "Room"
-		}
-	]
+  "facilities": [
+    {
+      "id": 1,
+      "imgSrc": "/images/villa.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "villa",
+      "name": "PALM VILLA 1",
+      "information": {
+        "bedroom": "5",
+        "bed": "6",
+        "bathroom": "3",
+        "kitchen": "1",
+        "customer": "12",
+        "price": "6.000.000"
+      },
+      "typeId": 1
+    },
+    {
+      "id": 2,
+      "imgSrc": "/images/house1.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "house",
+      "name": "TROPICAL HOUSE 1",
+      "information": {
+        "bedroom": "2",
+        "bed": "4",
+        "bathroom": "2",
+        "kitchen": "1",
+        "customer": "6",
+        "price": "2.500.000"
+      },
+      "typeId": 2
+    },
+    {
+      "id": 3,
+      "imgSrc": "/images/room1.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "room",
+      "name": "SUITE ROOM 1",
+      "information": {
+        "bedroom": "1",
+        "bed": "1",
+        "bathroom": "1",
+        "kitchen": "",
+        "customer": "2",
+        "price": "2.000.000"
+      },
+      "typeId": 3
+    },
+    {
+      "id": 4,
+      "imgSrc": "/images/villa2.jpeg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "villa",
+      "name": "PALM VILLA 2",
+      "information": {
+        "bedroom": "5",
+        "bed": "6",
+        "bathroom": "3",
+        "kitchen": "1",
+        "customer": "10",
+        "price": "7.000.000"
+      },
+      "typeId": 1
+    },
+    {
+      "id": 5,
+      "imgSrc": "/images/villa3.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "villa",
+      "name": "CHARM VILLA 3",
+      "information": {
+        "bedroom": "4",
+        "bed": "6",
+        "bathroom": "4",
+        "kitchen": "1",
+        "customer": "10",
+        "price": "4.500.000"
+      },
+      "typeId": 1
+    },
+    {
+      "id": 6,
+      "imgSrc": "/images/villa4.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "villa",
+      "name": "CHARM VILLA 4",
+      "information": {
+        "bedroom": "5",
+        "bed": "6",
+        "bathroom": "3",
+        "kitchen": "1",
+        "customer": "12",
+        "price": "6.500.000"
+      },
+      "typeId": 1
+    },
+    {
+      "id": 7,
+      "imgSrc": "/images/villa5.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "villa",
+      "name": "CHARM VILLA 5",
+      "information": {
+        "bedroom": "4",
+        "bed": "6",
+        "bathroom": "3",
+        "kitchen": "1",
+        "customer": "8",
+        "price": "4.500.000"
+      },
+      "typeId": 1
+    },
+    {
+      "id": 8,
+      "imgSrc": "/images/house2.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "house",
+      "name": "TROPICAL HOUSE 2",
+      "information": {
+        "bedroom": "2",
+        "bed": "3",
+        "bathroom": "2",
+        "kitchen": "1",
+        "customer": "6",
+        "price": "2.500.000"
+      },
+      "typeId": 2
+    },
+    {
+      "id": 9,
+      "imgSrc": "/images/room2.jpg",
+      "imgCarousel1": "/images/carousel1.jpg",
+      "imgCarousel2": "/images/carousel2.jpg",
+      "imgCarousel3": "/images/carousel3.jpg",
+      "imgAlt": "room",
+      "name": "SUITE ROOM 2",
+      "information": {
+        "bedroom": "1",
+        "bed": "2",
+        "bathroom": "1",
+        "kitchen": "",
+        "customer": "4",
+        "price": "1.500.000"
+      },
+      "typeId": 3
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
+    }
+  ]
 }
