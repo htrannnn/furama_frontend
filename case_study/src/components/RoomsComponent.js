@@ -8,8 +8,10 @@ import { getAllTypes } from "../services/typesService";
 import Pagination from "react-bootstrap/Pagination";
 import { PAGE_SIZE } from "../services/constants";
 import DeleteComponent from "./DeleteComponent";
+import "react-toastify/dist/ReactToastify.css";
+import { Bounce, toast } from "react-toastify";
 
-function FacilitiesListComponent() {
+function RoomsComponent() {
 	const [allFacilities, setAllFacilities] = useState([]);
 	const [type, setType] = useState([]);
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE); //tổng bản ghi muốn lấy. Hiện tại constant cho PAGE_SIZE = 3
@@ -69,6 +71,17 @@ function FacilitiesListComponent() {
 		try {
 			await deleteById(deleteFacilities.id);
 			handleClose();
+			toast.success("Deleted successfully!", {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+				transition: Bounce,
+			});
 		} catch (error) {}
 	};
 
@@ -94,7 +107,7 @@ function FacilitiesListComponent() {
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
 							Search
 						</button>
-						<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/facilities/addFacilities">
+						<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/room/add">
 							Add New Facilities
 						</Link>
 					</div>
@@ -109,7 +122,7 @@ function FacilitiesListComponent() {
 									<Card.Img variant="top" src={facilities.imgSrc} alt={facilities.imgAlt} style={{ height: 250 }} />
 									<Card.Body>
 										<Card.Title>
-											<Link to={"/facilities/detail/" + facilities.id} className="cardDetail">
+											<Link to={"/room/detail/" + facilities.id} className="cardDetail">
 												{facilities.name}
 											</Link>
 										</Card.Title>
@@ -147,4 +160,4 @@ function FacilitiesListComponent() {
 	);
 }
 
-export default FacilitiesListComponent;
+export default RoomsComponent;

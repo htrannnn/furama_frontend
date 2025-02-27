@@ -7,6 +7,8 @@ import Col from "react-bootstrap/Col";
 import { getAllTypes } from "../services/typesService";
 import { Link, useNavigate } from "react-router-dom";
 import { addNewFacilities } from "../services/facilitiesServices";
+import "react-toastify/dist/ReactToastify.css";
+import { Bounce, toast } from "react-toastify";
 
 function AddComponent() {
 	const [facilities, setFacilities] = useState({
@@ -41,6 +43,17 @@ function AddComponent() {
 
 	const handleSubmit = async (value) => {
 		await addNewFacilities(value);
+		toast.success("Added successfully!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+			transition: Bounce,
+		});
 		navigate("/rooms");
 	};
 

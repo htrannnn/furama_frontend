@@ -192,7 +192,7 @@ function DetailComponent() {
 						</div>
 					</div>
 				</div>
-				<Row className="mt-3">
+				<Row className="mt-2">
 					<div className="w-25 shadow" id="priceDetail">
 						<h5>
 							<IoPricetags className="me-2" />

@@ -32,7 +32,9 @@ function NavigationComponent() {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link text-white">Culinary</Link>
+						<Link className="nav-link text-white" aria-current="page" to="/culinary">
+							Culinary
+						</Link>
 					</li>
 					<li className="nav-item">
 						<Link className="nav-link text-white">Services</Link>

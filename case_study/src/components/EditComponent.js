@@ -8,6 +8,8 @@ import { getAllTypes } from "../services/typesService";
 import { getFacilitiesById, updateFacilities } from "../services/facilitiesServices";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import "react-toastify/dist/ReactToastify.css";
+import { Bounce, toast } from "react-toastify";
 
 function EditComponent(props) {
 	const [facilities, setFacilities] = useState(null);
@@ -30,9 +32,20 @@ function EditComponent(props) {
 
 	const handleSubmit = async (values) => {
 		await updateFacilities(values.id, values);
+		toast.success("Modified successfully!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+			transition: Bounce,
+		});
 		props.handleClose();
 		props.handleUpdate();
-		navigate(`/facilities/detail/${values.id}`);
+		navigate(`/room/detail/${values.id}`);
 	};
 
 	const notificationSchema = Yup.object().shape({
