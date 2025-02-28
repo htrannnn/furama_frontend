@@ -92,7 +92,7 @@ function RoomsComponent() {
 					ROOMS & SUITES
 				</h1>
 			</div>
-			<div className="container mt-4">
+			<div className="mx-5 mb-2">
 				<div className="d-flex flex-row-reverse">
 					<div className="input-group mb-4 w-50">
 						<input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} />
@@ -113,7 +113,7 @@ function RoomsComponent() {
 					</div>
 				</div>
 			</div>
-			<div className="container">
+			<div className="mx-5 mb-5">
 				<Row xs={1} md={3} className="g-4">
 					{allFacilities &&
 						allFacilities.map((facilities) => (

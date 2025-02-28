@@ -54,7 +54,7 @@ function Introduce() {
 				</Row>
 			</div>
 
-			<div className="mt-4 pb-3" style={{ backgroundColor: "#f3f3f3" }}>
+			<div className="mt-4 pb-5" style={{ backgroundColor: "#f3f3f3" }}>
 				<div className="pt-5">
 					<h3 className="text-center" style={{ color: "#cbbe73" }}>
 						OFFERS & DEAL
@@ -63,7 +63,8 @@ function Introduce() {
 				<div className="d-flex justify-content-center mt-4" style={{ gap: "60px" }}>
 					<Card style={{ width: "40%", backgroundColor: "transparent", border: "none" }}>
 						<Card.Img variant="top" src="/images/room-promotion.jpg" className="rounded-2" />
-						<Card.Body>
+						<div className="border-top mt-3"></div>
+						<div className="mt-3">
 							<Card.Text className="fw-semibold" style={{ fontSize: "14px", lineHeight: "25px", textAlign: "justify" }}>
 								Being Vietnam’s most prestigious resort, Furama Resort Danang is proud to serve thousands of visitors every year. Explore our
 								promotion offers for resort room and plan your vacation with us!
@@ -76,12 +77,13 @@ function Introduce() {
 							>
 								<FaKey className="me-2 mt-1" /> Resort Room Promotion
 							</Link>
-						</Card.Body>
+						</div>
 					</Card>
 
 					<Card style={{ width: "40%", backgroundColor: "transparent", border: "none" }}>
 						<Card.Img variant="top" src="/images/culinary-promotion.jpg" className="rounded-2" />
-						<Card.Body>
+						<div className="border-top mt-3"></div>
+						<div className="mt-3">
 							<Card.Text className="fw-semibold" style={{ fontSize: "14px", lineHeight: "25px", textAlign: "justify" }}>
 								The resort presents guests with varied gastronomic venues – Don Cipriani’s Italian Restaurant, Café Indochine, Hai Van Lounge… Excite
 								your taste buds with our sumptuous cuisine experience!
@@ -90,7 +92,7 @@ function Introduce() {
 								<FaCocktail className="me-2" />
 								Food & Beverage Promotion
 							</Link>
-						</Card.Body>
+						</div>
 					</Card>
 				</div>
 			</div>
