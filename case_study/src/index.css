@@ -35,6 +35,39 @@
 }
 /* end navbar */
 
+/* login component */
+#btnLogin {
+	color: white;
+	font-weight: 500;
+	background-color: #046056;
+}
+
+#btnLogin:hover {
+	background-color: #044e45;
+}
+
+#loginBG {
+	background-image: url("/public/images/courtyard-night.jpg");
+	background-size: cover;
+	height: 840px;
+	filter: blur(2px);
+	background-repeat: no-repeat;
+}
+
+#loginCard {
+	background-color: rgba(145, 145, 145, 0.631);
+	transform: translate(-50%, -50%);
+	border-radius: 15px;
+	color: white;
+	z-index: 2;
+	width: 45%;
+	padding: 40px;
+	position: absolute;
+	top: 105%;
+	left: 50%;
+}
+/* end login component */
+
 #headerButton,
 #buttonEdit,
 #buttonSubmit,
@@ -71,7 +104,7 @@
 	background-color: #046056;
 }
 
-/* rooms component  */
+/* homepage */
 #titleImg {
 	background-image: url("/public/images/hp2.jpeg");
 	background-size: cover;
@@ -84,7 +117,9 @@
 	color: white;
 	font-weight: bold;
 }
+/* end homepage */
 
+/* rooms component  */
 #roomsPageImg {
 	background-image: url("/public/images/rooms&suites.jpg");
 	background-size: contain;
@@ -198,3 +233,4 @@
 	font-weight: 500;
 	font-size: 14px;
 }
+/* end culinary component */

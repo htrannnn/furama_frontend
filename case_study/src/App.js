@@ -11,6 +11,7 @@ import Introduce from "./components/Introduce";
 import RoomsComponent from "./components/RoomsComponent";
 import CulinaryComponent from "./components/CulinaryComponent";
 import { ToastContainer } from "react-toastify";
+import LoginComponent from "./mains/LoginComponent";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 			<Routes>
 				<Route path={"/"} element={<Introduce />} />
 				<Route path={"/homepage"} element={<Homepage />} />
+				<Route path={"/login"} element={<LoginComponent />} />
 				<Route path={"/rooms"} element={<RoomsComponent />} />
 				<Route path={"/culinary"} element={<CulinaryComponent />} />
 				<Route path={"/room/detail/:id"} element={<DetailComponent />} />

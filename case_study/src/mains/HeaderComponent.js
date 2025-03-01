@@ -1,4 +1,3 @@
-//đã import react-router, bootstrap, axios
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -22,7 +21,7 @@ function HeaderComponent() {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="btn btn" id="headerButton">
+						<Link className="btn btn" id="headerButton" to="/login">
 							Sign in
 						</Link>
 					</li>
