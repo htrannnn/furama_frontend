@@ -10,6 +10,7 @@ import { checkLogin } from "../services/accountsServices";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login } from "../redux/accountAction";
+import { Link } from "react-router-dom";
 
 function LoginComponent() {
 	const dispatch = useDispatch();
@@ -60,7 +61,9 @@ function LoginComponent() {
 			<div id="loginBG"></div>
 
 			<div id="loginCard" className="shadow-lg d-flex flex-column justify-content-center align-items-center">
-				<img src="/images/Logo.png" alt="logo" className="img-fluid" style={{ maxWidth: "250px" }} />
+				<Link to="/">
+					<img src="/images/Logo.png" alt="logo" className="img-fluid" style={{ maxWidth: "250px" }} />
+				</Link>
 				<h5 className="mt-3 text-center">Login to start managing the Resort</h5>
 
 				<div className="mt-4 d-flex flex-column align-items-center">

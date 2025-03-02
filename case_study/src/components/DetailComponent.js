@@ -10,6 +10,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { IoPricetags } from "react-icons/io5";
 import { TfiArrowCircleRight } from "react-icons/tfi";
 import EditComponent from "./EditComponent";
+import { useSelector } from "react-redux";
 
 function DetailComponent() {
 	const [facilitiesDetail, setFacilitiesDetail] = useState({
@@ -53,6 +54,8 @@ function DetailComponent() {
 		};
 		fetchData();
 	}, [id, showEdit]);
+
+	const account = useSelector((state) => state?.account.account);
 
 	const handleSelect = (selectedIndex) => {
 		setIndex(selectedIndex);
@@ -207,11 +210,14 @@ function DetailComponent() {
 								Back
 							</Link>
 						</li>
-						<li className="nav-item">
-							<button type="button" className="btn btn" id="buttonEdit" onClick={() => handleShow()}>
-								Edit
-							</button>
-						</li>
+
+						{account && (
+							<li className="nav-item">
+								<button type="button" className="btn btn" id="buttonEdit" onClick={() => handleShow()}>
+									Edit
+								</button>
+							</li>
+						)}
 					</ul>
 				</Row>
 				<EditComponent showEdit={showEdit} handleClose={handleClose} handleUpdate={handleUpdate} />

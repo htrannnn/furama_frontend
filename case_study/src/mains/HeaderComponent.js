@@ -35,7 +35,7 @@ function HeaderComponent() {
 					{!account && (
 						<li className="nav-item">
 							<Link className="btn btn" id="headerButton" to="/login">
-								Sign in
+								Login
 							</Link>
 						</li>
 					)}

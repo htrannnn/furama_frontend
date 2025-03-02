@@ -10,6 +10,7 @@ import { PAGE_SIZE } from "../services/constants";
 import DeleteComponent from "./DeleteComponent";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce, toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 function RoomsComponent() {
 	const [allFacilities, setAllFacilities] = useState([]);
@@ -33,6 +34,8 @@ function RoomsComponent() {
 		fetchData();
 	}, [page, show]);
 	//truyền page vào để fetch lại dữ liệu mỗi khi page thay đổi
+
+	const account = useSelector((state) => state?.account?.account);
 
 	const searchNameRef = useRef();
 	const searchTypeRef = useRef();
@@ -107,9 +110,12 @@ function RoomsComponent() {
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
 							Search
 						</button>
-						<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/room/add">
-							Add New Facilities
-						</Link>
+
+						{account && (
+							<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/room/add">
+								Add New Facilities
+							</Link>
+						)}
 					</div>
 				</div>
 			</div>
@@ -131,9 +137,12 @@ function RoomsComponent() {
 											<span>{facilities.information.bedroom} bedroom(s)</span> · <span>{facilities.information.bed} bed(s)</span> ·{" "}
 											<span>{facilities.information.bathroom} bathroom(s)</span>
 										</Card.Text>
-										<button type="button" className="btn btn rounded-1 mt-2" id="buttonDelete" onClick={() => handleShow(facilities)}>
-											Delete
-										</button>
+
+										{account && (
+											<button type="button" className="btn btn rounded-1 mt-2" id="buttonDelete" onClick={() => handleShow(facilities)}>
+												Delete
+											</button>
+										)}
 									</Card.Body>
 								</Card>
 							</Col>
