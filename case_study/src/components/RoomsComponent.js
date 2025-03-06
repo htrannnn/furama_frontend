@@ -133,7 +133,7 @@ function RoomsComponent() {
 						allFacilities.map((facilities) => (
 							<Col key={facilities.id} handleShow={handleShow} facilities={facilities}>
 								<Card>
-									<Card.Img variant="top" src={facilities.imgSrc} alt={facilities.imgAlt} style={{ height: 250 }} />
+									<Card.Img variant="top" src={facilities.image} alt={facilities.imgAlt} style={{ height: 250 }} />
 									<Card.Body>
 										<Card.Title>
 											<Link to={"/room/detail/" + facilities.id} className="cardDetail">

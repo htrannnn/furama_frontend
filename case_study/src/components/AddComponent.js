@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { getAllTypes } from "../services/typesService";
 import { Link, useNavigate } from "react-router-dom";
-import { addNewFacilities } from "../services/facilitiesServices";
+import { addNewFacilities, fetchFacilities } from "../services/facilitiesServices";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce, toast } from "react-toastify";
 import { uploadImg } from "../services/uploadImgService";
@@ -15,7 +15,7 @@ function AddComponent() {
 	const [facilities, setFacilities] = useState({
 		id: "",
 		typeId: "",
-		imgSrc: "",
+		image: null,
 		imgCarousel1: "",
 		imgCarousel2: "",
 		imgCarousel3: "",
@@ -36,36 +36,34 @@ function AddComponent() {
 
 	const [types, setTypes] = useState([]);
 
-	const [imgSrc, setImgSrc] = useState(null);
+	const [prevImage, setPrevImage] = useState(null);
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			setTypes(await getAllTypes());
-			setFacilities((prev) => ({ ...prev, imgSrc: imgSrc }));
+			setFacilities((prev) => ({ ...prev, image: prevImage }));
 		};
 		window.scrollTo(0, 0);
 		fetchData();
-	}, [imgSrc]);
+	}, [prevImage]);
 
 	const handleImageUpload = async (event, setFieldValue) => {
 		const file = event.target.files[0];
-		if (!file) return;
+		const imageUrl = await uploadImg(file); // Gửi file ảnh đến Cloudinary API để upload. Nhận lại URL ảnh do Cloudinary trả về.
 
-		const imageUrl = await uploadImg(file);
 		if (imageUrl) {
-			setImgSrc(imageUrl);
+			setPrevImage(imageUrl);
 			setFieldValue("imgSrc", imageUrl);
 		} else {
 			toast.error("Upload image failed!");
 		}
+		setFieldValue("image", imageUrl); // Lưu URL ảnh vào Formik
 	};
 
 	const handleSubmit = async (value) => {
-		console.log("Final data being sent:", value);
-
-		await addNewFacilities(value);
+		await addNewFacilities({ ...value, image: value.image });
 		toast.success("Added successfully!", {
 			position: "top-right",
 			autoClose: 5000,
@@ -238,15 +236,15 @@ function AddComponent() {
 								<div className="ms-3 align-items-center">
 									<label className="col-sm-2 mb-2 me-2 fw-semibold">Upload photo:</label>
 									<div className="col-sm-4">
-										<Field
+										<input
 											type="file"
 											accept="image/*"
-											name="imgSrc"
+											name="image"
 											className="form-control"
 											onChange={(event) => handleImageUpload(event, setFieldValue)}
 										/>
 									</div>
-									{imgSrc && <img src={imgSrc} width={500} height={400} className="mt-3 max-h-[400px] object-contain" alt="imgSrc" />}
+									{prevImage && <img src={prevImage} width={500} height={300} className="mt-3 max-h-[400px] object-contain" alt="imgSrc" />}
 								</div>
 							</Row>
 						</Container>

@@ -46,7 +46,6 @@ export async function updateFacilities(id, facilities) {
 
 export async function addNewFacilities(facilities) {
 	try {
-		console.log("Data sent to database:", facilities);
 		const response = await axios.post(`${BASE_URL}/facilities`, facilities);
 		return response.data;
 	} catch (error) {}
