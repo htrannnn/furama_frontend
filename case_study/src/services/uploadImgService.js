@@ -5,6 +5,7 @@ export async function uploadImg(file) {
 		const formData = new FormData();
 		formData.append("file", file);
 		formData.append("upload_preset", "upload-HTimg");
+		formData.append("cloud_name", "dnkwhutve");
 
 		const response = await axios.post("https://api.cloudinary.com/v1_1/dnkwhutve/image/upload", formData);
 		return response.data.secure_url;

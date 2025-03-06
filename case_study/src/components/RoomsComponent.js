@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
-import { deleteById, getAllFacilities, searchFacilitiesByName } from "../services/facilitiesServices";
+import { deleteById, getAllFacilities, searchFacilities } from "../services/facilitiesServices";
 import { getAllTypes } from "../services/typesService";
 import Pagination from "react-bootstrap/Pagination";
 import { PAGE_SIZE } from "../services/constants";
@@ -11,6 +11,7 @@ import DeleteComponent from "./DeleteComponent";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce, toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import CustomSelect from "./CustomSelect";
 
 function RoomsComponent() {
 	const [allFacilities, setAllFacilities] = useState([]);
@@ -18,6 +19,7 @@ function RoomsComponent() {
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE); //tổng bản ghi muốn lấy. Hiện tại constant cho PAGE_SIZE = 3
 	const [page, setPage] = useState(1); //(1) là trang đầu tiên
 	const [totalPage, setTotalPage] = useState(0); //tổng bản ghi trong db chia tổng bản ghi muốn lấy (làm tròn đến số nguyên, nếu không kết quả chia sẽ là số thực)
+	const [selectedFacilities, setSelectedFacilities] = useState(null);
 	const [show, setShow] = useState(false);
 	const [deleteFacilities, setDeleteFacilities] = useState();
 
@@ -28,7 +30,7 @@ function RoomsComponent() {
 			//total: tổng số bản ghi trong facilities
 
 			setAllFacilities(data);
-			setTotalPage(Math.ceil(total / totalSize));
+			setTotalPage(Math.ceil(total / PAGE_SIZE));
 			setType(await getAllTypes());
 		};
 		window.scrollTo(0, 0);
@@ -38,14 +40,15 @@ function RoomsComponent() {
 
 	const account = useSelector((state) => state?.account?.account);
 
-	const searchNameRef = useRef();
 	const searchTypeRef = useRef();
 
 	const handleSearch = async () => {
-		let name = searchNameRef.current.value.trim();
+		let id = selectedFacilities?.value;
 		let typeId = searchTypeRef.current.value;
 
-		setAllFacilities(await searchFacilitiesByName(name, typeId));
+		const [data, total] = await searchFacilities(id, typeId, page, PAGE_SIZE);
+		setTotalPage(Math.ceil(total / PAGE_SIZE));
+		setAllFacilities(data);
 	};
 
 	const handleFirst = () => {
@@ -99,7 +102,12 @@ function RoomsComponent() {
 			<div className="mx-5 mb-2">
 				<div className="d-flex flex-row-reverse">
 					<div className="input-group mb-4 w-50">
-						<input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} />
+						{/* <input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} /> */}
+						<CustomSelect
+							options={allFacilities.map((event) => ({ value: event.id, label: event.name }))}
+							value={selectedFacilities}
+							onSelect={(option) => setSelectedFacilities(option)}
+						/>
 						<select className="form-select" name="searchType" id="type" ref={searchTypeRef}>
 							<option value="">All</option>
 							{type.map((event) => (
@@ -111,7 +119,6 @@ function RoomsComponent() {
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
 							Search
 						</button>
-
 						{account && (
 							<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/room/add">
 								Add New Facilities
@@ -122,7 +129,7 @@ function RoomsComponent() {
 			</div>
 			<div className="mx-5 mb-5">
 				<Row xs={1} md={3} className="g-4">
-					{allFacilities &&
+					{Array.isArray(allFacilities) &&
 						allFacilities.map((facilities) => (
 							<Col key={facilities.id} handleShow={handleShow} facilities={facilities}>
 								<Card>

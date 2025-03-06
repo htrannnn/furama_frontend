@@ -10,21 +10,24 @@ export async function getAllFacilities(page, limit) {
 //Header này chứa tổng số bản ghi trong database, bất kể giới hạn trang.
 //Ví dụ: Nếu có 50 bản ghi trong database, x-total-count = 50.
 
-export async function searchFacilitiesByName(name, typeId) {
+export async function searchFacilities(id, typeId, page, limit) {
 	try {
 		let response = [];
-		if (name && typeId) {
-			response = await axios.get(`${BASE_URL}/facilities?typeId=${typeId}&name_like=${name}`);
-		} else if (name) {
-			response = await axios.get(`${BASE_URL}/facilities?name_like=${name}`);
+		if (id && typeId) {
+			response = await axios.get(`${BASE_URL}/facilities?id=${id}&_page=${page}&_limit=${limit}&typeId=${typeId}`);
+		} else if (id) {
+			response = await axios.get(`${BASE_URL}/facilities?id=${id}&_page=${page}&_limit=${limit}`);
 		} else if (typeId) {
-			response = await axios.get(`${BASE_URL}/facilities?typeId=${typeId}`);
+			response = await axios.get(`${BASE_URL}/facilities?_page=${page}&_limit=${limit}&typeId=${typeId}`);
 		} else {
-			response = await axios.get(`${BASE_URL}/facilities`);
+			response = await axios.get(`${BASE_URL}/facilities?_page=${page}&_limit=${limit}`);
 		}
 
-		return response.data;
-	} catch (error) {}
+		return [response.data, response.headers["x-total-count"]];
+	} catch (error) {
+		console.error(error);
+		return [[], 0];
+	}
 }
 
 export async function getFacilitiesById(id) {
