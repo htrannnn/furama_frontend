@@ -8,10 +8,11 @@ import { getAllTypes } from "../services/typesService";
 import Pagination from "react-bootstrap/Pagination";
 import { PAGE_SIZE } from "../services/constants";
 import DeleteComponent from "./DeleteComponent";
-import "react-toastify/dist/ReactToastify.css";
 import { Bounce, toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import CustomSelect from "./CustomSelect";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { IoMdAdd } from "react-icons/io";
 
 function RoomsComponent() {
 	const [allFacilities, setAllFacilities] = useState([]);
@@ -117,11 +118,11 @@ function RoomsComponent() {
 							))}
 						</select>
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
-							Search
+							<BiSearchAlt2 style={{ fontSize: "25px" }} title="Search" />
 						</button>
 						{account && (
 							<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/room/add">
-								Add New Facilities
+								<IoMdAdd style={{ fontSize: "18px" }} className="mb-1" /> Add Facilities
 							</Link>
 						)}
 					</div>
@@ -129,7 +130,8 @@ function RoomsComponent() {
 			</div>
 			<div className="mx-5 mb-5">
 				<Row xs={1} md={3} className="g-4">
-					{Array.isArray(allFacilities) &&
+					{allFacilities?.length > 0 ? (
+						allFacilities &&
 						allFacilities.map((facilities) => (
 							<Col key={facilities.id} handleShow={handleShow} facilities={facilities}>
 								<Card>
@@ -154,7 +156,12 @@ function RoomsComponent() {
 									</Card.Body>
 								</Card>
 							</Col>
-						))}
+						))
+					) : (
+						<p className="fw-semibold" style={{ fontSize: "24px" }}>
+							Không có dữ liệu
+						</p>
+					)}
 				</Row>
 			</div>
 			<Pagination className="container my-4 d-flex justify-content-center" id="pagination">

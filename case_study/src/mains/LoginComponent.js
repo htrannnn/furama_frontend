@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { checkLogin } from "../services/accountsServices";
 import { Bounce, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { login } from "../redux/accountAction";
 import { Link } from "react-router-dom";
 

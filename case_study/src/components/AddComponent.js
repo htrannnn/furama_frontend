@@ -7,7 +7,6 @@ import Col from "react-bootstrap/Col";
 import { getAllTypes } from "../services/typesService";
 import { Link, useNavigate } from "react-router-dom";
 import { addNewFacilities, fetchFacilities } from "../services/facilitiesServices";
-import "react-toastify/dist/ReactToastify.css";
 import { Bounce, toast } from "react-toastify";
 import { uploadImg } from "../services/uploadImgService";
 

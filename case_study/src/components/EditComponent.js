@@ -8,7 +8,6 @@ import { getAllTypes } from "../services/typesService";
 import { getFacilitiesById, updateFacilities } from "../services/facilitiesServices";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import "react-toastify/dist/ReactToastify.css";
 import { Bounce, toast } from "react-toastify";
 
 function EditComponent(props) {
