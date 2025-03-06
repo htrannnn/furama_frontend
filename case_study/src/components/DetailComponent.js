@@ -52,6 +52,7 @@ function DetailComponent() {
 				setTypeDetail(typeData);
 			}
 		};
+		window.scrollTo(0, 0);
 		fetchData();
 	}, [id, showEdit]);
 

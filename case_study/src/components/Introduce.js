@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AutoSlider from "./AutoSlider";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,6 +12,10 @@ import { FaCocktail } from "react-icons/fa";
 
 function Introduce() {
 	const [lgShow, setLgShow] = useState(false);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<>
@@ -88,7 +92,12 @@ function Introduce() {
 								The resort presents guests with varied gastronomic venues – Don Cipriani’s Italian Restaurant, Café Indochine, Hai Van Lounge… Excite
 								your taste buds with our sumptuous cuisine experience!
 							</Card.Text>
-							<Link className="btn d-flex align-items-center justify-content-center" id="btnCulinary" style={{ width: "100%", height: "50px" }}>
+							<Link
+								className="btn d-flex align-items-center justify-content-center"
+								id="btnCulinary"
+								style={{ width: "100%", height: "50px" }}
+								to="/culinary"
+							>
 								<FaCocktail className="me-2" />
 								Food & Beverage Promotion
 							</Link>

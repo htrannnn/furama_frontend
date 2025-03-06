@@ -31,6 +31,7 @@ function RoomsComponent() {
 			setTotalPage(Math.ceil(total / totalSize));
 			setType(await getAllTypes());
 		};
+		window.scrollTo(0, 0);
 		fetchData();
 	}, [page, show]);
 	//truyền page vào để fetch lại dữ liệu mỗi khi page thay đổi

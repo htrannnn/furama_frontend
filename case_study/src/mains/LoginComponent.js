@@ -26,6 +26,7 @@ function LoginComponent() {
 		if (account) {
 			navigate("/admin");
 		}
+		window.scrollTo(0, 0);
 	}, [account, navigate]);
 
 	const handleSubmit = async (value) => {

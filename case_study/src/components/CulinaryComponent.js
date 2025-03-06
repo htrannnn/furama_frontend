@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 function CulinaryComponent() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<>
 			<div id="culinaryImg" className="mb-4"></div>

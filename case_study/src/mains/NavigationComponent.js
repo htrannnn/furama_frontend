@@ -28,7 +28,7 @@ function NavigationComponent() {
 						{account && (
 							<li className="nav-item">
 								<Link className="nav-link text-white" aria-current="page" to="/admin">
-									Admin Page
+									Manage
 								</Link>
 							</li>
 						)}

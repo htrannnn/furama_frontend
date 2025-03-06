@@ -84,6 +84,21 @@ form {
 }
 /* end login component */
 
+/* admin component */
+#managingRooms,
+#managingBooking {
+	font-size: 24px;
+	font-weight: 500;
+	color: #046056;
+}
+
+#managingRooms:hover,
+#managingBooking:hover {
+	background-color: #046056;
+	color: white !important;
+}
+/* end admin component */
+
 #headerButton,
 #buttonEdit,
 #buttonSubmit,

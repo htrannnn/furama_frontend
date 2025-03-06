@@ -27,6 +27,7 @@ function EditComponent(props) {
 			setFacilities(await getFacilitiesById(id));
 			setTypes(await getAllTypes());
 		};
+		window.scrollTo(0, 0);
 		fetchData();
 	}, [id]);
 
@@ -186,6 +187,14 @@ function EditComponent(props) {
 									Facilities Describe
 								</h3>
 								<Row className="ms-1">
+									<label className="col-sm-1 fw-semibold" style={{ marginRight: "38px" }}>
+										Area:
+									</label>
+									<div className="col-sm-6">
+										<Field type="text" name="area" className="form-control" placeholder="Enter area" />
+									</div>
+								</Row>
+								<Row className="ms-1 mt-3">
 									<label className="col-sm-1 fw-semibold" style={{ marginRight: "38px" }}>
 										Describe:
 									</label>
