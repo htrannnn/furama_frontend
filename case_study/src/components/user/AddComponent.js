@@ -4,11 +4,11 @@ import * as Yup from "yup";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { getAllTypes } from "../services/typesService";
+import { getAllTypes } from "../../services/typesService";
 import { Link, useNavigate } from "react-router-dom";
-import { addNewFacilities, fetchFacilities } from "../services/facilitiesServices";
+import { addNewFacilities } from "../../services/facilitiesServices";
 import { Bounce, toast } from "react-toastify";
-import { uploadImg } from "../services/uploadImgService";
+import { uploadImg } from "../../services/uploadImgService";
 
 function AddComponent() {
 	const [facilities, setFacilities] = useState({

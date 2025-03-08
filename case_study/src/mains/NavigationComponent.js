@@ -28,31 +28,42 @@ function NavigationComponent() {
 						{account && (
 							<li className="nav-item">
 								<Link className="nav-link text-white" aria-current="page" to="/admin">
-									Manage
+									Admin
 								</Link>
 							</li>
 						)}
-						<li className="nav-item">
-							<Link className="nav-link text-white" aria-current="page" to="/homepage">
-								The Furama
-							</Link>
-						</li>
+
+						{account?.role !== "ADMIN" && (
+							<>
+								<li className="nav-item">
+									<Link className="nav-link text-white" aria-current="page" to="/homepage">
+										The Furama
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link text-white" aria-current="page" to="/culinary">
+										Culinary
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link text-white">About Us</Link>
+								</li>
+							</>
+						)}
+
 						<li className="nav-item">
 							<Link className="nav-link text-white" aria-current="page" to="/rooms">
 								Rooms & suites
 							</Link>
 						</li>
-						<li className="nav-item">
-							<Link className="nav-link text-white" aria-current="page" to="/culinary">
-								Culinary
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link text-white">Services</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link text-white">About Us</Link>
-						</li>
+
+						{account && (
+							<li className="nav-item">
+								<Link className="nav-link text-white" aria-current="page" to="/booking">
+									Booking
+								</Link>
+							</li>
+						)}
 					</ul>
 				</nav>
 			</div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import sliderData, { sliderText } from "../data/introduceData";
-import "../assets/scss/auto-slider.scss";
+import sliderData, { sliderText } from "../../data/introduceData";
+import "../../assets/scss/auto-slider.scss";
 
 function AutoSlider() {
 	const [index, setIndex] = useState(0);

@@ -3,11 +3,11 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
-import { deleteById, getAllFacilities, searchFacilities } from "../services/facilitiesServices";
-import { getAllTypes } from "../services/typesService";
+import { deleteById, getAllFacilities, searchFacilities } from "../../services/facilitiesServices";
+import { getAllTypes } from "../../services/typesService";
 import Pagination from "react-bootstrap/Pagination";
-import { PAGE_SIZE } from "../services/constants";
-import DeleteComponent from "./DeleteComponent";
+import { PAGE_SIZE } from "../../services/constants";
+import DeleteComponent from "../admin/DeleteComponent";
 import { Bounce, toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import CustomSelect from "./CustomSelect";
@@ -159,7 +159,7 @@ function RoomsComponent() {
 						))
 					) : (
 						<p className="fw-semibold" style={{ fontSize: "24px" }}>
-							Không có dữ liệu
+							No data
 						</p>
 					)}
 				</Row>

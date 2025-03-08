@@ -17,7 +17,7 @@ function AdminComponent() {
 	return (
 		<>
 			{account && (
-				<div style={{ marginTop: "100px" }}>
+				<div>
 					<div>
 						<h1 className="text-center mt-5 mb-5">WELCOME ADMIN</h1>
 					</div>

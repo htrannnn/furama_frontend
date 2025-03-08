@@ -3,9 +3,9 @@ import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { getFacilitiesById } from "../services/facilitiesServices";
+import { getFacilitiesById } from "../../services/facilitiesServices";
 import { Link, useParams } from "react-router-dom";
-import { getTypeById } from "../services/typesService";
+import { getTypeById } from "../../services/typesService";
 import Carousel from "react-bootstrap/Carousel";
 import { IoPricetags } from "react-icons/io5";
 import { TfiArrowCircleRight } from "react-icons/tfi";
@@ -52,7 +52,7 @@ function DetailComponent() {
 				setTypeDetail(typeData);
 			}
 		};
-		window.scrollTo(0, 0);
+		// window.scrollTo(0, 0);
 		fetchData();
 	}, [id, showEdit]);
 
@@ -170,7 +170,7 @@ function DetailComponent() {
 					</div>
 
 					<div className="col-4">
-						<div style={{ backgroundColor: "#046056 ", padding: "20px 20px 40px" }}>
+						<div style={{ backgroundColor: "#046056 ", padding: "20px 20px 15px" }}>
 							<ul className="list-unstyled fw-semibold" style={{ fontSize: "16px", lineHeight: "40px", color: "white" }}>
 								<li>
 									<TfiArrowCircleRight className="mb-1 me-3" />
@@ -193,6 +193,12 @@ function DetailComponent() {
 									In-Room Dining
 								</li>
 							</ul>
+							<Link className="btn rounded-0" id="btnBooking">
+								BOOK NOW
+							</Link>
+							<p className="fw-semibold mt-4 text-center" style={{ fontSize: "14px", color: "white" }}>
+								Best Choice - Low Price Guarantee
+							</p>
 						</div>
 					</div>
 				</div>

@@ -256,15 +256,61 @@
 			"id": 1,
 			"customer": {
 				"firstName": "Alice",
-				"lastName": "",
-				"phone": "",
-				"email": ""
+				"lastName": "Thompson",
+				"phone": "012345678",
+				"email": "alice.t@gmail.com"
 			},
 			"facilityId": 1,
-			"startDate": "",
-			"endDate": "",
-			"pricePerDay": "",
-			"totalPrice": ""
+			"guests": 6,
+			"startDate": "2025-04-30",
+			"endDate": "2025-05-03",
+			"pricePerDay": "6.000.000",
+			"totalPrice": "18.000.000"
+		},
+		{
+			"id": 2,
+			"customer": {
+				"firstName": "Ariana",
+				"lastName": "Grande",
+				"phone": "087654321",
+				"email": "ariana.g@gmail.com"
+			},
+			"facilityId": 2,
+			"guests": 4,
+			"startDate": "2025-04-01",
+			"endDate": "2025-05-03",
+			"pricePerDay": "2.500.000",
+			"totalPrice": "5.000.000"
+		},
+		{
+			"id": 3,
+			"customer": {
+				"firstName": "Justin",
+				"lastName": "Bieber",
+				"phone": "081726354",
+				"email": "alice.t@gmail.com"
+			},
+			"facilityId": 3,
+			"guests": 2,
+			"startDate": "2025-03-28",
+			"endDate": "2025-03-31",
+			"pricePerDay": "2.000.000",
+			"totalPrice": "6.000.000"
+		},
+		{
+			"id": 4,
+			"customer": {
+				"firstName": "Quốc Việt",
+				"lastName": "Nguyễn",
+				"phone": "018273645",
+				"email": "alice.t@gmail.com"
+			},
+			"facilityId": 4,
+			"guests": 8,
+			"startDate": "2025-04-28",
+			"endDate": "2025-04-30",
+			"pricePerDay": "7.000.000",
+			"totalPrice": "14.000.000"
 		}
 	]
 }

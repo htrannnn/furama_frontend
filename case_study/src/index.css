@@ -107,7 +107,9 @@ form {
 #buttonAdd,
 #buttonDelete,
 #btnMap,
-#logoutButton {
+#logoutButton,
+#btnDetailBooking,
+#btnEditBooking {
 	color: #046056 !important;
 	border: 1px solid #046056 !important;
 }
@@ -120,7 +122,9 @@ form {
 #buttonAdd:hover,
 #buttonDelete:hover,
 #btnMap:hover,
-#logoutButton:hover {
+#logoutButton:hover,
+#btnDetailBooking:hover,
+#btnEditBooking:hover {
 	color: white !important;
 	background-color: #046056;
 }
@@ -145,11 +149,6 @@ form {
 }
 
 #titleText,
-#roomsPageText {
-	padding-top: 140px !important;
-	color: white;
-	font-weight: bold;
-}
 /* end homepage */
 
 /* rooms component  */
@@ -158,6 +157,12 @@ form {
 	background-size: contain;
 	width: 100%;
 	height: 350px;
+}
+
+#roomsPageText {
+	padding-top: 140px !important;
+	color: white;
+	font-weight: bold;
 }
 
 .page-item .page-link {
@@ -192,6 +197,7 @@ form {
 }
 /* end rooms component */
 
+/* detail component */
 #priceDetail {
 	border: 1px solid #046056;
 	background-color: #046056;
@@ -203,6 +209,25 @@ form {
 	padding-top: 3px;
 	margin-top: 10px;
 }
+
+#btnBooking {
+	background-color: white;
+	border: 1px solid #046056;
+	color: black;
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 3px;
+	margin-top: 10px;
+}
+
+#btnBooking:hover {
+	background-color: #046056;
+	border: 2px solid white;
+	color: white;
+}
+/* end detail component */
 
 .play-button {
 	position: absolute;
@@ -227,7 +252,39 @@ form {
 	transform: translate(-50%, -50%) scale(1.2);
 }
 
-/* footer Local Places */
+/* culinary component */
+#culinaryImg {
+	background-image: url("/public/images/culinaryBG.jpeg");
+	background-size: 100% 120%;
+	width: 100%;
+	height: 600px;
+}
+
+#btnCulinarySf,
+#btnCulinaryVnMeal {
+	background-color: #ffbd07;
+	color: white;
+	font-weight: 500;
+	font-size: 14px;
+}
+/* end culinary component */
+
+/* booking component */
+#bookingPageImg {
+	background-image: url("/public/images/bookingBG.jpg");
+	background-size: 100% 110%;
+	width: 100%;
+	height: 350px;
+}
+
+#bookingPageText {
+	padding-top: 140px !important;
+	color: white;
+	font-weight: bold;
+}
+/* end booking component */
+
+/* footer */
 .localTableFooter {
 	margin-left: -6px;
 }
@@ -249,21 +306,4 @@ form {
 .localTableFooter span {
 	padding-left: 25px;
 }
-/* end footer Local Places */
-
-/* culinary component */
-#culinaryImg {
-	background-image: url("/public/images/culinaryBG.jpeg");
-	background-size: 100% 120%;
-	width: 100%;
-	height: 600px;
-}
-
-#btnCulinarySf,
-#btnCulinaryVnMeal {
-	background-color: #ffbd07;
-	color: white;
-	font-weight: 500;
-	font-size: 14px;
-}
-/* end culinary component */
+/* end footer */
