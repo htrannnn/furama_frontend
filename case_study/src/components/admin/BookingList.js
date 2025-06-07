@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { PAGE_SIZE } from "../../services/constants";
-import { getAllBooking } from "../../services/bookingsService";
+import { getAllBooking, searchBooking } from "../../services/bookingsService";
 import Pagination from "react-bootstrap/Pagination";
 import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import CustomSelect from "../user/CustomSelect";
+import { BiSearchAlt2 } from "react-icons/bi";
 
 function BookingList() {
 	const [booking, setBooking] = useState([]);
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE);
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(0);
+	const [selectedFirstName, setSelectedFirstName] = useState(null);
+	const [selectedLastName, setSelectedLastName] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,6 +39,15 @@ function BookingList() {
 		setPage(totalPage); //không thể biết trước được trang cuối nên Last sẽ bằng totalPage
 	};
 
+	const handleSearch = async () => {
+		let firstName = selectedFirstName?.label;
+		let lastName = selectedLastName?.label;
+
+		const [data, total] = await searchBooking(firstName, lastName, page, PAGE_SIZE);
+		setTotalPage(Math.ceil(total / PAGE_SIZE));
+		setBooking(data);
+	};
+
 	return (
 		<>
 			<div className="mb-4" id="bookingPageImg">
@@ -42,6 +56,26 @@ function BookingList() {
 				</h1>
 			</div>
 			<div className="mx-5 mb-2">
+				<div className="d-flex flex-row-reverse">
+					<div className="input-group mb-4 w-50">
+						<CustomSelect
+							options={booking.map((event) => ({ value: event.id, label: event?.customer?.firstName }))}
+							value={selectedFirstName}
+							placeholder="Enter First Name"
+							onSelect={(option) => setSelectedFirstName(option)}
+						/>
+						<CustomSelect
+							options={booking.map((e) => ({ value: e.id, label: e?.customer?.lastName }))}
+							value={selectedLastName}
+							placeholder="Enter Last Name"
+							onSelect={(option) => setSelectedLastName(option)}
+						/>
+						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
+							<BiSearchAlt2 style={{ fontSize: "25px" }} title="Search" />
+						</button>
+					</div>
+				</div>
+
 				<table className="table table-bordered table-hover" id="bookingTable">
 					<thead className="" style={{ borderBottom: "3px solid #a7b9b1" }}>
 						<tr className="table-success">
@@ -74,13 +108,13 @@ function BookingList() {
 									<td className="text-left">{booking?.endDate}</td>
 									<td className="text-center d-flex justify-content-center gap-2">
 										<Link type="button" className="btn btn" id="btnDetailBooking">
-											Chi tiết
+											Detail
 										</Link>
 										<Link type="button" className="btn btn" id="btnEditBooking">
-											Sửa
+											Edit
 										</Link>
-										<button type="button" className="btn btn-danger">
-											Xóa
+										<button type="button" className="btn btn-danger pb-2">
+											<MdDelete />
 										</button>
 									</td>
 								</tr>

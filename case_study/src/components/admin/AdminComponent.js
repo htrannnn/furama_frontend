@@ -47,6 +47,7 @@ function AdminComponent() {
 										<Card.Text>
 											<Link
 												className="d-flex flex-column justify-content-center align-items-center"
+												to="/booking"
 												style={{ textDecoration: "none" }}
 												id="managingBooking"
 											>

@@ -103,7 +103,6 @@ function RoomsComponent() {
 			<div className="mx-5 mb-2">
 				<div className="d-flex flex-row-reverse">
 					<div className="input-group mb-4 w-50">
-						{/* <input name="searchName" className="form-control" placeholder="Enter name" ref={searchNameRef} /> */}
 						<CustomSelect
 							options={allFacilities.map((event) => ({ value: event.id, label: event.name }))}
 							value={selectedFacilities}

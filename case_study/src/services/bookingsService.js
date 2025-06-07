@@ -7,3 +7,23 @@ export async function getAllBooking(page, limit) {
 		return [response.data, response.headers["x-total-count"]];
 	} catch (error) {}
 }
+
+export async function searchBooking(firstName, lastName, page, limit) {
+	try {
+		let response = [];
+		if (firstName && lastName) {
+			response = await axios.get(`${BASE_URL}/bookings?_page=${page}&_limit=${limit}&customer.firstName=${firstName}&customer.lastName=${lastName}`);
+		} else if (firstName) {
+			response = await axios.get(`${BASE_URL}/bookings?_page=${page}&_limit=${limit}&customer.firstName=${firstName}`);
+		} else if (lastName) {
+			response = await axios.get(`${BASE_URL}/bookings?_page=${page}&_limit=${limit}&customer.lastName=${lastName}`);
+		} else {
+			response = await axios.get(`${BASE_URL}/bookings?_page=${page}&_limit=${limit}`);
+		}
+
+		return [response.data, response.headers["x-total-count"]];
+	} catch (error) {
+		console.error(error);
+		return [[], 0];
+	}
+}

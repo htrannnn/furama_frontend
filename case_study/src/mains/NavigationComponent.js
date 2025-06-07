@@ -40,6 +40,16 @@ function NavigationComponent() {
 										The Furama
 									</Link>
 								</li>
+							</>
+						)}
+						<li className="nav-item">
+							<Link className="nav-link text-white" aria-current="page" to="/rooms">
+								Rooms & suites
+							</Link>
+						</li>
+
+						{account?.role !== "ADMIN" && (
+							<>
 								<li className="nav-item">
 									<Link className="nav-link text-white" aria-current="page" to="/culinary">
 										Culinary
@@ -50,12 +60,6 @@ function NavigationComponent() {
 								</li>
 							</>
 						)}
-
-						<li className="nav-item">
-							<Link className="nav-link text-white" aria-current="page" to="/rooms">
-								Rooms & suites
-							</Link>
-						</li>
 
 						{account && (
 							<li className="nav-item">

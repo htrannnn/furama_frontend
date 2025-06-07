@@ -32,6 +32,8 @@ function CustomSelect({ options, onSelect, placeholder = "Enter name", value }) 
 				onChange={handleSearchChange}
 				onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 				placeholder={placeholder}
+				className="rounded-0"
+				style={{ paddingBottom: "10px" }}
 			/>
 
 			<Dropdown.Menu style={{ maxHeight: "200px", overflowY: "auto" }}>
