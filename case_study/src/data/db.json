@@ -270,7 +270,7 @@
 		{
 			"id": 2,
 			"customer": {
-				"firstName": "Ariana",
+				"firstName": "Adriana",
 				"lastName": "Grande",
 				"phone": "087654321",
 				"email": "ariana.g@gmail.com"
@@ -288,7 +288,7 @@
 				"firstName": "Justin",
 				"lastName": "Bieber",
 				"phone": "081726354",
-				"email": "alice.t@gmail.com"
+				"email": "justin.b@gmail.com"
 			},
 			"facilityId": 3,
 			"guests": 2,
@@ -303,7 +303,7 @@
 				"firstName": "Quốc Việt",
 				"lastName": "Nguyễn",
 				"phone": "018273645",
-				"email": "alice.t@gmail.com"
+				"email": "vietnguyenquoc@gmail.com"
 			},
 			"facilityId": 4,
 			"guests": 8,

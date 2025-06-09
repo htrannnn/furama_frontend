@@ -14,6 +14,7 @@ import HomeLayout from "./layout/HomeLayout";
 import AuthLayout from "./layout/AuthLayout";
 import AdminLayout from "./layout/AdminLayout";
 import BookingList from "./components/admin/BookingList";
+import BookingDetail from "./components/admin/BookingDetail";
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 					<Route path={"/room/edit/:id"} element={<EditComponent />} />
 					<Route path={"/room/add"} element={<AddComponent />} />
 					<Route path={"/booking"} element={<BookingList />} />
+					<Route path={"/booking/detail/:id"} element={<BookingDetail />} />
 				</Route>
 				<Route element={<AuthLayout />}>
 					<Route path={"/login"} element={<LoginComponent />} />

@@ -27,3 +27,10 @@ export async function searchBooking(firstName, lastName, page, limit) {
 		return [[], 0];
 	}
 }
+
+export async function getBookingById(id) {
+	try {
+		const response = await axios.get(`${BASE_URL}/bookings/${id}?_expand=facility`);
+		return response.data;
+	} catch (error) {}
+}

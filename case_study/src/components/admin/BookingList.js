@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import CustomSelect from "../user/CustomSelect";
 import { BiSearchAlt2 } from "react-icons/bi";
+import { RxReload } from "react-icons/rx";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import BookingDetail from "./BookingDetail";
 
 function BookingList() {
 	const [booking, setBooking] = useState([]);
@@ -14,6 +17,7 @@ function BookingList() {
 	const [totalPage, setTotalPage] = useState(0);
 	const [selectedFirstName, setSelectedFirstName] = useState(null);
 	const [selectedLastName, setSelectedLastName] = useState(null);
+	const [reload, setReload] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,7 +28,11 @@ function BookingList() {
 		};
 		window.scrollTo(0, 0);
 		fetchData();
-	}, [page]);
+	}, [page, reload]);
+
+	const reloadData = () => {
+		setReload(!reload);
+	};
 
 	const handleFirst = () => {
 		setPage(1); //page đầu tiên luôn là 1
@@ -52,12 +60,19 @@ function BookingList() {
 		<>
 			<div className="mb-4" id="bookingPageImg">
 				<h1 className="text-center p-3 mt-5 mb-5" id="bookingPageText" style={{ fontFamily: "serif" }}>
-					BOOKING
+					BOOKING MANAGEMENT
 				</h1>
 			</div>
 			<div className="mx-5 mb-2">
-				<div className="d-flex flex-row-reverse">
-					<div className="input-group mb-4 w-50">
+				<div className="d-flex mb-4">
+					<div className="w-50 justify-content-start">
+						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonAddBooking">
+							<AiOutlineUsergroupAdd style={{ fontSize: "25px" }} title="AddBooking" />
+							New Booking
+						</button>
+					</div>
+
+					<div className="input-group justify-content-end">
 						<CustomSelect
 							options={booking.map((event) => ({ value: event.id, label: event?.customer?.firstName }))}
 							value={selectedFirstName}
@@ -72,6 +87,10 @@ function BookingList() {
 						/>
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
 							<BiSearchAlt2 style={{ fontSize: "25px" }} title="Search" />
+						</button>
+
+						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonReload" onClick={reloadData}>
+							<RxReload style={{ fontSize: "25px" }} title="Reload" />
 						</button>
 					</div>
 				</div>
@@ -107,7 +126,7 @@ function BookingList() {
 									<td className="text-left">{booking?.startDate}</td>
 									<td className="text-left">{booking?.endDate}</td>
 									<td className="text-center d-flex justify-content-center gap-2">
-										<Link type="button" className="btn btn" id="btnDetailBooking">
+										<Link type="button" className="btn btn" id="btnDetailBooking" to={"/booking/detail/" + booking.id}>
 											Detail
 										</Link>
 										<Link type="button" className="btn btn" id="btnEditBooking">
