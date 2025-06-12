@@ -193,7 +193,7 @@ function DetailComponent() {
 									In-Room Dining
 								</li>
 							</ul>
-							<Link className="btn rounded-0" id="btnBooking">
+							<Link className="btn rounded-0" id="btnBooking" to={"/booking/add/" + facilitiesDetail?.id}>
 								BOOK NOW
 							</Link>
 							<p className="fw-semibold mt-4 text-center" style={{ fontSize: "14px", color: "white" }}>
@@ -206,7 +206,7 @@ function DetailComponent() {
 					<div className="w-25 shadow" id="priceDetail">
 						<h5>
 							<IoPricetags className="me-2" />
-							{facilitiesDetail?.information.price} VNĐ
+							{facilitiesDetail?.information.price} VNĐ/night
 						</h5>
 					</div>
 				</Row>

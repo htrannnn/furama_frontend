@@ -10,7 +10,7 @@ import { Link, useParams } from "react-router-dom";
 import { getAllFacilities } from "../../services/facilitiesServices";
 import { Value } from "sass";
 
-function BookingDetail(props) {
+function BookingDetail() {
 	const [bookingDetail, setBookingDetail] = useState({
 		id: null,
 		customer: {
@@ -23,6 +23,7 @@ function BookingDetail(props) {
 		guests: "",
 		startDate: "",
 		endDate: "",
+		note: "",
 		pricePerDay: "",
 		totalPrice: "",
 	});
@@ -97,6 +98,11 @@ function BookingDetail(props) {
 						<div className="row  mb-3 ms-1 align-items-center">
 							<label className="col-sm-3 me-2 fw-semibold">Start Date:</label>
 							<div className="col-sm-6 form-control">{bookingDetail?.startDate}</div>
+						</div>
+
+						<div className="row  mb-3 ms-1 align-items-center">
+							<label className="col-sm-5 me-2 fw-semibold">Note (kids, special request):</label>
+							<div className="col-sm-6 form-control">{bookingDetail?.note}</div>
 						</div>
 					</Col>
 

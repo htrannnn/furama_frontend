@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import DetailComponent from "./components/admin/DetailComponent";
 import EditComponent from "./components/admin/EditComponent";
-import AddComponent from "./components/user/AddComponent";
+import AddComponent from "./components/admin/AddComponent";
 import Homepage from "./components/user/Homepage";
 import Introduce from "./components/user/Introduce";
 import RoomsComponent from "./components/user/RoomsComponent";
@@ -15,6 +15,7 @@ import AuthLayout from "./layout/AuthLayout";
 import AdminLayout from "./layout/AdminLayout";
 import BookingList from "./components/admin/BookingList";
 import BookingDetail from "./components/admin/BookingDetail";
+import AddBooking from "./components/admin/AddBooking";
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 					<Route path={"/room/edit/:id"} element={<EditComponent />} />
 					<Route path={"/room/add"} element={<AddComponent />} />
 					<Route path={"/booking"} element={<BookingList />} />
+					<Route path={"/booking/add/:facilityId"} element={<AddBooking />} />
 					<Route path={"/booking/detail/:id"} element={<BookingDetail />} />
 				</Route>
 				<Route element={<AuthLayout />}>

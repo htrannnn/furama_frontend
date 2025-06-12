@@ -8,10 +8,9 @@ import CustomSelect from "../user/CustomSelect";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { RxReload } from "react-icons/rx";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import BookingDetail from "./BookingDetail";
 
 function BookingList() {
-	const [booking, setBooking] = useState([]);
+	const [allBooking, setAllBooking] = useState([]);
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE);
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(0);
@@ -23,7 +22,7 @@ function BookingList() {
 		const fetchData = async () => {
 			const [data, total] = await getAllBooking(page, totalSize);
 
-			setBooking(data);
+			setAllBooking(data);
 			setTotalPage(Math.ceil(total / PAGE_SIZE));
 		};
 		window.scrollTo(0, 0);
@@ -53,7 +52,7 @@ function BookingList() {
 
 		const [data, total] = await searchBooking(firstName, lastName, page, PAGE_SIZE);
 		setTotalPage(Math.ceil(total / PAGE_SIZE));
-		setBooking(data);
+		setAllBooking(data);
 	};
 
 	return (
@@ -66,21 +65,21 @@ function BookingList() {
 			<div className="mx-5 mb-2">
 				<div className="d-flex mb-4">
 					<div className="w-50 justify-content-start">
-						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonAddBooking">
+						<Link className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonAddBooking">
 							<AiOutlineUsergroupAdd style={{ fontSize: "25px" }} title="AddBooking" />
 							New Booking
-						</button>
+						</Link>
 					</div>
 
 					<div className="input-group justify-content-end">
 						<CustomSelect
-							options={booking.map((event) => ({ value: event.id, label: event?.customer?.firstName }))}
+							options={allBooking.map((event) => ({ value: event.id, label: event?.customer?.firstName }))}
 							value={selectedFirstName}
 							placeholder="Enter First Name"
 							onSelect={(option) => setSelectedFirstName(option)}
 						/>
 						<CustomSelect
-							options={booking.map((e) => ({ value: e.id, label: e?.customer?.lastName }))}
+							options={allBooking.map((e) => ({ value: e.id, label: e?.customer?.lastName }))}
 							value={selectedLastName}
 							placeholder="Enter Last Name"
 							onSelect={(option) => setSelectedLastName(option)}
@@ -109,14 +108,14 @@ function BookingList() {
 						</tr>
 					</thead>
 					<tbody>
-						{booking.length === 0 ? (
+						{allBooking.length === 0 ? (
 							<tr>
 								<td colSpan="8" className="text-center">
 									No data
 								</td>
 							</tr>
 						) : (
-							booking.map((booking, i) => (
+							allBooking.map((booking, i) => (
 								<tr className="align-middle">
 									<td className="text-center">{+i + 1}</td>
 									<td className="text-left">{booking?.customer?.firstName}</td>
