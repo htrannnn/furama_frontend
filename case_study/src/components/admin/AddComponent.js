@@ -21,7 +21,9 @@ function AddComponent() {
 		name: "",
 		information: {
 			bedroom: "",
-			bed: "",
+			kingBed: "",
+			queenBed: "",
+			singleBed: "",
 			bathroom: "",
 			kitchen: "",
 			customer: "",
@@ -83,7 +85,17 @@ function AddComponent() {
 			.min(1, "Greater than or equal to 1")
 			.matches(/^\d{1,2}$/, "Number of bedroom not valid"),
 
-		bed: Yup.string()
+		kingBed: Yup.string()
+			.required("Empty")
+			.min(1, "Greater than or equal to 1")
+			.matches(/^\d{1,2}$/, "Number of bed not valid"),
+
+		queenBed: Yup.string()
+			.required("Empty")
+			.min(1, "Greater than or equal to 1")
+			.matches(/^\d{1,2}$/, "Number of bed not valid"),
+
+		singleBed: Yup.string()
 			.required("Empty")
 			.min(1, "Greater than or equal to 1")
 			.matches(/^\d{1,2}$/, "Number of bed not valid"),
@@ -131,7 +143,7 @@ function AddComponent() {
 							<Row>
 								<Col>
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Type:</label>
+										<label className="col-sm-3 fw-semibold">Type:</label>
 										<div className="col-sm-5">
 											<Field as="select" name="typeId" className="form-select">
 												<option value="">-- Select type --</option>
@@ -145,14 +157,14 @@ function AddComponent() {
 									</div>
 
 									<div className="row  mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Name:</label>
+										<label className="col-sm-3 fw-semibold">Name:</label>
 										<div className="col-sm-5">
 											<Field type="text" name="name" className="form-control" placeholder="Enter facilities name" />
 											<ErrorMessage name="name" style={{ color: "red" }} component="div" />
 										</div>
 									</div>
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Bedroom(s):</label>
+										<label className="col-sm-3 fw-semibold">Bedroom(s):</label>
 										<div className="col-sm-5">
 											<Field type="number" name="information.bedroom" className="form-control" placeholder="Enter number" />
 											<ErrorMessage name="information.bedroom" style={{ color: "red" }} component="div" />
@@ -160,17 +172,33 @@ function AddComponent() {
 									</div>
 
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Bed(s):</label>
+										<label className="col-sm-3 fw-semibold">King Bed(s):</label>
 										<div className="col-sm-5">
-											<Field type="number" name="information.bed" className="form-control" placeholder="Enter number" />
-											<ErrorMessage name="information.bed" style={{ color: "red" }} component="div" />
+											<Field type="number" name="information.kingBed" className="form-control" placeholder="Enter number" />
+											<ErrorMessage name="information.kingBed" style={{ color: "red" }} component="div" />
+										</div>
+									</div>
+
+									<div className="row mb-3 ms-1 align-items-center">
+										<label className="col-sm-3 fw-semibold">Queen Bed(s):</label>
+										<div className="col-sm-5">
+											<Field type="number" name="information.queenBed" className="form-control" placeholder="Enter number" />
+											<ErrorMessage name="information.queenBed" style={{ color: "red" }} component="div" />
 										</div>
 									</div>
 								</Col>
 
 								<Col>
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Bathroom(s):</label>
+										<label className="col-sm-3 fw-semibold">Single Bed(s):</label>
+										<div className="col-sm-5">
+											<Field type="number" name="information.singleBed" className="form-control" placeholder="Enter number" />
+											<ErrorMessage name="information.singleBed" style={{ color: "red" }} component="div" />
+										</div>
+									</div>
+
+									<div className="row mb-3 ms-1 align-items-center">
+										<label className="col-sm-3 fw-semibold">Bathroom(s):</label>
 										<div className="col-sm-5">
 											<Field type="number" name="information.bathroom" className="form-control" placeholder="Enter number" />
 											<ErrorMessage name="information.bathroom" style={{ color: "red" }} component="div" />
@@ -178,7 +206,7 @@ function AddComponent() {
 									</div>
 
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Kitchen(s):</label>
+										<label className="col-sm-3 fw-semibold">Kitchen(s):</label>
 										<div className="col-sm-5">
 											<Field type="number" name="information.kitchen" className="form-control" placeholder="Enter number" />
 											<ErrorMessage name="information.kitchen" style={{ color: "red" }} component="div" />
@@ -186,7 +214,7 @@ function AddComponent() {
 									</div>
 
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Guest(s):</label>
+										<label className="col-sm-3 fw-semibold">Guest(s):</label>
 										<div className="col-sm-5">
 											<Field type="number" name="information.customer" className="form-control" placeholder="Enter max guests" />
 											<ErrorMessage name="information.customer" style={{ color: "red" }} component="div" />
@@ -194,7 +222,7 @@ function AddComponent() {
 									</div>
 
 									<div className="row mb-3 ms-1 align-items-center">
-										<label className="col-sm-2 me-2 fw-semibold">Price:</label>
+										<label className="col-sm-3 fw-semibold">Price:</label>
 										<div className="col-sm-5">
 											<Field type="text" name="information.price" className="form-control" placeholder="Enter price" />
 											<ErrorMessage name="information.price" style={{ color: "red" }} component="div" />

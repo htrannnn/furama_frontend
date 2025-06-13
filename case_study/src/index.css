@@ -288,10 +288,21 @@ form {
 /* end booking component */
 
 /* add booking */
-#addCustomerCard {
-	margin: 100px 150px 0px 150px;
+#cardDetailRoomBooking {
 	background-color: white;
-	border: #c6ceda 1px solid;
+	width: 50%;
+	margin: 0px 150px 0px 150px;
+}
+
+#addCustomerCard {
+	margin: 20px 150px 0px 150px;
+	background-color: white;
+	width: 50%;
+}
+
+#addBookingCard {
+	margin: 20px 150px 0px 150px;
+	background-color: white;
 	width: 50%;
 }
 

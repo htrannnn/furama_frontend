@@ -18,7 +18,9 @@ function DetailComponent() {
 		information: {
 			name: "",
 			bedroom: "",
-			bed: "",
+			kingBed: "",
+			queenBed: "",
+			singleBed: "",
 			bathroom: "",
 			kitchen: "",
 			customer: "",
@@ -102,7 +104,11 @@ function DetailComponent() {
 					</Col>
 					<Col className="border-end">
 						<h6 style={{ color: "#046056" }}>Sleeps</h6>
-						<h5>{facilitiesDetail?.information.bed} bed(s)</h5>
+						{facilitiesDetail?.information.kingBed > 0 && <h5>{facilitiesDetail.information.kingBed} king bed(s)</h5>}
+
+						{facilitiesDetail?.information.queenBed > 0 && <h5>{facilitiesDetail.information.queenBed} queen bed(s)</h5>}
+
+						{facilitiesDetail?.information.singleBed > 0 && <h5>{facilitiesDetail.information.singleBed} single bed(s)</h5>}
 					</Col>
 					<Col className="border-end">
 						<h6 style={{ color: "#046056" }}>Bathrooms</h6>
@@ -110,7 +116,7 @@ function DetailComponent() {
 					</Col>
 					<Col className="border-end">
 						<h6 style={{ color: "#046056" }}>Kitchen</h6>
-						<h5>{facilitiesDetail?.information.kitchen} kitchen</h5>
+						<h5>{facilitiesDetail?.information.kitchen > 0 ? <h5>{facilitiesDetail.information.kitchen} kitchen</h5> : "no kitchen"}</h5>
 					</Col>
 					<Col>
 						<h6 style={{ color: "#046056" }}>Guests</h6>

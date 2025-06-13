@@ -8,7 +8,6 @@ import { PiNumberCircleThree } from "react-icons/pi";
 import { getBookingById } from "../../services/bookingsService";
 import { Link, useParams } from "react-router-dom";
 import { getAllFacilities } from "../../services/facilitiesServices";
-import { Value } from "sass";
 
 function BookingDetail() {
 	const [bookingDetail, setBookingDetail] = useState({
@@ -18,11 +17,14 @@ function BookingDetail() {
 			lastName: "",
 			phone: "",
 			email: "",
+			country: "",
 		},
 		facilityId: undefined,
-		guests: "",
+		adult: "",
+		children: "",
 		startDate: "",
 		endDate: "",
+		arrivedTime: "",
 		note: "",
 		pricePerDay: "",
 		totalPrice: "",
@@ -66,6 +68,11 @@ function BookingDetail() {
 							<label className="col-sm-3 me-2 fw-semibold">Phone:</label>
 							<div className="col-sm-6 form-control">{bookingDetail?.customer.phone}</div>
 						</div>
+
+						<div className="row mb-3 ms-1 align-items-center">
+							<label className="col-sm-3 me-2 fw-semibold">Country:</label>
+							<div className="col-sm-6 form-control">{bookingDetail?.customer.country}</div>
+						</div>
 					</Col>
 
 					<Col>
@@ -101,20 +108,27 @@ function BookingDetail() {
 						</div>
 
 						<div className="row  mb-3 ms-1 align-items-center">
-							<label className="col-sm-5 me-2 fw-semibold">Note (kids, special request):</label>
-							<div className="col-sm-6 form-control">{bookingDetail?.note}</div>
+							<label className="col-sm-5 me-2 fw-semibold">Arrived Time:</label>
+							<div className="col-sm-6 form-control">{bookingDetail?.arrivedTime}</div>
 						</div>
 					</Col>
 
 					<Col>
 						<div className="row mb-3 ms-1 align-items-center">
 							<label className="col-sm-3 me-2 fw-semibold">Guests:</label>
-							<div className="col-sm-6 form-control">{bookingDetail?.guests}</div>
+							<div className="col-sm-6 form-control">
+								{bookingDetail?.adult} adults, {bookingDetail?.children} children
+							</div>
 						</div>
 
 						<div className="row mb-3 ms-1 align-items-center">
 							<label className="col-sm-3 me-2 fw-semibold">End Date:</label>
 							<div className="col-sm-6 form-control">{bookingDetail?.endDate}</div>
+						</div>
+
+						<div className="row  mb-3 ms-1 align-items-center">
+							<label className="col-sm-5 me-2 fw-semibold">Note (kids, special request):</label>
+							<div className="col-sm-6 form-control">{bookingDetail?.note}</div>
 						</div>
 					</Col>
 				</Row>

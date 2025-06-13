@@ -143,8 +143,12 @@ function RoomsComponent() {
 										</Card.Title>
 
 										<Card.Text>
-											<span>{facilities.information.bedroom} bedroom(s)</span> · <span>{facilities.information.bed} bed(s)</span> ·{" "}
-											<span>{facilities.information.bathroom} bathroom(s)</span>
+											<span>{facilities.information.bedroom} bedroom(s)</span> ·{" "}
+											<span>
+												{(facilities?.information.kingBed || 0) + (facilities?.information.queenBed || 0) + (facilities?.information.singleBed || 0)}{" "}
+												bed(s)
+											</span>{" "}
+											· <span>{facilities.information.bathroom} bathroom(s)</span>
 										</Card.Text>
 
 										{account && (
