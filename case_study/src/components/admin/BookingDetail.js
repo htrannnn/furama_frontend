@@ -37,7 +37,12 @@ function BookingDetail() {
 	useEffect(() => {
 		const fetchData = async () => {
 			const bookingData = await getBookingById(id);
-			setBookingDetail(bookingData);
+			const formattedData = {
+				...bookingData,
+				startDate: bookingData.startDate ? new Date(bookingData.startDate).toLocaleDateString("vi-VN") : "",
+				endDate: bookingData.endDate ? new Date(bookingData.endDate).toLocaleDateString("vi-VN") : "",
+			};
+			setBookingDetail(formattedData);
 
 			const facilitiesData = await getAllFacilities();
 			setFacilities(
@@ -139,13 +144,13 @@ function BookingDetail() {
 				<Row style={{ width: "51%" }}>
 					<Col>
 						<div className="row mb-3 ms-1 align-items-center">
-							<label className="col-sm-3 me-2 fw-semibold">Price/day:</label>
-							<div className="col-sm-6 form-control">{bookingDetail?.pricePerDay}</div>
+							<label className="col-sm-4 me-2 fw-semibold">Price/day (VNĐ):</label>
+							<div className="col-sm-6 form-control">{bookingDetail?.pricePerDay.toLocaleString("vi-VN")} </div>
 						</div>
 
 						<div className="row  mb-3 ms-1 align-items-center">
-							<label className="col-sm-3 me-2 fw-semibold">Total Price:</label>
-							<div className="col-sm-6 form-control">{bookingDetail?.totalPrice}</div>
+							<label className="col-sm-4 me-2 fw-semibold">Total Price (VNĐ):</label>
+							<div className="col-sm-6 form-control">{bookingDetail?.totalPrice.toLocaleString("vi-VN")}</div>
 						</div>
 					</Col>
 				</Row>

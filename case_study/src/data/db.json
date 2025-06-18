@@ -32,7 +32,7 @@
 				"bathroom": 3,
 				"kitchen": 1,
 				"customer": 12,
-				"price": "6,000,000"
+				"price": 6000000
 			},
 			"view": "Mountain",
 			"describe": "Charm villas are the most luxurious of the Furama Villas. Modern interiors completed with traditional elements, the coastal sunlight is the main feature. A natural flowing water feature creates a continuous serene ambiance which is furthermore accentuated by grand mirrors, adding opulence and luxury. The harmony of space, color, and light sparkles like a diamond!",
@@ -56,7 +56,7 @@
 				"bathroom": 2,
 				"kitchen": 1,
 				"customer": 6,
-				"price": "2,500,000"
+				"price": 2500000
 			},
 			"view": "Mountain",
 			"describe": "Asian-inspired décor, polished wood floors, walk-in closet, marble bathroom. Separate sitting area with loveseat, coffee table, armchair.",
@@ -80,7 +80,7 @@
 				"bathroom": 1,
 				"kitchen": 0,
 				"customer": 2,
-				"price": "2,000,000"
+				"price": 2000000
 			},
 			"view": "Beach",
 			"describe": "The new Suite Room decorated in royal style with sea view offers its own unique features with oversized living room, large screen TV, bedroom with king bed, marble bathroom housing with bathtub and electric bidet.",
@@ -104,7 +104,7 @@
 				"bathroom": 3,
 				"kitchen": 1,
 				"customer": 10,
-				"price": "7,000,000"
+				"price": 7000000
 			},
 			"view": "Private area surrounded by waterfalls and palm trees",
 			"describe": "Charm villas are the most luxurious of the Furama Villas. A natural flowing water and surrounded by palm trees. The harmony of space, color, and light sparkles like a diamond!",
@@ -128,7 +128,7 @@
 				"bathroom": 3,
 				"kitchen": 1,
 				"customer": 8,
-				"price": "4,500,000"
+				"price": 4500000
 			},
 			"view": "Mountain",
 			"describe": "This is a living with natural sunlight and the sophistication of traditional and contemporary design. The ground floor is completely flanked by floor-to-ceiling windows covered with beautiful mahogany wooden shutters. The kitchen, modern and beautiful, is open to the deck and cobalt tiled pool, with sleek and modern appliances and a marble counter surface, and a rich mahogany dining area.",
@@ -152,7 +152,7 @@
 				"bathroom": 3,
 				"kitchen": 1,
 				"customer": 12,
-				"price": "6,500,000"
+				"price": 6500000
 			},
 			"view": "Beach",
 			"describe": "Charm villas are the most luxurious of the Furama Villas. Right on the beach, with modern interiors completed with traditional elements, the coastal sunlight is the main feature. A natural flowing water feature creates a continuous serene ambiance which is furthermore accentuated by grand mirrors, adding opulence and luxury. The harmony of space, color, and light sparkles like a diamond!",
@@ -176,7 +176,7 @@
 				"bathroom": 3,
 				"kitchen": 1,
 				"customer": 8,
-				"price": "4,500,000"
+				"price": 4500000
 			},
 			"view": "Mountain",
 			"describe": "Charm villas are the most luxurious of the Furama Villas. Right on the beach, with modern interiors completed with traditional elements, the coastal sunlight is the main feature. A natural flowing water feature creates a continuous serene ambiance which is furthermore accentuated by grand mirrors, adding opulence and luxury. The harmony of space, color, and light sparkles like a diamond!",
@@ -200,7 +200,7 @@
 				"bathroom": 2,
 				"kitchen": 1,
 				"customer": 6,
-				"price": "2,500,000"
+				"price": 2500000
 			},
 			"view": "Mountain",
 			"describe": "The sitting area with an elegant sofa, coffee table, and comfortable armchair will help you relax. The large bathroom decorated with honey-colored marble offers a separate shower and bathtub.",
@@ -224,7 +224,7 @@
 				"bathroom": 1,
 				"kitchen": 0,
 				"customer": 4,
-				"price": "1,500,000"
+				"price": 1500000
 			},
 			"view": "Beach",
 			"describe": "This charming room overlooks our beautiful tropical garden and the landscaped lagoon pool. Enjoy the view over palm trees, plants, and flowers in all kinds of shapes and colors. At night, the pool and garden are romantically illuminated.",
@@ -248,7 +248,7 @@
 				"bathroom": 2,
 				"kitchen": 0,
 				"customer": 4,
-				"price": "5,000,000"
+				"price": 5000000
 			},
 			"view": "test",
 			"describe": "test",
@@ -288,8 +288,8 @@
 			"endDate": "2025-05-03",
 			"arrivedTime": "1:30 PM",
 			"note": "no smoking room",
-			"pricePerDay": "6,000,000",
-			"totalPrice": "18,000,000"
+			"pricePerDay": 6000000,
+			"totalPrice": 18000000
 		},
 		{
 			"id": 2,
@@ -307,8 +307,8 @@
 			"endDate": "2025-05-03",
 			"arrivedTime": "3:00 PM",
 			"note": "1 queen bed, 1 single bed",
-			"pricePerDay": "2,500,000",
-			"totalPrice": "5,000,000"
+			"pricePerDay": 2500000,
+			"totalPrice": 5000000
 		},
 		{
 			"id": 3,
@@ -326,8 +326,8 @@
 			"endDate": "2025-03-31",
 			"arrivedTime": "12:00 AM",
 			"note": "no",
-			"pricePerDay": "2,000,000",
-			"totalPrice": "6,000,000"
+			"pricePerDay": 2000000,
+			"totalPrice": 6000000
 		},
 		{
 			"id": 4,
@@ -345,8 +345,8 @@
 			"endDate": "2025-04-30",
 			"arrivedTime": "5:30 AM",
 			"note": "smoking room",
-			"pricePerDay": "7,000,000",
-			"totalPrice": "14,000,000"
+			"pricePerDay": 7000000,
+			"totalPrice": 14000000
 		}
 	]
 }

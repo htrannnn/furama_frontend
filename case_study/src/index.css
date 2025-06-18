@@ -290,20 +290,24 @@ form {
 /* add booking */
 #cardDetailRoomBooking {
 	background-color: white;
-	width: 50%;
-	margin: 0px 150px 0px 150px;
+	margin-left: 150px;
 }
 
-#addCustomerCard {
-	margin: 20px 150px 0px 150px;
-	background-color: white;
-	width: 50%;
+#cardInformation {
+	width: 60%;
 }
 
-#addBookingCard {
-	margin: 20px 150px 0px 150px;
+#cardOverallInformation {
+	margin-left: 20px;
+	width: 28%;
+}
+
+#addCustomerCard,
+#addBookingCard,
+#addPaymentCard {
+	margin-top: 20px;
+	margin-left: 150px;
 	background-color: white;
-	width: 50%;
 }
 
 .accordion-button {
@@ -373,6 +377,61 @@ form {
 
 .floating-label.focused {
 	color: #046056;
+}
+
+#inputFloatingChildren {
+	margin-bottom: -20px !important;
+}
+
+.floating-input-container .react-select__control {
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	border: 1px solid #c6ceda;
+	background-color: white;
+	box-shadow: none;
+	transition: all 0.2s ease-in-out;
+	min-height: 48px;
+}
+
+.floating-input-container .react-select__control--is-focused {
+	border-color: #046056;
+	box-shadow: none;
+}
+
+.floating-input-container .react-select__control.floating {
+	padding-top: 1.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.floating-input-container .floating-label {
+	position: absolute;
+	left: 1rem;
+	transition: all 0.2s ease-in-out;
+	pointer-events: none;
+	background-color: white;
+	padding: 0 0.25rem;
+	z-index: 2;
+}
+
+.floating-input-container .floating-label.normal {
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1rem;
+}
+
+.floating-input-container .floating-label.floating {
+	top: 0.25rem;
+	font-size: 0.75rem;
+	color: #6c757d;
+}
+
+.floating-input-container .floating-label.focused {
+	color: #046056;
+}
+
+.floating-input-container .react-select__single-value {
+	color: #212529;
+	font-size: 1rem;
 }
 
 /* end add booking */

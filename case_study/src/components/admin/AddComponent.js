@@ -115,10 +115,7 @@ function AddComponent() {
 			.min(1, "Greater than or equal to 1")
 			.matches(/^\d{1,2}$/, "Number of customer not valid"),
 
-		price: Yup.string()
-			.required("Empty")
-			.min(0, "Greater than or equal to 0")
-			.matches(/^\d{1,3}(\.\d{3})*$/, "Enter correct currency format. Ex: 6.000.000 VNĐ"),
+		price: Yup.string().required("Empty").min(0, "Greater than or equal to 0"),
 	});
 
 	const handleValidate = Yup.object({
@@ -224,7 +221,28 @@ function AddComponent() {
 									<div className="row mb-3 ms-1 align-items-center">
 										<label className="col-sm-3 fw-semibold">Price:</label>
 										<div className="col-sm-5">
-											<Field type="text" name="information.price" className="form-control" placeholder="Enter price" />
+											<Field name="information.price">
+												{({ field, form }) => {
+													const rawValue = field.value;
+													const formattedValue =
+														rawValue !== undefined && rawValue !== null && rawValue !== "" ? Number(rawValue).toLocaleString("en-US") : "";
+
+													return (
+														<input
+															type="text"
+															className="form-control"
+															placeholder="Enter price"
+															value={formattedValue}
+															onChange={(e) => {
+																const noComma = e.target.value.replace(/,/g, "");
+																if (!isNaN(noComma)) {
+																	form.setFieldValue("information.price", Number(noComma));
+																}
+															}}
+														/>
+													);
+												}}
+											</Field>
 											<ErrorMessage name="information.price" style={{ color: "red" }} component="div" />
 										</div>
 									</div>

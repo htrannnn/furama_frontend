@@ -121,7 +121,7 @@ function BookingList() {
 									<td className="text-left">{booking?.customer?.firstName}</td>
 									<td className="text-left">{booking?.customer?.lastName}</td>
 									<td className="text-left">{booking?.customer?.phone}</td>
-									<td className="text-center">{booking?.guests}</td>
+									<td className="text-center">{booking?.adult + booking?.children}</td>
 									<td className="text-left">{booking?.startDate}</td>
 									<td className="text-left">{booking?.endDate}</td>
 									<td className="text-center d-flex justify-content-center gap-2">

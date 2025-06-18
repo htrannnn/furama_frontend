@@ -116,7 +116,7 @@ function DetailComponent() {
 					</Col>
 					<Col className="border-end">
 						<h6 style={{ color: "#046056" }}>Kitchen</h6>
-						<h5>{facilitiesDetail?.information.kitchen > 0 ? <h5>{facilitiesDetail.information.kitchen} kitchen</h5> : "no kitchen"}</h5>
+						{facilitiesDetail?.information.kitchen > 0 ? <h5>{facilitiesDetail.information.kitchen} kitchen</h5> : "no kitchen"}
 					</Col>
 					<Col>
 						<h6 style={{ color: "#046056" }}>Guests</h6>
@@ -212,7 +212,7 @@ function DetailComponent() {
 					<div className="w-25 shadow" id="priceDetail">
 						<h5>
 							<IoPricetags className="me-2" />
-							{facilitiesDetail?.information.price} VNĐ/night
+							{facilitiesDetail?.information.price.toLocaleString("vi-VN")} VNĐ/night
 						</h5>
 					</div>
 				</Row>
