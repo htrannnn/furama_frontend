@@ -34,3 +34,17 @@ export async function getBookingById(id) {
 		return response.data;
 	} catch (error) {}
 }
+
+export async function addNewBooking(booking) {
+	try {
+		const response = await axios.post(`${BASE_URL}/bookings`, booking);
+		return response.data;
+	} catch (error) {}
+}
+
+export async function deleteBookingByID(id) {
+	try {
+		const response = await axios.delete(`${BASE_URL}/bookings/${id}`);
+		return response.data;
+	} catch (error) {}
+}

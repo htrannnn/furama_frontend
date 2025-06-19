@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PAGE_SIZE } from "../../services/constants";
-import { getAllBooking, searchBooking } from "../../services/bookingsService";
+import { deleteBookingByID, getAllBooking, searchBooking } from "../../services/bookingsService";
 import Pagination from "react-bootstrap/Pagination";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
@@ -8,6 +8,8 @@ import CustomSelect from "../user/CustomSelect";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { RxReload } from "react-icons/rx";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { Bounce, toast } from "react-toastify";
+import DeleteBooking from "./DeleteBooking";
 
 function BookingList() {
 	const [allBooking, setAllBooking] = useState([]);
@@ -17,6 +19,8 @@ function BookingList() {
 	const [selectedFirstName, setSelectedFirstName] = useState(null);
 	const [selectedLastName, setSelectedLastName] = useState(null);
 	const [reload, setReload] = useState(true);
+	const [show, setShow] = useState(false);
+	const [deleteBooking, setDeleteBooking] = useState();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -27,7 +31,7 @@ function BookingList() {
 		};
 		window.scrollTo(0, 0);
 		fetchData();
-	}, [page, reload]);
+	}, [page, reload, show]);
 
 	const reloadData = () => {
 		setReload(!reload);
@@ -44,6 +48,34 @@ function BookingList() {
 	};
 	const handleLast = () => {
 		setPage(totalPage); //không thể biết trước được trang cuối nên Last sẽ bằng totalPage
+	};
+
+	const handleShow = (booking) => {
+		setShow(true);
+		setDeleteBooking(booking);
+	};
+
+	const handleClose = (booking) => {
+		setShow(false);
+		setDeleteBooking({});
+	};
+
+	const handleDelete = async () => {
+		try {
+			await deleteBookingByID(deleteBooking.id);
+			handleClose();
+			toast.success("Booking deleted successfully!", {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+				transition: Bounce,
+			});
+		} catch (error) {}
 	};
 
 	const handleSearch = async () => {
@@ -131,7 +163,7 @@ function BookingList() {
 										<Link type="button" className="btn btn" id="btnEditBooking">
 											Edit
 										</Link>
-										<button type="button" className="btn btn-danger pb-2">
+										<button type="button" className="btn btn-danger pb-2" onClick={() => handleShow(booking)}>
 											<MdDelete />
 										</button>
 									</td>
@@ -155,6 +187,8 @@ function BookingList() {
 				<Pagination.Next onClick={handleNext} disabled={page === totalPage} />
 				<Pagination.Last onClick={handleLast} disabled={page === totalPage} />
 			</Pagination>
+
+			<DeleteBooking show={show} booking={deleteBooking} handleClose={handleClose} handleDelete={handleDelete} />
 		</>
 	);
 }

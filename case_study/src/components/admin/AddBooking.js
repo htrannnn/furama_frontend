@@ -5,12 +5,14 @@ import { PiNumberCircleTwo } from "react-icons/pi";
 import Card from "react-bootstrap/Card";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllFacilities } from "../../services/facilitiesServices";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import Select from "react-select";
 import PriceComponent from "./PriceComponent";
+import { Bounce, toast } from "react-toastify";
+import { addNewBooking } from "../../services/bookingsService";
 
 countries.registerLocale(enLocale);
 
@@ -158,6 +160,24 @@ function AddBooking() {
 		);
 	};
 
+	const navigate = useNavigate();
+
+	const handleSubmit = async (value) => {
+		await addNewBooking(value);
+		toast.success("Added successfully!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+			transition: Bounce,
+		});
+		navigate("/rooms");
+	};
+
 	const validationSchema = Yup.object({
 		customer: Yup.object({
 			firstName: Yup.string().required("The field is required"),
@@ -178,179 +198,166 @@ function AddBooking() {
 	});
 
 	return (
-		<div style={{ backgroundColor: "#f3f3f3", padding: "100px 0px", width: "100%" }} className="d-flex">
-			<div id="cardInformation">
-				<div>
-					{selectedFacility ? (
-						<Card className="d-flex flex-row align-items-center p-3 shadow-sm rounded-3" id="cardDetailRoomBooking">
-							<div style={{ flex: "0 0 150px", marginRight: "20px" }}>
-								<img src={selectedFacility.image} alt={selectedFacility.name} style={{ height: "140px", objectFit: "cover", borderRadius: "8px" }} />
-							</div>
-							<div style={{ flex: 1 }}>
-								<h5 className="mb-1">{selectedFacility.name}</h5>
-								<p className="mb-1 text-muted">
-									{selectedFacility?.information?.bedroom ?? "?"} Bedrooms ·{" "}
-									{(selectedFacility?.information.kingBed || 0) +
-										(selectedFacility?.information.queenBed || 0) +
-										(selectedFacility?.information.singleBed || 0)}{" "}
-									Bed(s) · {selectedFacility.information?.bathroom ?? "?"} Bathrooms
-								</p>
-								<p className="mb-1 text-muted">{selectedFacility?.area ?? "?"}</p>
-								<p className="mb-1 text-muted">{selectedFacility?.view ?? "?"} view</p>
-								<div className="d-flex justify-content-between align-items-center">
-									<strong style={{ color: "#046056", fontSize: "1.1rem" }}>
-										VND {selectedFacility.information?.price.toLocaleString("vi-VN") ?? 0}
-									</strong>
+		<div style={{ backgroundColor: "#f3f3f3", paddingTop: "100px", marginRight: "0px" }} className="row">
+			<div className="col-md-7">
+				<div id="cardInformation">
+					<div>
+						{selectedFacility ? (
+							<Card className="d-flex flex-row align-items-center p-3 shadow-sm rounded-3" id="cardDetailRoomBooking">
+								<div style={{ flex: "0 0 150px", marginRight: "20px" }}>
+									<img
+										src={selectedFacility.image}
+										alt={selectedFacility.name}
+										style={{ height: "140px", objectFit: "cover", borderRadius: "8px" }}
+									/>
 								</div>
-							</div>
-						</Card>
-					) : (
-						<p className="text-center text-muted">Loading room information...</p>
-					)}
-				</div>
-
-				<Formik initialValues={initialValues} validationSchema={validationSchema} innerRef={formikRef}>
-					{({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
-						<>
-							<PriceComponent
-								startDate={values.startDate}
-								endDate={values.endDate}
-								selectedFacility={selectedFacility}
-								setFieldValue={setFieldValue}
-							/>
-
-							<Form>
-								<div id="addCustomerCard" className="shadow-sm rounded-3">
-									<Accordion defaultActiveKey="0">
-										<Accordion.Item eventKey="0">
-											<Accordion.Header>
-												<h3 className="pt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
-													<PiNumberCircleOne id="iconCustomer" /> Customer Information
-												</h3>
-											</Accordion.Header>
-											<Accordion.Body>
-												<div className="row">
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "customer.firstName",
-																label: "First name",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "customer.lastName",
-																label: "Last name",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "customer.phone",
-																label: "Phone number",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "customer.email",
-																label: "Email address",
-																type: "email",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "customer.country",
-																label: "Country",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-												</div>
-											</Accordion.Body>
-										</Accordion.Item>
-									</Accordion>
+								<div style={{ flex: 1 }}>
+									<h5 className="mb-1">{selectedFacility.name}</h5>
+									<p className="mb-1 text-muted">
+										{selectedFacility?.information?.bedroom ?? "?"} Bedrooms ·{" "}
+										{(selectedFacility?.information.kingBed || 0) +
+											(selectedFacility?.information.queenBed || 0) +
+											(selectedFacility?.information.singleBed || 0)}{" "}
+										Bed(s) · {selectedFacility.information?.bathroom ?? "?"} Bathrooms
+									</p>
+									<p className="mb-1 text-muted">{selectedFacility?.area ?? "?"}</p>
+									<p className="mb-1 text-muted">{selectedFacility?.view ?? "?"} view</p>
+									<div className="d-flex justify-content-between align-items-center">
+										<strong style={{ color: "#046056", fontSize: "1.1rem" }}>
+											VND {selectedFacility.information?.price.toLocaleString("vi-VN") ?? 0}
+										</strong>
+									</div>
 								</div>
+							</Card>
+						) : (
+							<p className="text-center text-muted">Loading room information...</p>
+						)}
+					</div>
 
-								<div id="addBookingCard" className="shadow-sm rounded-3 mt-2">
-									<Accordion>
-										<Accordion.Item eventKey="0">
-											<Accordion.Header>
-												<h3 className="pt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
-													<PiNumberCircleTwo id="iconCustomer" /> Booking Information
-												</h3>
-											</Accordion.Header>
-											<Accordion.Body>
-												<div className="row">
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "adult",
-																label: "Select Guest (Adult)",
-																type: "number",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-													<div className="col-md-6">
-														<div id="inputFloatingChildren">
+					<Formik initialValues={initialValues} validationSchema={validationSchema} innerRef={formikRef} onSubmit={handleSubmit}>
+						{({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
+							<>
+								<PriceComponent
+									startDate={values.startDate}
+									endDate={values.endDate}
+									selectedFacility={selectedFacility}
+									setFieldValue={setFieldValue}
+								/>
+
+								<Form>
+									<div id="addCustomerCard" className="shadow-sm rounded-3">
+										<Accordion defaultActiveKey="0">
+											<Accordion.Item eventKey="0">
+												<Accordion.Header>
+													<h3 className="pt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
+														<PiNumberCircleOne id="iconCustomer" /> Customer Information
+													</h3>
+												</Accordion.Header>
+												<Accordion.Body>
+													<div className="row">
+														<div className="col-md-6">
 															{renderFloatingField(
 																{
-																	name: "children",
-																	label: "Children (Optional)",
+																	name: "customer.firstName",
+																	label: "First name",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "customer.lastName",
+																	label: "Last name",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "customer.phone",
+																	label: "Phone number",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "customer.email",
+																	label: "Email address",
+																	type: "email",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "customer.country",
+																	label: "Country",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+													</div>
+												</Accordion.Body>
+											</Accordion.Item>
+										</Accordion>
+									</div>
+
+									<div id="addBookingCard" className="shadow-sm rounded-3 mt-2">
+										<Accordion>
+											<Accordion.Item eventKey="0">
+												<Accordion.Header>
+													<h3 className="pt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
+														<PiNumberCircleTwo id="iconCustomer" /> Booking Information
+													</h3>
+												</Accordion.Header>
+												<Accordion.Body>
+													<div className="row">
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "adult",
+																	label: "Select Guest (Adult)",
 																	type: "number",
 																},
 																values,
@@ -363,118 +370,118 @@ function AddBooking() {
 																setFocusedFields
 															)}
 														</div>
-														<p className="text-muted ms-1">Any children above 10, we will consider as adult</p>
-													</div>
+														<div className="col-md-6">
+															<div id="inputFloatingChildren">
+																{renderFloatingField(
+																	{
+																		name: "children",
+																		label: "Children (Optional)",
+																		type: "number",
+																	},
+																	values,
+																	errors,
+																	touched,
+																	handleChange,
+																	handleBlur,
+																	setFieldValue,
+																	focusedFields,
+																	setFocusedFields
+																)}
+															</div>
+															<p className="text-muted ms-1">Any children above 10, we will consider as adult</p>
+														</div>
 
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "startDate",
-																label: "Your Start Date",
-																type: "date",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "endDate",
-																label: "Your End Date",
-																type: "date",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "arrivedTime",
-																label: "Your Arrival Time",
-																type: "time",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "note",
-																label: "Special Request (Optional)",
-																type: "textarea",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-												</div>
-											</Accordion.Body>
-										</Accordion.Item>
-									</Accordion>
-								</div>
-
-								<div id="addPaymentCard" className="shadow-sm rounded-3 mt-2">
-									<Accordion>
-										<Accordion.Item eventKey="0">
-											<Accordion.Header>
-												<h3 className="pt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
-													<PiNumberCircleThree id="iconCustomer" /> Payment Information
-												</h3>
-											</Accordion.Header>
-											<Accordion.Body>
-												<div className="row">
-													<div className="col-md-6">
-														{renderFloatingField(
-															{
-																name: "pricePerDay",
-																label: "",
-																type: "number",
-															},
-															values,
-															errors,
-															touched,
-															handleChange,
-															handleBlur,
-															setFieldValue,
-															focusedFields,
-															setFocusedFields
-														)}
-													</div>
-													<div className="col-md-6">
-														<div id="inputFloatingChildren">
+														<div className="col-md-6">
 															{renderFloatingField(
 																{
-																	name: "totalPrice",
+																	name: "startDate",
+																	label: "Your Start Date",
+																	type: "date",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "endDate",
+																	label: "Your End Date",
+																	type: "date",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "arrivedTime",
+																	label: "Your Arrival Time",
+																	type: "time",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "note",
+																	label: "Special Request (Optional)",
+																	type: "textarea",
+																},
+																values,
+																errors,
+																touched,
+																handleChange,
+																handleBlur,
+																setFieldValue,
+																focusedFields,
+																setFocusedFields
+															)}
+														</div>
+													</div>
+												</Accordion.Body>
+											</Accordion.Item>
+										</Accordion>
+									</div>
+
+									<div id="addPaymentCard" className="shadow-sm rounded-3 mt-2">
+										<Accordion>
+											<Accordion.Item eventKey="0">
+												<Accordion.Header>
+													<h3 className="pt-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
+														<PiNumberCircleThree id="iconCustomer" /> Payment Information
+													</h3>
+												</Accordion.Header>
+												<Accordion.Body>
+													<div className="row">
+														<div className="col-md-6">
+															{renderFloatingField(
+																{
+																	name: "pricePerDay",
 																	label: "",
 																	type: "number",
 																},
@@ -488,29 +495,104 @@ function AddBooking() {
 																setFocusedFields
 															)}
 														</div>
+														<div className="col-md-6">
+															<div id="inputFloatingChildren">
+																{renderFloatingField(
+																	{
+																		name: "totalPrice",
+																		label: "",
+																		type: "number",
+																	},
+																	values,
+																	errors,
+																	touched,
+																	handleChange,
+																	handleBlur,
+																	setFieldValue,
+																	focusedFields,
+																	setFocusedFields
+																)}
+															</div>
+														</div>
 													</div>
-												</div>
-											</Accordion.Body>
-										</Accordion.Item>
-									</Accordion>
-								</div>
-							</Form>
-						</>
-					)}
-				</Formik>
+												</Accordion.Body>
+											</Accordion.Item>
+										</Accordion>
+									</div>
+
+									<ul className="nav nav-pills mt-3" style={{ marginLeft: "150px" }}>
+										<li className="nav-item">
+											{selectedFacility ? (
+												<Link type="button" className="btn btn me-2" id="buttonBack" to={"/room/detail/" + selectedFacility.id}>
+													Back
+												</Link>
+											) : (
+												<p>Loading</p>
+											)}
+										</li>
+										<button type="submit" className="btn btn mb-3 ms-2" id="buttonSubmit">
+											Submit
+										</button>
+									</ul>
+								</Form>
+							</>
+						)}
+					</Formik>
+				</div>
 			</div>
 
-			<div id="cardOverallInformation">
-				<Card className="p-3 shadow-sm rounded-3">
-					<h3 style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>Check</h3>
-					<h5>VND {finalPrice.toLocaleString("vi-VN")} total</h5>
-					{finalStartDate && finalEndDate && (
-						<p>
-							{new Date(finalStartDate).toLocaleDateString("vi-VN")} to {new Date(finalEndDate).toLocaleDateString("vi-VN")}
-						</p>
-					)}
-					<p>{finalGuest} guests</p>
-				</Card>
+			<div className="col-md-4">
+				<div id="cardOverallInformation" style={{ position: "sticky", top: "100px" }}>
+					<Card className="p-3 shadow-sm rounded-3">
+						<h3 style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>Check</h3>
+
+						{finalEndDate && finalStartDate && (
+							<>
+								<h5>VND {(finalPrice * 1.08).toLocaleString("vi-VN")} total</h5>
+								{finalStartDate && finalEndDate && (
+									<p>
+										{new Date(finalStartDate).toLocaleDateString("vi-VN")} to {new Date(finalEndDate).toLocaleDateString("vi-VN")}
+									</p>
+								)}
+								<div className="d-flex" style={{ marginTop: "-10px" }}>
+									{finalGuest && <p>{finalGuest} guests,</p>}{" "}
+									{finalEndDate && finalStartDate && (
+										<p className="ms-1">{Math.ceil((new Date(finalEndDate) - new Date(finalStartDate)) / (1000 * 3600 * 24))} nights</p>
+									)}
+								</div>
+								<hr />
+								<h5 style={{ fontSize: "18px" }}>Stay Details</h5>
+
+								{selectedFacility && (
+									<h5 style={{ fontSize: "18px" }} className="mt-3">
+										{selectedFacility.name}{" "}
+									</h5>
+								)}
+
+								<div className="d-flex" style={{ marginBottom: "-10px" }}>
+									{finalGuest && <p>{finalGuest} guests,</p>}{" "}
+									{finalEndDate && finalStartDate && (
+										<p className="ms-1">{Math.ceil((new Date(finalEndDate) - new Date(finalStartDate)) / (1000 * 3600 * 24))} nights</p>
+									)}
+									<p style={{ marginLeft: "120px" }}>VND {finalPrice.toLocaleString("vi-VN")}</p>
+								</div>
+
+								<div className="d-flex">
+									<p>VAT (8%) </p>
+									<p style={{ marginLeft: "193px" }}>VND {(finalPrice * 0.08).toLocaleString("vi-VN")}</p>
+								</div>
+
+								{finalPrice && <p style={{ marginTop: "-10px" }}>Non-refundable</p>}
+								<hr style={{ marginTop: "-5px" }} />
+								<div className="d-flex" style={{ fontSize: "18px" }}>
+									<h5>Total</h5>
+									<h5 style={{ marginLeft: "168px" }}>VND {(finalPrice * 1.08).toLocaleString("vi-VN")}</h5>
+								</div>
+							</>
+						)}
+					</Card>
+				</div>
+				<div style={{ minHeight: "300px" }}></div>
 			</div>
 		</div>
 	);
