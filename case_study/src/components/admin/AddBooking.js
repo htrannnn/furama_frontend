@@ -3,7 +3,7 @@ import Accordion from "react-bootstrap/Accordion";
 import { PiNumberCircleOne, PiNumberCircleThree } from "react-icons/pi";
 import { PiNumberCircleTwo } from "react-icons/pi";
 import Card from "react-bootstrap/Card";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllFacilities } from "../../services/facilitiesServices";
@@ -13,6 +13,7 @@ import Select from "react-select";
 import PriceComponent from "./PriceComponent";
 import { Bounce, toast } from "react-toastify";
 import { addNewBooking } from "../../services/bookingsService";
+import { useSelector } from "react-redux";
 
 countries.registerLocale(enLocale);
 
@@ -39,46 +40,54 @@ function AddBooking() {
 
 	const [focusedFields, setFocusedFields] = useState({});
 	const [selectedFacility, setSelectedFacility] = useState(null);
-	const { facilityId } = useParams();
 	const [finalPrice, setFinalPrice] = useState(0);
 	const [finalStartDate, setFinalStartDate] = useState();
 	const [finalEndDate, setFinalEndDate] = useState();
 	const [finalGuest, setFinalGuest] = useState();
+	const [facilityList, setFacilityList] = useState([]);
+	const { facilityId } = useParams();
+	const formikRef = useRef();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			const [facilities] = await getAllFacilities();
-			const found = facilities.find((f) => f.id === Number(facilityId));
+			setFacilityList(facilities);
 
-			if (found) {
-				setSelectedFacility(found);
+			if (facilityId) {
+				const found = facilities.find((f) => f.id === Number(facilityId));
+
+				if (found) {
+					setSelectedFacility(found);
+				}
 			}
 		};
-
 		window.scrollTo(0, 0);
 		fetchData();
 
 		const interval = setInterval(() => {
-			const totalPrice = formikRef.current?.values?.totalPrice;
+			const formikValues = formikRef.current?.values;
+			if (!formikValues) return;
+
+			const { totalPrice, startDate, endDate, adult, children } = formikValues;
+
 			if (totalPrice && !isNaN(totalPrice)) {
 				setFinalPrice(totalPrice);
 			}
 
-			const startDate = formikRef.current?.values?.startDate;
 			if (startDate !== finalStartDate) setFinalStartDate(startDate);
-
-			const endDate = formikRef.current?.values?.endDate;
 			if (endDate !== finalEndDate) setFinalEndDate(endDate);
-
-			const adultGuest = formikRef.current?.values?.adult;
-			const childrenGuest = formikRef.current?.values.children;
-			if (adultGuest !== finalGuest) setFinalGuest(adultGuest + childrenGuest);
+			if (adult + children !== finalGuest) setFinalGuest(adult + children);
 		}, 300); //đọc giá trị từ Formik ra bên ngoài, dùng useRef
 
 		return () => clearInterval(interval); //hàm dọn dẹp
 	}, [facilityId]);
 
-	const formikRef = useRef();
+	useEffect(() => {
+		if (selectedFacility && formikRef.current) {
+			formikRef.current.setFieldValue("facilityId", selectedFacility.id);
+			formikRef.current.setFieldValue("pricePerDay", selectedFacility.information?.price ?? 0);
+		}
+	}, [selectedFacility]);
 
 	const countryOptions = Object.entries(countries.getNames("en", { select: "official" })).map(([code, name]) => ({ value: code, label: name }));
 
@@ -164,7 +173,9 @@ function AddBooking() {
 
 	const handleSubmit = async (value) => {
 		await addNewBooking(value);
-		toast.success("Added successfully!", {
+		console.log("Values submitted:", value);
+
+		toast.success("We have added your booking successfully! Thank you for choosing Furama Resort", {
 			position: "top-right",
 			autoClose: 5000,
 			hideProgressBar: false,
@@ -197,53 +208,79 @@ function AddBooking() {
 		arrivedTime: Yup.string().required("The field is required"),
 	});
 
+	const account = useSelector((state) => state?.account?.account);
+
 	return (
 		<div style={{ backgroundColor: "#f3f3f3", paddingTop: "100px", marginRight: "0px" }} className="row">
 			<div className="col-md-7">
 				<div id="cardInformation">
-					<div>
-						{selectedFacility ? (
-							<Card className="d-flex flex-row align-items-center p-3 shadow-sm rounded-3" id="cardDetailRoomBooking">
-								<div style={{ flex: "0 0 150px", marginRight: "20px" }}>
-									<img
-										src={selectedFacility.image}
-										alt={selectedFacility.name}
-										style={{ height: "140px", objectFit: "cover", borderRadius: "8px" }}
-									/>
-								</div>
-								<div style={{ flex: 1 }}>
-									<h5 className="mb-1">{selectedFacility.name}</h5>
-									<p className="mb-1 text-muted">
-										{selectedFacility?.information?.bedroom ?? "?"} Bedrooms ·{" "}
-										{(selectedFacility?.information.kingBed || 0) +
-											(selectedFacility?.information.queenBed || 0) +
-											(selectedFacility?.information.singleBed || 0)}{" "}
-										Bed(s) · {selectedFacility.information?.bathroom ?? "?"} Bathrooms
-									</p>
-									<p className="mb-1 text-muted">{selectedFacility?.area ?? "?"}</p>
-									<p className="mb-1 text-muted">{selectedFacility?.view ?? "?"} view</p>
-									<div className="d-flex justify-content-between align-items-center">
-										<strong style={{ color: "#046056", fontSize: "1.1rem" }}>
-											VND {selectedFacility.information?.price.toLocaleString("vi-VN") ?? 0}
-										</strong>
-									</div>
-								</div>
-							</Card>
-						) : (
-							<p className="text-center text-muted">Loading room information...</p>
-						)}
-					</div>
-
 					<Formik initialValues={initialValues} validationSchema={validationSchema} innerRef={formikRef} onSubmit={handleSubmit}>
 						{({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
 							<>
+								{account && (
+									<div className="mb-3" style={{ marginLeft: "150px" }}>
+										<Select
+											options={facilityList.map((f) => ({
+												value: f.id,
+												label: f.name,
+												data: f,
+											}))}
+											onChange={(option) => {
+												setSelectedFacility(option.data);
+											}}
+											placeholder="Choose Your Room"
+											value={
+												selectedFacility
+													? {
+															value: selectedFacility.id,
+															label: selectedFacility.name,
+															data: selectedFacility,
+													  }
+													: null
+											}
+											classNamePrefix="react-select"
+										/>
+									</div>
+								)}
+
+								<div>
+									{selectedFacility ? (
+										<Card className="d-flex flex-row align-items-center p-3 shadow-sm rounded-3" id="cardDetailRoomBooking">
+											<div style={{ flex: "0 0 150px", marginRight: "20px" }}>
+												<img
+													src={selectedFacility.image}
+													alt={selectedFacility.name}
+													style={{ height: "140px", objectFit: "cover", borderRadius: "8px" }}
+												/>
+											</div>
+											<div style={{ flex: 1 }}>
+												<h5 className="mb-1">{selectedFacility.name}</h5>
+												<p className="mb-1 text-muted">
+													{selectedFacility?.information?.bedroom ?? "?"} Bedrooms ·{" "}
+													{(selectedFacility?.information.kingBed || 0) +
+														(selectedFacility?.information.queenBed || 0) +
+														(selectedFacility?.information.singleBed || 0)}{" "}
+													Bed(s) · {selectedFacility.information?.bathroom ?? "?"} Bathrooms
+												</p>
+												<p className="mb-1 text-muted">{selectedFacility?.area ?? "?"}</p>
+												<p className="mb-1 text-muted">{selectedFacility?.view ?? "?"} view</p>
+												<div className="d-flex justify-content-between align-items-center">
+													<strong style={{ color: "#046056", fontSize: "1.1rem" }}>
+														VND {selectedFacility.information?.price.toLocaleString("vi-VN") ?? 0}
+													</strong>
+												</div>
+											</div>
+										</Card>
+									) : (
+										<p className="text-center text-muted">Loading room information...</p>
+									)}
+								</div>
 								<PriceComponent
 									startDate={values.startDate}
 									endDate={values.endDate}
 									selectedFacility={selectedFacility}
 									setFieldValue={setFieldValue}
 								/>
-
 								<Form>
 									<div id="addCustomerCard" className="shadow-sm rounded-3">
 										<Accordion defaultActiveKey="0">
@@ -353,6 +390,8 @@ function AddBooking() {
 												</Accordion.Header>
 												<Accordion.Body>
 													<div className="row">
+														<Field type="hidden" name="facilityId" />
+
 														<div className="col-md-6">
 															{renderFloatingField(
 																{
@@ -574,19 +613,19 @@ function AddBooking() {
 									{finalEndDate && finalStartDate && (
 										<p className="ms-1">{Math.ceil((new Date(finalEndDate) - new Date(finalStartDate)) / (1000 * 3600 * 24))} nights</p>
 									)}
-									<p style={{ marginLeft: "120px" }}>VND {finalPrice.toLocaleString("vi-VN")}</p>
+									<p style={{ marginLeft: "100px" }}>VND {finalPrice.toLocaleString("vi-VN")}</p>
 								</div>
 
 								<div className="d-flex">
 									<p>VAT (8%) </p>
-									<p style={{ marginLeft: "193px" }}>VND {(finalPrice * 0.08).toLocaleString("vi-VN")}</p>
+									<p style={{ marginLeft: "161px" }}>VND {(finalPrice * 0.08).toLocaleString("vi-VN")}</p>
 								</div>
 
 								{finalPrice && <p style={{ marginTop: "-10px" }}>Non-refundable</p>}
 								<hr style={{ marginTop: "-5px" }} />
 								<div className="d-flex" style={{ fontSize: "18px" }}>
 									<h5>Total</h5>
-									<h5 style={{ marginLeft: "168px" }}>VND {(finalPrice * 1.08).toLocaleString("vi-VN")}</h5>
+									<h5 style={{ marginLeft: "150px" }}>VND {(finalPrice * 1.08).toLocaleString("vi-VN")}</h5>
 								</div>
 							</>
 						)}

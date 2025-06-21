@@ -97,7 +97,7 @@ function BookingList() {
 			<div className="mx-5 mb-2">
 				<div className="d-flex mb-4">
 					<div className="w-50 justify-content-start">
-						<Link className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonAddBooking">
+						<Link className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonAddBooking" to={"/booking/add/" + allBooking.id}>
 							<AiOutlineUsergroupAdd style={{ fontSize: "25px" }} title="AddBooking" />
 							New Booking
 						</Link>

@@ -122,7 +122,7 @@ function BookingDetail() {
 						<div className="row mb-3 ms-1 align-items-center">
 							<label className="col-sm-3 me-2 fw-semibold">Guests:</label>
 							<div className="col-sm-6 form-control">
-								{bookingDetail?.adult} adults, {bookingDetail?.children} children
+								{bookingDetail?.adult} adults{bookingDetail?.children > 0 && `, ${bookingDetail.children} children`}
 							</div>
 						</div>
 
@@ -144,12 +144,12 @@ function BookingDetail() {
 				<Row style={{ width: "51%" }}>
 					<Col>
 						<div className="row mb-3 ms-1 align-items-center">
-							<label className="col-sm-4 me-2 fw-semibold">Price/day (VNĐ):</label>
+							<label className="col-sm-4 me-2 fw-semibold">Price/day (VND):</label>
 							<div className="col-sm-6 form-control">{bookingDetail?.pricePerDay.toLocaleString("vi-VN")} </div>
 						</div>
 
 						<div className="row  mb-3 ms-1 align-items-center">
-							<label className="col-sm-4 me-2 fw-semibold">Total Price (VNĐ):</label>
+							<label className="col-sm-4 me-2 fw-semibold">Total Price (VND):</label>
 							<div className="col-sm-6 form-control">{bookingDetail?.totalPrice.toLocaleString("vi-VN")}</div>
 						</div>
 					</Col>
