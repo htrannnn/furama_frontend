@@ -8,6 +8,10 @@ import { PiNumberCircleThree } from "react-icons/pi";
 import { getBookingById } from "../../services/bookingsService";
 import { Link, useParams } from "react-router-dom";
 import { getAllFacilities } from "../../services/facilitiesServices";
+import countries from "i18n-iso-countries";
+import enLocale from "i18n-iso-countries/langs/en.json";
+
+countries.registerLocale(enLocale);
 
 function BookingDetail() {
 	const [bookingDetail, setBookingDetail] = useState({
@@ -41,6 +45,10 @@ function BookingDetail() {
 				...bookingData,
 				startDate: bookingData.startDate ? new Date(bookingData.startDate).toLocaleDateString("vi-VN") : "",
 				endDate: bookingData.endDate ? new Date(bookingData.endDate).toLocaleDateString("vi-VN") : "",
+				customer: {
+					...bookingData.customer,
+					countryName: bookingData.customer?.country ? countries.getName(bookingData.customer.country, "en") : "",
+				},
 			};
 			setBookingDetail(formattedData);
 
@@ -58,6 +66,12 @@ function BookingDetail() {
 
 	return (
 		<div style={{ marginTop: "100px" }}>
+			<div className="text-center mb-4 ">
+				<h2 style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
+					{bookingDetail?.customer.firstName} {bookingDetail?.customer.lastName}'s Booking Detail
+				</h2>
+			</div>
+
 			<Container className="container mt-3 mb-4">
 				<h3 className="ms-3" style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
 					<PiNumberCircleOne id="iconCustomer" /> Customer Information
@@ -76,7 +90,7 @@ function BookingDetail() {
 
 						<div className="row mb-3 ms-1 align-items-center">
 							<label className="col-sm-3 me-2 fw-semibold">Country:</label>
-							<div className="col-sm-6 form-control">{bookingDetail?.customer.country}</div>
+							<div className="col-sm-6 form-control">{bookingDetail?.customer.countryName}</div>
 						</div>
 					</Col>
 

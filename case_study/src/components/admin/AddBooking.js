@@ -91,6 +91,28 @@ function AddBooking() {
 
 	const countryOptions = Object.entries(countries.getNames("en", { select: "official" })).map(([code, name]) => ({ value: code, label: name }));
 
+	const timeOptions = Array.from({ length: 24 }, (_, i) => {
+		const date = new Date();
+		date.setHours(i);
+		date.setMinutes(0);
+
+		const hour12 = date.toLocaleString("en-US", {
+			hour: "numeric",
+			minute: "2-digit",
+			hour12: true,
+		});
+
+		const hour24 = date.toLocaleTimeString("en-GB", {
+			hour: "2-digit",
+			minute: "2-digit",
+		});
+
+		return {
+			value: hour12,
+			label: `${hour12} (${hour24})`,
+		};
+	});
+
 	const renderFloatingField = (
 		{ name, label, type = "text", hint },
 		values,
@@ -126,6 +148,24 @@ function AddBooking() {
 						value={countryOptions.find((option) => option.value === fieldValue) || null}
 						onChange={(selected) => setFieldValue(name, selected?.value)}
 						onFocus={handleFocus}
+						onBlur={() => setFocusedFields((prev) => ({ ...prev, [name]: false }))}
+						classNamePrefix="react-select"
+						className={`floating-select ${floating ? "floating" : ""}`}
+					/>
+					<label className={`floating-label ${floating ? "floating" : "normal"} ${focused ? "focused" : ""}`}>{label}</label>
+					{fieldTouched && fieldError && <div className="text-danger">{fieldError}</div>}
+				</div>
+			);
+		}
+
+		if (name === "arrivedTime") {
+			return (
+				<div className="floating-input-container">
+					<Select
+						options={timeOptions}
+						value={timeOptions.find((opt) => opt.value === fieldValue) || null}
+						onChange={(opt) => setFieldValue(name, opt?.value)}
+						onFocus={() => setFocusedFields((prev) => ({ ...prev, [name]: true }))}
 						onBlur={() => setFocusedFields((prev) => ({ ...prev, [name]: false }))}
 						classNamePrefix="react-select"
 						className={`floating-select ${floating ? "floating" : ""}`}
@@ -172,8 +212,7 @@ function AddBooking() {
 	const navigate = useNavigate();
 
 	const handleSubmit = async (value) => {
-		await addNewBooking(value);
-		console.log("Values submitted:", value);
+		const newBooking = await addNewBooking(value);
 
 		toast.success("We have added your booking successfully! Thank you for choosing Furama Resort", {
 			position: "top-right",
@@ -186,7 +225,9 @@ function AddBooking() {
 			theme: "colored",
 			transition: Bounce,
 		});
-		navigate("/rooms");
+		if (newBooking?.id) {
+			navigate(`/check_in/${newBooking.id}`);
+		}
 	};
 
 	const validationSchema = Yup.object({
@@ -212,6 +253,9 @@ function AddBooking() {
 
 	return (
 		<div style={{ backgroundColor: "#f3f3f3", paddingTop: "100px", marginRight: "0px" }} className="row">
+			<div className="text-center mb-4 ">
+				<h2 style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>New Booking</h2>
+			</div>
 			<div className="col-md-7">
 				<div id="cardInformation">
 					<Formik initialValues={initialValues} validationSchema={validationSchema} innerRef={formikRef} onSubmit={handleSubmit}>
@@ -471,7 +515,6 @@ function AddBooking() {
 																{
 																	name: "arrivedTime",
 																	label: "Your Arrival Time",
-																	type: "time",
 																},
 																values,
 																errors,
@@ -631,7 +674,6 @@ function AddBooking() {
 						)}
 					</Card>
 				</div>
-				<div style={{ minHeight: "300px" }}></div>
 			</div>
 		</div>
 	);

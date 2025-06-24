@@ -26,9 +26,16 @@ function BookingList() {
 		const fetchData = async () => {
 			const [data, total] = await getAllBooking(page, totalSize);
 
-			setAllBooking(data);
+			const formattedData = data.map((booking) => ({
+				...booking,
+				startDate: booking.startDate ? new Date(booking.startDate).toLocaleDateString("vi-VN") : "",
+				endDate: booking.endDate ? new Date(booking.endDate).toLocaleDateString("vi-VN") : "",
+			}));
+
+			setAllBooking(formattedData);
 			setTotalPage(Math.ceil(total / PAGE_SIZE));
 		};
+
 		window.scrollTo(0, 0);
 		fetchData();
 	}, [page, reload, show]);
@@ -160,7 +167,7 @@ function BookingList() {
 										<Link type="button" className="btn btn" id="btnDetailBooking" to={"/booking/detail/" + booking.id}>
 											Detail
 										</Link>
-										<Link type="button" className="btn btn" id="btnEditBooking">
+										<Link type="button" className="btn btn" id="btnEditBooking" to={"/booking/edit/" + booking.id}>
 											Edit
 										</Link>
 										<button type="button" className="btn btn-danger pb-2" onClick={() => handleShow(booking)}>

@@ -48,3 +48,10 @@ export async function deleteBookingByID(id) {
 		return response.data;
 	} catch (error) {}
 }
+
+export async function updateBooking(id, booking) {
+	try {
+		const response = await axios.put(`${BASE_URL}/bookings/${id}`, booking);
+		return response.data;
+	} catch (error) {}
+}

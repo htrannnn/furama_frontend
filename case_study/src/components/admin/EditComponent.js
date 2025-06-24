@@ -22,7 +22,6 @@ function EditComponent(props) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			console.log(await getFacilitiesById(id));
 			setFacilities(await getFacilitiesById(id));
 			setTypes(await getAllTypes());
 		};
