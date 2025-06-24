@@ -1,6 +1,6 @@
 {
 	"name": "case_study",
-	"homepage": "https://furama-frontend-1851.onrender.com",
+	"homepage": ".",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
