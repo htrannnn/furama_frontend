@@ -40,11 +40,11 @@ function AddBooking() {
 
 	const [focusedFields, setFocusedFields] = useState({});
 	const [selectedFacility, setSelectedFacility] = useState(null);
+	const [facilityList, setFacilityList] = useState([]);
 	const [finalPrice, setFinalPrice] = useState(0);
 	const [finalStartDate, setFinalStartDate] = useState();
 	const [finalEndDate, setFinalEndDate] = useState();
 	const [finalGuest, setFinalGuest] = useState();
-	const [facilityList, setFacilityList] = useState([]);
 	const { facilityId } = useParams();
 	const formikRef = useRef();
 

@@ -409,6 +409,25 @@
       "note": "test ",
       "pricePerDay": 1500000,
       "totalPrice": 4500000
+    },
+    {
+      "id": 8,
+      "customer": {
+        "firstName": "test check card",
+        "lastName": "test",
+        "phone": "0939584957",
+        "email": "test@gmail.com",
+        "country": "NZ"
+      },
+      "facilityId": 2,
+      "adult": 5,
+      "children": "",
+      "startDate": "2025-07-02",
+      "endDate": "2025-07-04",
+      "arrivedTime": "5:00 AM",
+      "note": "test check in card",
+      "pricePerDay": 2500000,
+      "totalPrice": 5000000
     }
   ]
 }
