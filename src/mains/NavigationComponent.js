@@ -21,57 +21,54 @@ function NavigationComponent() {
 	}, []);
 
 	return (
-		<>
-			<div id="container">
-				<nav className={`d-flex justify-content-center py-3 ${isSticky ? "navbar-sticky" : "navbar-normal"}`}>
-					<ul className="nav fw-semibold">
-						{account && (
-							<li className="nav-item">
-								<Link className="nav-link text-white" aria-current="page" to="/admin">
-									Admin
-								</Link>
-							</li>
-						)}
-
-						{account?.role !== "ADMIN" && (
-							<>
-								<li className="nav-item">
-									<Link className="nav-link text-white" aria-current="page" to="/homepage">
-										The Furama
-									</Link>
-								</li>
-							</>
-						)}
+		<div>
+			<nav className={`d-flex justify-content-center w-100 py-3 ${isSticky ? "navbar-sticky" : "navbar-normal"}`}>
+				<ul className="nav fw-semibold" id="navbar">
+					{account && (
 						<li className="nav-item">
-							<Link className="nav-link text-white" aria-current="page" to="/rooms">
-								Rooms & suites
+							<Link className="nav-link text-white" to="/admin">
+								Admin
 							</Link>
 						</li>
-
-						{account?.role !== "ADMIN" && (
-							<>
-								<li className="nav-item">
-									<Link className="nav-link text-white" aria-current="page" to="/culinary">
-										Culinary
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link text-white">About Us</Link>
-								</li>
-							</>
-						)}
-
-						{account && (
+					)}
+					{account?.role !== "ADMIN" && (
+						<>
 							<li className="nav-item">
-								<Link className="nav-link text-white" aria-current="page" to="/booking">
-									Booking
+								<Link className="nav-link text-white" to="/homepage">
+									The Furama
 								</Link>
 							</li>
-						)}
-					</ul>
-				</nav>
-			</div>
-		</>
+						</>
+					)}
+					<li className="nav-item">
+						<Link className="nav-link text-white" to="/rooms">
+							Rooms & suites
+						</Link>
+					</li>
+					{account?.role !== "ADMIN" && (
+						<>
+							<li className="nav-item">
+								<Link className="nav-link text-white" to="/culinary">
+									Culinary
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link text-white" to="/about">
+									About Us
+								</Link>
+							</li>
+						</>
+					)}
+					{account && (
+						<li className="nav-item">
+							<Link className="nav-link text-white" to="/booking">
+								Booking
+							</Link>
+						</li>
+					)}
+				</ul>
+			</nav>
+		</div>
 	);
 }
 

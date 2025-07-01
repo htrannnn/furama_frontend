@@ -30,11 +30,12 @@ function AutoSlider() {
 				{sliderData.map((item, imageIndex) => {
 					return (
 						<div
+							id="autoSliderImg"
 							key={item.id}
 							className={`slide ${imageIndex === index ? "activeSlide" : "inactiveSlide"}`}
 							style={{ backgroundImage: `url(${item.image})` }}
 						>
-							<div className="text-overlay ms-5">
+							<div className="text-overlay ms-5" id="autoSliderText">
 								<strong>{sliderText.line_1}</strong>
 								<br />
 								<strong>{sliderText.line_2}</strong>

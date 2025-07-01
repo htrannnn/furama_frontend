@@ -5,6 +5,13 @@
 	box-sizing: border-box;
 }
 
+body {
+	overflow-x: hidden;
+}
+.app-layout {
+	overflow-x: hidden;
+}
+
 /* ------------ */
 .imgLogo {
 	width: 65%;
@@ -473,3 +480,44 @@ form {
 	padding-left: 25px;
 }
 /* end footer */
+
+/* responsive */
+@media (max-width: 480px) {
+	/* header */
+	#header {
+		width: 125%;
+	}
+
+	.imgLogo {
+		height: 60px;
+		width: auto;
+	}
+
+	#headerControls {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+
+	/* navbar */
+	nav {
+		border: 1px solid red;
+		width: 100% !important;
+	}
+
+	nav ul.nav {
+		width: 100% !important;
+	}
+
+	/* introduce */
+	.main {
+		width: 130%;
+	}
+	#autoSliderImg {
+		object-fit: contain;
+	}
+	#autoSliderText {
+		font-size: 18px;
+		line-height: 22px;
+	}
+}

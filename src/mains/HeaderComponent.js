@@ -15,44 +15,31 @@ function HeaderComponent() {
 	};
 
 	return (
-		<div className="container">
-			<header className="d-flex flex-wrap justify-content-center py-3 border-bottom">
-				<NavLink to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-					<svg className="bi me-2" width={40} height={32}>
-						<use xlinkHref="#bootstrap" />
-					</svg>
-					<span className="fs-4">
+		<div className="container" id="header">
+			<header className="d-flex justify-content-between align-items-center py-3 border-bottom flex-wrap">
+				<div className="d-flex align-items-center">
+					<NavLink to="/" className="text-dark text-decoration-none">
 						<img src="/images/Logo.png" alt="logo" className="imgLogo" />
-					</span>
-				</NavLink>
+					</NavLink>
+				</div>
 
-				<ul className="nav nav-pills mt-3">
-					<li className="nav-item">
-						<Link className="nav-link" id="headerSupport">
-							Support
+				<div className="d-flex align-items-center gap-3" id="headerControls">
+					<Link className="nav-link" id="headerSupport">
+						Support
+					</Link>
+					{!account ? (
+						<Link className="btn btn-outline-dark" id="headerButton" to="/login">
+							Login
 						</Link>
-					</li>
-					{!account && (
-						<li className="nav-item">
-							<Link className="btn btn" id="headerButton" to="/login">
-								Login
-							</Link>
-						</li>
-					)}
-				</ul>
-
-				{account && (
-					<ul className="nav nav-pills mt-3">
-						<li className="nav-item me-3">
-							<img src={account?.avatar} alt="avatar" roundedCircle width={40} height={40}></img>
-						</li>
-						<li className="nav-item">
-							<div className="btn btn" id="logoutButton" onClick={handleLogout}>
+					) : (
+						<>
+							<img src={account?.avatar} alt="avatar" width={40} height={40} className="rounded-circle" />
+							<div className="btn btn-outline-dark" id="logoutButton" onClick={handleLogout}>
 								Logout
 							</div>
-						</li>
-					</ul>
-				)}
+						</>
+					)}
+				</div>
 			</header>
 		</div>
 	);

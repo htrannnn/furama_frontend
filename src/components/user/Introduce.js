@@ -18,7 +18,7 @@ function Introduce() {
 	}, []);
 
 	return (
-		<>
+		<div className="main">
 			<div>
 				<AutoSlider />
 			</div>
@@ -105,7 +105,7 @@ function Introduce() {
 					</Card>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 
