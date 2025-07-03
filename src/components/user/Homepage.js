@@ -21,8 +21,8 @@ function Homepage() {
 			</div>
 
 			<div className="mx-5 mb-5" style={{ marginTop: "100px" }}>
-				<Row>
-					<Col>
+				<div className="row justify-content-center" id="homeCard">
+					<div className="col-5" id="homeItem-1">
 						<h2 className="mb-4 fw-bold" style={{ fontSize: "22px", lineHeight: "35px", fontFamily: "serif", color: "#cbbe73" }}>
 							THIS WORLD CLASS RESORT, FURAMA DANANG, REPUTABLE AS THE CULINARY BEACH RESORT IN VIETNAM
 						</h2>
@@ -39,9 +39,9 @@ function Homepage() {
 							<img src="/images/hpbody.jpg" alt="pool" style={{ width: "100%" }} className="mt-3" />
 							<img src="/images/hpcave.jpg" alt="pool" style={{ width: "100%" }} className="mt-3" />
 						</div>
-					</Col>
+					</div>
 
-					<Col>
+					<div className="col-6" id="homeItem-2">
 						<div className="hover-wrapper" onClick={() => setLgShow(true)}>
 							<img src="/images/courtyard.jpg" alt="video" className="hover-image" />
 
@@ -82,8 +82,8 @@ function Homepage() {
 								service, make the Furama Danang the ideal venue for MICE groups.
 							</p>
 						</div>
-					</Col>
-				</Row>
+					</div>
+				</div>
 			</div>
 		</>
 	);

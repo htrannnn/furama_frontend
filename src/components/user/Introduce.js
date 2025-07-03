@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AutoSlider from "./AutoSlider";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Ratio from "react-bootstrap/Ratio";
 import { FaPlayCircle } from "react-icons/fa";
@@ -24,13 +22,13 @@ function Introduce() {
 			</div>
 
 			<div className="mx-5 mt-5">
-				<Row>
-					<Col>
+				<div className="row justify-content-center" id="introduceCard">
+					<div className="col-3" id="introduceItem-1">
 						<h2 className="fw-bold" style={{ fontSize: "22px", lineHeight: "35px", fontFamily: "serif", color: "#cbbe73" }}>
 							THIS WORLD CLASS RESORT, FURAMA DANANG, REPUTABLE FOR BEING A CULINARY RESORT IN VIETNAM
 						</h2>
-					</Col>
-					<Col>
+					</div>
+					<div className="col-4" id="introduceItem-2">
 						<div className="hover-wrapper" onClick={() => setLgShow(true)}>
 							<img src="/images/exterior-beach.jpg" alt="video" className="hover-image" />
 
@@ -46,16 +44,16 @@ function Introduce() {
 								</Ratio>
 							</Modal.Body>
 						</Modal>
-					</Col>
-					<Col>
+					</div>
+					<div className="col-4" id="introduceItem-3">
 						<p className="fw-semibold" style={{ fontSize: "14px", lineHeight: "25px", textAlign: "justify" }}>
 							Overlooking the long stretch of wide white sand on Danang Beach, Furama Resort Danang is a gateway to three World Heritage Sites of Hoi
 							An (20 minutes), My Son (90 minutes) and Hue (2 hours). The 198 rooms and suites plus 70 two to four bedroom pool villas feature
 							tasteful décor, designed with traditional Vietnamese style and a touch of French colonial architecture and guarantee the Vietnam’s the
 							most prestigious resort -counting royalty, presidents, movie stars and international business leaders among its celebrity guests.
 						</p>
-					</Col>
-				</Row>
+					</div>
+				</div>
 			</div>
 
 			<div className="mt-4 pb-5" style={{ backgroundColor: "#f3f3f3" }}>

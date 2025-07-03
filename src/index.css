@@ -5,13 +5,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	overflow-x: hidden;
-}
-.app-layout {
-	overflow-x: hidden;
-}
-
 /* ------------ */
 .imgLogo {
 	width: 65%;
@@ -159,7 +152,11 @@ form {
 	height: 350px;
 }
 
-#titleText,
+#titleText {
+	padding-top: 140px !important;
+	color: white;
+	font-weight: bold;
+}
 /* end homepage */
 
 /* rooms component  */
@@ -500,14 +497,6 @@ form {
 	}
 
 	/* navbar */
-	nav {
-		border: 1px solid red;
-		width: 100% !important;
-	}
-
-	nav ul.nav {
-		width: 100% !important;
-	}
 
 	/* introduce */
 	.main {
@@ -519,5 +508,27 @@ form {
 	#autoSliderText {
 		font-size: 18px;
 		line-height: 22px;
+	}
+	#introduceCard {
+		display: flex;
+		flex-direction: column;
+	}
+	#introduceItem-1,
+	#introduceItem-2,
+	#introduceItem-3 {
+		width: 100%;
+	}
+
+	/* homepage */
+	#titleImg {
+		width: 130%;
+	}
+	#homeCard {
+		display: flex;
+		flex-direction: column;
+	}
+	#homeItem-1,
+	#homeItem-2 {
+		width: 100%;
 	}
 }
