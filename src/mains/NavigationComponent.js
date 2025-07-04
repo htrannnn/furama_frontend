@@ -22,8 +22,8 @@ function NavigationComponent() {
 
 	return (
 		<div>
-			<nav className={`d-flex justify-content-center w-100 py-3 ${isSticky ? "navbar-sticky" : "navbar-normal"}`}>
-				<ul className="nav fw-semibold" id="navbar">
+			<nav className={`d-flex justify-content-center py-3 ${isSticky ? "navbar-sticky" : "navbar-normal"}`} id="navbar">
+				<ul className="nav fw-semibold">
 					{account && (
 						<li className="nav-item">
 							<Link className="nav-link text-white" to="/admin">
