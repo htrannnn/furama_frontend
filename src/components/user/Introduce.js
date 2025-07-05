@@ -22,7 +22,7 @@ function Introduce() {
 			</div>
 
 			<div className="mx-5 mt-5">
-				<div className="row justify-content-center" id="introduceCard">
+				<div className="row justify-content-center" id="introduceCard-1">
 					<div className="col-3" id="introduceItem-1">
 						<h2 className="fw-bold" style={{ fontSize: "22px", lineHeight: "35px", fontFamily: "serif", color: "#cbbe73" }}>
 							THIS WORLD CLASS RESORT, FURAMA DANANG, REPUTABLE FOR BEING A CULINARY RESORT IN VIETNAM
@@ -62,45 +62,51 @@ function Introduce() {
 						OFFERS & DEAL
 					</h3>
 				</div>
-				<div className="d-flex justify-content-center mt-4" style={{ gap: "60px" }}>
-					<Card style={{ width: "40%", backgroundColor: "transparent", border: "none" }}>
-						<Card.Img variant="top" src="/images/room-promotion.jpg" className="rounded-2" />
-						<div className="border-top mt-3"></div>
-						<div className="mt-3">
-							<Card.Text className="fw-semibold" style={{ fontSize: "14px", lineHeight: "25px", textAlign: "justify" }}>
-								Being Vietnam’s most prestigious resort, Furama Resort Danang is proud to serve thousands of visitors every year. Explore our
-								promotion offers for resort room and plan your vacation with us!
-							</Card.Text>
-							<Link
-								className="btn d-flex align-items-center justify-content-center"
-								id="btnRoom"
-								style={{ width: "100%", height: "50px" }}
-								to="/rooms"
-							>
-								<FaKey className="me-2 mt-1" /> Resort Room Promotion
-							</Link>
+				<div className="container-fluid center px-2 mt-4" id="introduceCard-2">
+					<div className="row gx-3 gy-4 justify-content-center">
+						<div className="col-12 col-md-6 col-lg-5" id="introduceItem-4">
+							<Card className="h-100 border-0 bg-transparent w-100">
+								<Card.Img variant="top" src="/images/room-promotion.jpg" className="rounded-2 w-100" />
+								<div className="border-top mt-3"></div>
+								<div className="mt-3">
+									<Card.Text className="fw-semibold" style={{ fontSize: "15px", lineHeight: "25px", textAlign: "justify" }}>
+										Being Vietnam’s most prestigious resort, Furama Resort Danang is proud to serve thousands of visitors every year. Explore our
+										promotion offers for resort room and plan your vacation with us!
+									</Card.Text>
+									<Link
+										className="btn d-flex align-items-center justify-content-center"
+										id="btnRoom"
+										style={{ width: "100%", height: "50px" }}
+										to="/rooms"
+									>
+										<FaKey className="me-2 mt-1" /> Resort Room Promotion
+									</Link>
+								</div>
+							</Card>
 						</div>
-					</Card>
 
-					<Card style={{ width: "40%", backgroundColor: "transparent", border: "none" }}>
-						<Card.Img variant="top" src="/images/culinary-promotion.jpg" className="rounded-2" />
-						<div className="border-top mt-3"></div>
-						<div className="mt-3">
-							<Card.Text className="fw-semibold" style={{ fontSize: "14px", lineHeight: "25px", textAlign: "justify" }}>
-								The resort presents guests with varied gastronomic venues – Don Cipriani’s Italian Restaurant, Café Indochine, Hai Van Lounge… Excite
-								your taste buds with our sumptuous cuisine experience!
-							</Card.Text>
-							<Link
-								className="btn d-flex align-items-center justify-content-center"
-								id="btnCulinary"
-								style={{ width: "100%", height: "50px" }}
-								to="/culinary"
-							>
-								<FaCocktail className="me-2" />
-								Food & Beverage Promotion
-							</Link>
+						<div className="col-12 col-md-6 col-lg-5" id="introduceItem-5">
+							<Card className="h-100 border-0 bg-transparent w-100">
+								<Card.Img variant="top" src="/images/culinary-promotion.jpg" className="rounded-2 w-100" />
+								<div className="border-top mt-3"></div>
+								<div className="mt-3">
+									<Card.Text className="fw-semibold" style={{ fontSize: "15px", lineHeight: "25px", textAlign: "justify" }}>
+										The resort presents guests with varied gastronomic venues – Don Cipriani’s Italian Restaurant, Café Indochine, Hai Van Lounge…
+										Excite your taste buds with our sumptuous cuisine experience!
+									</Card.Text>
+									<Link
+										className="btn d-flex align-items-center justify-content-center"
+										id="btnCulinary"
+										style={{ width: "100%", height: "50px" }}
+										to="/culinary"
+									>
+										<FaCocktail className="me-2" />
+										Food & Beverage Promotion
+									</Link>
+								</div>
+							</Card>
 						</div>
-					</Card>
+					</div>
 				</div>
 			</div>
 		</div>

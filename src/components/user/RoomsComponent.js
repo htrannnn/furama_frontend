@@ -100,7 +100,7 @@ function RoomsComponent() {
 					ROOMS & SUITES
 				</h1>
 			</div>
-			<div className="mx-5 mb-2">
+			<div className="mx-5 mb-2" id="roomsItem">
 				<div className="d-flex flex-row-reverse">
 					<div className="input-group mb-4 w-50">
 						<CustomSelect

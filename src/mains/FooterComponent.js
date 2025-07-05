@@ -8,31 +8,37 @@ function FooterComponent() {
 
 	return (
 		<>
-			<div className="d-flex" style={{ width: "100%", backgroundColor: " #addccf" }}>
-				<div className="pb-3" style={{ width: "35%", backgroundColor: "#f3f3f3", marginLeft: "40px", paddingTop: "60px", paddingLeft: "40px" }}>
-					<h2 className=" fw-bold" style={{ color: "#cbbe73", fontFamily: "serif" }}>
-						How to Get to Us
-					</h2>
-					<p className="fw-semibold" style={{ width: "80%", fontSize: "14px", lineHeight: "25px" }}>
-						Furama is a premier base for exploring one of Asia’s most exciting new destinations. Just a short drive from Danang lay four UNESCO-listed
-						World Heritage Sites:
-					</p>
-
+			<div className="d-flex " id="footerContainer" style={{ width: "100%", backgroundColor: " #addccf" }}>
+				<div
+					className="pb-3"
+					style={{ width: "35%", backgroundColor: "#f3f3f3", marginLeft: "40px", paddingTop: "60px", paddingLeft: "40px" }}
+					id="footerLeft"
+				>
 					<div>
-						<button className="btn rounded-0" id="btnMap" onClick={() => setShowMap(true)}>
-							<FaLocationDot className="mb-1" /> View us on Map
-						</button>
+						<h2 className=" fw-bold" style={{ color: "#cbbe73", fontFamily: "serif" }}>
+							How to Get to Us
+						</h2>
+						<p className="fw-semibold" style={{ width: "80%", fontSize: "14px", lineHeight: "25px" }}>
+							Furama is a premier base for exploring one of Asia’s most exciting new destinations. Just a short drive from Danang lay four
+							UNESCO-listed World Heritage Sites:
+						</p>
+
+						<div>
+							<button className="btn rounded-0" id="btnMap" onClick={() => setShowMap(true)}>
+								<FaLocationDot className="mb-1" /> View us on Map
+							</button>
+						</div>
+						<Modal size="lg" show={showMap} onHide={() => setShowMap(false)} centered>
+							<Modal.Body className="p-0">
+								<Ratio aspectRatio="16x9">
+									<embed
+										type="image/svg+xml"
+										src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.491772899406!2d108.24849317328083!3d16.039950740224743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420fdbc8cc38ef%3A0x9a6a3e31121225d2!2sFurama%20Resort%20Danang!5e0!3m2!1svi!2s!4v1740303501831!5m2!1svi!2s"
+									/>
+								</Ratio>
+							</Modal.Body>
+						</Modal>
 					</div>
-					<Modal size="lg" show={showMap} onHide={() => setShowMap(false)} centered>
-						<Modal.Body className="p-0">
-							<Ratio aspectRatio="16x9">
-								<embed
-									type="image/svg+xml"
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.491772899406!2d108.24849317328083!3d16.039950740224743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420fdbc8cc38ef%3A0x9a6a3e31121225d2!2sFurama%20Resort%20Danang!5e0!3m2!1svi!2s!4v1740303501831!5m2!1svi!2s"
-								/>
-							</Ratio>
-						</Modal.Body>
-					</Modal>
 
 					<div className="mt-4">
 						<h5 className="fw-semibold" style={{ lineHeight: "25px", fontFamily: "serif", color: "#cbbe73" }}>
@@ -69,9 +75,9 @@ function FooterComponent() {
 					</div>
 				</div>
 
-				<div style={{ width: "65%", paddingTop: "60px", paddingLeft: "30px" }}>
+				<div id="footerRight" style={{ width: "65%", paddingTop: "60px", paddingLeft: "30px" }}>
 					<div className="d-flex justify-content-around">
-						<div>
+						<div className="footer-column">
 							<h5>Company</h5>
 							<ul className="nav flex-column">
 								<li className="nav-item mb-2">
@@ -97,7 +103,7 @@ function FooterComponent() {
 							</ul>
 						</div>
 
-						<div>
+						<div className="footer-column">
 							<h5>Contact</h5>
 							<ul className="nav flex-column">
 								<li className="nav-item mb-2">
@@ -118,7 +124,7 @@ function FooterComponent() {
 							</ul>
 						</div>
 
-						<div>
+						<div className="footer-column">
 							<h5>Support</h5>
 							<ul className="nav flex-column">
 								<li className="nav-item mb-2">
@@ -147,7 +153,7 @@ function FooterComponent() {
 
 					<div className="py-4 mx-4 my-4 border-top">
 						<div className="mb-5">
-							<img src="/images/Logo.png" alt="logo" className="mt-4" style={{ width: 250 }} />
+							<img src="/images/Logo.png" alt="logo" className="mt-4" style={{ width: 250 }} id="footerLogo" />
 						</div>
 						<p>© 28/01/2024 The Furama, Inc. All rights reserved.</p>
 					</div>

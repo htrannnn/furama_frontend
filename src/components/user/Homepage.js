@@ -15,7 +15,7 @@ function Homepage() {
 	return (
 		<>
 			<div id="titleImg">
-				<h1 className="text-center shadow p-3 mt-5 mb-5" id="titleText" style={{ fontFamily: "serif" }}>
+				<h1 className="text-center shadow p-3 mt-5" id="titleText" style={{ fontFamily: "serif" }}>
 					WELCOME TO FURAMA RESORT
 				</h1>
 			</div>

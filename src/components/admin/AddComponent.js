@@ -126,7 +126,7 @@ function AddComponent() {
 	});
 
 	return (
-		<div style={{ marginTop: "100px" }}>
+		<div style={{ marginTop: "100px" }} id="mainAddComponent">
 			<div className="text-center mb-4 ">
 				<h2 style={{ fontFamily: "serif", fontWeight: "bold", color: "#cbbe73" }}>ADD NEW FACILITIES</h2>
 			</div>
@@ -293,16 +293,20 @@ function AddComponent() {
 								</div>
 							</Row>
 						</Container>
-						<ul className="nav nav-pills mt-3">
-							<li className="nav-item">
+						<div
+							className="nav nav-pills mt-3 flex gap-3 ms-[90px] max-md:ms-4 max-md:justify-start"
+							style={{ marginLeft: "90px" }}
+							id="addButtonGroup"
+						>
+							<div className="nav-item">
 								<Link type="button" className="btn btn me-2" id="buttonBack" to="/rooms">
 									Back
 								</Link>
-							</li>
-							<button type="submit" className="btn btn mb-3 ms-2" id="buttonSubmit">
-								Submit
-							</button>
-						</ul>
+								<button type="submit" className="btn btn " id="buttonSubmit">
+									Submit
+								</button>
+							</div>
+						</div>
 					</Form>
 				)}
 			</Formik>

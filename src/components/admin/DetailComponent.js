@@ -93,7 +93,7 @@ function DetailComponent() {
 			)}
 
 			<Container className="border-top pt-3 mt-4 mb-4">
-				<Row className="text-center">
+				<Row className="text-center" id="detailItem-1">
 					<Col className="border-end">
 						<h6 style={{ color: "#046056" }}>Type</h6>
 						<h5>{typeDetail?.name}</h5>

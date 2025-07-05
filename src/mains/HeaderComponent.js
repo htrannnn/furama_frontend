@@ -16,7 +16,7 @@ function HeaderComponent() {
 
 	return (
 		<div className="container" id="header">
-			<header className="d-flex justify-content-between align-items-center py-3 border-bottom flex-wrap">
+			<header className="d-flex justify-content-between align-items-center py-3 border-bottom">
 				<div className="d-flex align-items-center">
 					<NavLink to="/" className="text-dark text-decoration-none">
 						<img src="/images/Logo.png" alt="logo" className="imgLogo" />
