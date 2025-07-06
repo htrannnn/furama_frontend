@@ -23,7 +23,7 @@ function CulinaryComponent() {
 					</p>
 				</div>
 
-				<div className="d-flex mt-4" style={{ gap: "40px" }}>
+				<div className="d-flex mt-4 card-responsive-wrapper" style={{ gap: "40px" }}>
 					<Card style={{ width: "50%", backgroundColor: "transparent", border: "none" }}>
 						<Card.Img variant="top" src="/images/seafood-steak.jpg" className="rounded-0" />
 						<div className="mt-3">
