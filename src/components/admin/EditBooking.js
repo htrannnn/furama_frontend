@@ -244,7 +244,7 @@ function EditBooking() {
 				</h2>
 			</div>
 			<div className="col-md-7">
-				<div id="cardInformation">
+				<div id="cardInformationEdit">
 					{bookings ? (
 						<Formik initialValues={bookings} validationSchema={validationSchema} innerRef={formikRef} onSubmit={handleSubmit}>
 							{({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
@@ -277,7 +277,7 @@ function EditBooking() {
 
 									<div>
 										{selectedFacility ? (
-											<Card className="d-flex flex-row align-items-center p-3 shadow-sm rounded-3" id="cardDetailRoomBooking">
+											<Card className="d-flex flex-row align-items-center p-3 shadow-sm rounded-3" id="cardDetailRoomBookingEdit">
 												<div style={{ flex: "0 0 150px", marginRight: "20px" }}>
 													<img
 														src={selectedFacility.image}
@@ -590,20 +590,20 @@ function EditBooking() {
 											</Accordion>
 										</div>
 
-										<ul className="nav nav-pills mt-3" style={{ marginLeft: "150px" }}>
-											<li className="nav-item">
+										<div className="nav nav-pills mt-3" style={{ marginLeft: "150px" }} id="buttonGroupEdit">
+											<div className="nav-item">
 												{selectedFacility ? (
-													<Link type="button" className="btn btn me-2" id="buttonBack" to={"/room/detail/" + selectedFacility.id}>
+													<Link type="button" className="btn btn me-2" id="buttonBackEdit" to={"/room/detail/" + selectedFacility.id}>
 														Back
 													</Link>
 												) : (
 													<p>Loading</p>
 												)}
-											</li>
-											<button type="submit" className="btn btn mb-3 ms-2" id="buttonSubmit">
+											</div>
+											<button type="submit" className="btn btn mb-3 ms-2" id="buttonSubmitEdit">
 												Submit
 											</button>
-										</ul>
+										</div>
 									</Form>
 								</>
 							)}
@@ -615,7 +615,7 @@ function EditBooking() {
 			</div>
 
 			<div className="col-md-4">
-				<div id="cardOverallInformation" style={{ position: "sticky", top: "100px" }}>
+				<div id="cardOverallInformationEdit" style={{ position: "sticky", top: "100px" }}>
 					<Card className="p-3 shadow-sm rounded-3">
 						<h3 style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>Check</h3>
 

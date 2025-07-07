@@ -299,10 +299,10 @@ function AddComponent() {
 							id="addButtonGroup"
 						>
 							<div className="nav-item">
-								<Link type="button" className="btn btn me-2" id="buttonBack" to="/rooms">
+								<Link type="button" className="btn btn me-2" id="buttonBackFacilities" to="/rooms">
 									Back
 								</Link>
-								<button type="submit" className="btn btn " id="buttonSubmit">
+								<button type="submit" className="btn btn " id="buttonSubmitFacilities">
 									Submit
 								</button>
 							</div>

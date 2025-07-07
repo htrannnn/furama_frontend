@@ -81,7 +81,7 @@ function LoginComponent() {
 							</div>
 							<div className="d-grid">
 								<button type="submit" className="btn btn rounded-3" id="btnLogin">
-									Đăng nhập <BiLogInCircle />
+									Log in <BiLogInCircle />
 								</button>
 							</div>
 						</Form>

@@ -65,7 +65,7 @@ function BookingDetail() {
 	}, [id]);
 
 	return (
-		<div style={{ marginTop: "100px" }}>
+		<div style={{ marginTop: "100px" }} id="detailBookingMain">
 			<div className="text-center mb-4 ">
 				<h2 style={{ fontFamily: "serif", fontWeight: "bold", color: "#046056" }}>
 					{bookingDetail?.customer.firstName} {bookingDetail?.customer.lastName}'s Booking Detail
@@ -172,15 +172,15 @@ function BookingDetail() {
 				<Row className="ms-1">
 					<ul className="nav nav-pills mt-3">
 						<li className="nav-item">
-							<Link type="button" className="btn btn me-2" id="buttonBack" to="/booking">
+							<Link type="button" className="btn btn me-2" id="buttonBackBooking" to="/booking">
 								Back
 							</Link>
 						</li>
 
 						<li className="nav-item">
-							<button type="button" className="btn btn" id="buttonEdit">
+							<Link type="button" className="btn btn" id="buttonEditBooking" to={"/booking/edit/" + bookingDetail.id}>
 								Edit
-							</button>
+							</Link>
 						</li>
 					</ul>
 				</Row>

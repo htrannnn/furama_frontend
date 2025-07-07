@@ -100,9 +100,9 @@ function RoomsComponent() {
 					ROOMS & SUITES
 				</h1>
 			</div>
-			<div className="mx-5 mb-2" id="roomsItem">
+			<div className="mx-5 mb-2 " id="roomsItem">
 				<div className="d-flex flex-row-reverse">
-					<div className="input-group mb-4 w-50">
+					<div className="input-group mb-4" style={{ width: "50%" }}>
 						<CustomSelect
 							options={allFacilities.map((event) => ({ value: event.id, label: event.name }))}
 							value={selectedFacilities}
@@ -119,14 +119,18 @@ function RoomsComponent() {
 						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
 							<BiSearchAlt2 style={{ fontSize: "25px" }} title="Search" />
 						</button>
-						{account && (
+					</div>
+
+					{account && (
+						<div className="w-100">
 							<Link className="btn btn-outline-secondary rounded-1" type="button" id="buttonAdd" to="/room/add">
 								<IoMdAdd style={{ fontSize: "18px" }} className="mb-1" /> Add Facilities
 							</Link>
-						)}
-					</div>
+						</div>
+					)}
 				</div>
 			</div>
+
 			<div className="mx-5 mb-5">
 				<Row xs={1} md={3} className="g-4">
 					{allFacilities?.length > 0 ? (

@@ -123,13 +123,16 @@ function BookingList() {
 							placeholder="Enter Last Name"
 							onSelect={(option) => setSelectedLastName(option)}
 						/>
-						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
-							<BiSearchAlt2 style={{ fontSize: "25px" }} title="Search" />
-						</button>
 
-						<button className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonReload" onClick={reloadData}>
-							<RxReload style={{ fontSize: "25px" }} title="Reload" />
-						</button>
+						<div className="btn-group-mobile">
+							<button className="btn btn-outline-secondary me-2 rounded-1" type="button" onClick={handleSearch} id="buttonSearch">
+								<BiSearchAlt2 style={{ fontSize: "25px" }} title="Search" />
+							</button>
+
+							<button className="btn btn-outline-secondary me-2 rounded-1" type="button" id="buttonReload" onClick={reloadData}>
+								<RxReload style={{ fontSize: "25px" }} title="Reload" />
+							</button>
+						</div>
 					</div>
 				</div>
 
